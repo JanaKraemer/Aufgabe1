@@ -1,4 +1,9 @@
-var person = prompt("please enter your name", "Jana")
-if (person != null){
-    document.getElementById("").innerHTML= "Hell0" + person + "How are you today?"
+document.addEventListener("DOMContentLoaded",hello);
+
+function hello(){
+
+var person = prompt( " Name:")
+console.log("Willkommen" + person)
+document.getElementById("name").innerHTML="Willkommen"+ person + "!"
 }
+
