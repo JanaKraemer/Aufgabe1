@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded",hello);
 
-function hello(){
+function hello():void{
 
 let person:string = prompt( " Name:")
 console.log("Willkommen" + person)
