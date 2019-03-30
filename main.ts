@@ -1,9 +1,9 @@
-document.addEventListener("DOMContentLoaded",hello);
+document.addEventListener("DOMContentLoaded", hello);
 
-function hello():void{
+function hello(): void {
 
-let person:string = prompt( " Name:")
-console.log("Willkommen" + person)
-document.getElementById("name").innerHTML="Willkommen"+ person + "!"
+    let person: string = prompt(" Name:")
+    console.log("Willkommen" + person)
+    document.getElementById("name").innerHTML = "Willkommen" + person + "!"
 }
 
