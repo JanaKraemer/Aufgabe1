@@ -200,18 +200,29 @@ let Karte_32: Karte = {
 }
 document.addEventListener("DOMContentLoaded", HandAnzahl);
 
-function HandAnzahl(): void {
-    let Handkarten: string = prompt("Anzahl der Handkarten:")
-    document.getElementById("Spielplan").innerHTML = HandAnzahl + "Karten werden ausgegeben"
+let AlleKarten:Karte[]=[Karte_1, Karte_2, Karte_3, Karte_4,Karte_5, Karte_6, Karte_7, Karte_8,Karte_9,Karte_10, Karte_11, Karte_12, Karte_13, Karte_14,
+    Karte_15,Karte_16,Karte_17,Karte_18,Karte_19,Karte_20,Karte_21,Karte_21,Karte_22,Karte_23,Karte_24,Karte_25,Karte_26,Karte_27,
+    Karte_28,Karte_29,Karte_30,Karte_31,Karte_32]
+let Ablage:Karte[]=[]
+let Handkarten:Karte[]=[]
 
+
+function Kartengenerator(Kartenanzahl:number):void{
+    let i:number=0;
+    if(i<Kartenanzahl){
+        Math.floor(Math.random()*AlleKarten.length);
+        
+
+    }
+    
 }
 
 
-function ErstelleHandkarten(c: Karte[i])
-prodCard = document.createElement('div')
-prodCard.innerHTML =
 
-    `<div>
-     <p> ${c.Zahl} </p>
-     
-`
+
+
+function HandAnzahl(): void {
+    let HandAnzahl: string = prompt("Anzahl der Handkarten:")
+    document.getElementById("Spielplan").innerHTML = HandAnzahl + "Karten werden ausgegeben"
+
+}
