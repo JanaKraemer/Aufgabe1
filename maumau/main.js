@@ -163,4 +163,10 @@ function HandAnzahl() {
     let Handkarten = prompt("Anzahl der Handkarten:");
     document.getElementById("Spielplan").innerHTML = HandAnzahl + "Karten werden ausgegeben";
 }
+prodCard = document.createElement('div');
+prodCard.innerHTML =
+    `<div>
+     <p> ${c.Zahl} </p>
+     
+`;
 //# sourceMappingURL=main.js.map
