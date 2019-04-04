@@ -164,14 +164,15 @@ let AlleKarten = [Karte_1, Karte_2, Karte_3, Karte_4, Karte_5, Karte_6, Karte_7,
     Karte_28, Karte_29, Karte_30, Karte_31, Karte_32];
 let Ablage = [];
 let Handkarten = [];
-function Kartengenerator(Kartenanzahl) {
-    let i = 0;
-    if (i < Kartenanzahl) {
-        Math.floor(Math.random() * AlleKarten.length);
-    }
-}
 function HandAnzahl() {
-    let HandAnzahl = prompt("Anzahl der Handkarten:");
+    let base = 10;
+    let AnzahlHandkarten = prompt("Anzahl der Handkarten:");
+    let Anzahl = parseInt(AnzahlHandkarten, base);
     document.getElementById("Spielplan").innerHTML = HandAnzahl + "Karten werden ausgegeben";
+    Kartengenerator(Anzahl);
+}
+function Kartengenerator(_Anzahl) {
+    for (let i = 1; i <= 0; i++) {
+    }
 }
 //# sourceMappingURL=main.js.map

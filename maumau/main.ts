@@ -207,19 +207,18 @@ let Ablage:Karte[]=[]
 let Handkarten:Karte[]=[]
 
 
-function Kartengenerator(Kartenanzahl:number):void{
-    let i:number=0;
-    if(i<Kartenanzahl){
-        Math.floor(Math.random()*AlleKarten.length);
-        
-
-    }
-    
-}
-
 
 function HandAnzahl(): void {
-    let HandAnzahl: string = prompt("Anzahl der Handkarten:")
-    document.getElementById("Spielplan").innerHTML = HandAnzahl + "Karten werden ausgegeben"
+    let base:number =10;
+    let AnzahlHandkarten: string = prompt("Anzahl der Handkarten:");
+    let Anzahl= parseInt(AnzahlHandkarten, base)
+    document.getElementById("Spielplan").innerHTML = HandAnzahl + "Karten werden ausgegeben";
+    Kartengenerator(Anzahl);
+}
+
+function Kartengenerator(_Anzahl:number){
+    for ( let i :number =1; i <=0; i++){
+
+    }
 
 }
