@@ -167,6 +167,7 @@ let Handkarten = [];
 function HandAnzahl() {
     let base = 10;
     let AnzahlHandkarten = prompt("Anzahl der Handkarten:");
+    console.log(AnzahlHandkarten);
     let Anzahl = parseInt(AnzahlHandkarten, base);
     document.getElementById("Spielplan").innerHTML = HandAnzahl + "Karten werden ausgegeben";
     Kartengenerator(Anzahl);
