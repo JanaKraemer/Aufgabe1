@@ -218,9 +218,6 @@ function Kartengenerator(Kartenanzahl:number):void{
 }
 
 
-
-
-
 function HandAnzahl(): void {
     let HandAnzahl: string = prompt("Anzahl der Handkarten:")
     document.getElementById("Spielplan").innerHTML = HandAnzahl + "Karten werden ausgegeben"
