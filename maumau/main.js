@@ -170,10 +170,43 @@ function HandAnzahl() {
     console.log(AnzahlHandkarten);
     let Anzahl = parseInt(AnzahlHandkarten, base);
     document.getElementById("Spielplan").innerHTML = HandAnzahl + "Karten werden ausgegeben";
-    Kartengenerator(Anzahl);
+    HandKartengenerator(Anzahl);
 }
-function Kartengenerator(_Anzahl) {
-    for (let i = 1; i <= 0; i++) {
+function HandKartengenerator(_Anzahl) {
+    for (let i = 0; i <= 0; i++) {
+        let k = Math.floor(Math.random() * AlleKarten.length);
+        Handkarten.push(AlleKarten[k]);
+        let removed = AlleKarten.splice(k, 1);
+        Ablagestapel(AlleKarten[k]);
+        Ziehstapel(AlleKarten[k]);
+        Handkartenstapel(Handkarten[k]);
     }
+}
+function Handkartenstapel(_c) {
+    let prodCard = document.createElement('div');
+    prodCard.innerHTML =
+        `<div>
+    <p> ${_c.Zahl}</p>
+    <p> ${_c.Symbol}</p>
+    </div>`;
+    document.getElementById("Spielplan").appendChild(prodCard);
+}
+function Ablagestapel(_c) {
+    let prodCard = document.createElement('div');
+    prodCard.innerHTML =
+        `<div>
+    <p> ${_c.Zahl}</p>
+    <p> ${_c.Symbol}</p>
+    </div>`;
+    document.getElementById("Spielplan").appendChild(prodCard);
+}
+function Ziehstapel(_c) {
+    let prodCard = document.createElement('div');
+    prodCard.innerHTML =
+        `<div>
+    <p> ${_c.Zahl}</p>
+    <p> ${_c.Symbol}</p>
+    </div>`;
+    document.getElementById("Spielplan").appendChild(prodCard);
 }
 //# sourceMappingURL=main.js.map
