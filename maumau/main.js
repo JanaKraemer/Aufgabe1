@@ -158,12 +158,12 @@ let Karte_32 = {
     Symbol: "Kreuz",
     Farbe: "schwarz",
 };
-document.addEventListener("DOMContentLoaded", HandAnzahl);
 let AlleKarten = [Karte_1, Karte_2, Karte_3, Karte_4, Karte_5, Karte_6, Karte_7, Karte_8, Karte_9, Karte_10, Karte_11, Karte_12, Karte_13, Karte_14,
     Karte_15, Karte_16, Karte_17, Karte_18, Karte_19, Karte_20, Karte_21, Karte_21, Karte_22, Karte_23, Karte_24, Karte_25, Karte_26, Karte_27,
     Karte_28, Karte_29, Karte_30, Karte_31, Karte_32];
 let Ablage = [];
 let Handkarten = [];
+document.addEventListener("DOMContentLoaded", HandAnzahl);
 function HandAnzahl() {
     let base = 10;
     let AnzahlHandkarten = prompt("Anzahl der Handkarten:");
