@@ -169,43 +169,45 @@ function HandAnzahl() {
     let AnzahlHandkarten = prompt("Anzahl der Handkarten:");
     console.log(AnzahlHandkarten);
     let Anzahl = parseInt(AnzahlHandkarten, base);
-    document.getElementById("Spielplan").innerHTML = HandAnzahl + "Karten werden ausgegeben";
     HandKartengenerator(Anzahl);
 }
 function HandKartengenerator(_Anzahl) {
-    for (let i = 0; i <= 0; i++) {
+    for (let i = 0; i <= AlleKarten.length - 1; i++) {
         let k = Math.floor(Math.random() * AlleKarten.length);
         Handkarten.push(AlleKarten[k]);
         let removed = AlleKarten.splice(k, 1);
         Ablagestapel(AlleKarten[k]);
         Ziehstapel(AlleKarten[k]);
-        Handkartenstapel(Handkarten[k]);
+        Handkartenstapel(AlleKarten[k]);
     }
 }
 function Handkartenstapel(_c) {
     let prodCard = document.createElement('div');
     prodCard.innerHTML =
-        `<div>
+        `<div class="Handkarten">
     <p> ${_c.Zahl}</p>
     <p> ${_c.Symbol}</p>
+    <p> ${_c.Farbe}</p>
     </div>`;
     document.getElementById("Spielplan").appendChild(prodCard);
 }
 function Ablagestapel(_c) {
     let prodCard = document.createElement('div');
     prodCard.innerHTML =
-        `<div>
+        `<div class="Ablage">
     <p> ${_c.Zahl}</p>
     <p> ${_c.Symbol}</p>
+    <p> ${_c.Farbe}</p>
     </div>`;
     document.getElementById("Spielplan").appendChild(prodCard);
 }
 function Ziehstapel(_c) {
     let prodCard = document.createElement('div');
-    prodCard.innerHTML =
-        `<div>
+    prodCard.innerHTML = `<div class="Ziehstapel">
+   
     <p> ${_c.Zahl}</p>
     <p> ${_c.Symbol}</p>
+    <p> ${_c.Farbe}</p>
     </div>`;
     document.getElementById("Spielplan").appendChild(prodCard);
 }

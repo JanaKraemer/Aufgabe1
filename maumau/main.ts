@@ -199,67 +199,69 @@ let Karte_32: Karte = {
     Farbe: "schwarz",
 }
 
-let AlleKarten:Karte[]=[Karte_1, Karte_2, Karte_3, Karte_4,Karte_5, Karte_6, Karte_7, Karte_8,Karte_9,Karte_10, Karte_11, Karte_12, Karte_13, Karte_14,
-    Karte_15,Karte_16,Karte_17,Karte_18,Karte_19,Karte_20,Karte_21,Karte_21,Karte_22,Karte_23,Karte_24,Karte_25,Karte_26,Karte_27,
-    Karte_28,Karte_29,Karte_30,Karte_31,Karte_32]
-    let Ablage:Karte[]=[]
-    let Handkarten:Karte[]=[]
-    
-    document.addEventListener("DOMContentLoaded", HandAnzahl);
+let AlleKarten: Karte[] = [Karte_1, Karte_2, Karte_3, Karte_4, Karte_5, Karte_6, Karte_7, Karte_8, Karte_9, Karte_10, Karte_11, Karte_12, Karte_13, Karte_14,
+    Karte_15, Karte_16, Karte_17, Karte_18, Karte_19, Karte_20, Karte_21, Karte_21, Karte_22, Karte_23, Karte_24, Karte_25, Karte_26, Karte_27,
+    Karte_28, Karte_29, Karte_30, Karte_31, Karte_32]
+let Ablage: Karte[] = []
+let Handkarten: Karte[] = []
+
+document.addEventListener("DOMContentLoaded", HandAnzahl);
 
 
 function HandAnzahl() {
-    let base:number =10;
+    let base: number = 10;
     let AnzahlHandkarten: string = prompt("Anzahl der Handkarten:");
     console.log(AnzahlHandkarten)
-    let Anzahl= parseInt(AnzahlHandkarten, base)
-    document.getElementById("Spielplan").innerHTML = HandAnzahl + "Karten werden ausgegeben";
+    let Anzahl = parseInt(AnzahlHandkarten, base)
     HandKartengenerator(Anzahl);
 }
 
-function HandKartengenerator(_Anzahl:number){
-    for ( let i :number =0; i <=0; i++){
-        let k:number=Math.floor(Math.random()*AlleKarten.length)
+function HandKartengenerator(_Anzahl: number) {
+    for (let i: number = 0; i <= AlleKarten.length - 1; i++) {
+        let k: number = Math.floor(Math.random() * AlleKarten.length)
         Handkarten.push(AlleKarten[k])
-        let removed = AlleKarten.splice(k,1);
+        let removed = AlleKarten.splice(k, 1);
         Ablagestapel(AlleKarten[k]);
         Ziehstapel(AlleKarten[k]);
-        Handkartenstapel(Handkarten[k]);
+        Handkartenstapel(AlleKarten[k]);
 
 
     }
 
 }
-function Handkartenstapel(_c:Karte){
-    let prodCard= document.createElement('div');
-    prodCard.innerHTML=
-    `<div>
+function Handkartenstapel(_c: Karte) {
+    let prodCard = document.createElement('div');
+    prodCard.innerHTML =
+        `<div class="Handkarten">
     <p> ${_c.Zahl}</p>
     <p> ${_c.Symbol}</p>
+    <p> ${_c.Farbe}</p>
     </div>`
 
     document.getElementById("Spielplan").appendChild(prodCard)
 
 }
 
-function Ablagestapel(_c:Karte){
-    let prodCard=document.createElement('div');
-    prodCard.innerHTML=
-    `<div>
+function Ablagestapel(_c: Karte) {
+    let prodCard = document.createElement('div');
+    prodCard.innerHTML =
+        `<div class="Ablage">
     <p> ${_c.Zahl}</p>
     <p> ${_c.Symbol}</p>
+    <p> ${_c.Farbe}</p>
     </div>`
 
     document.getElementById("Spielplan").appendChild(prodCard)
 
 }
-function Ziehstapel(_c:Karte){
+function Ziehstapel(_c: Karte) {
 
-    let prodCard=document.createElement('div');
-    prodCard.innerHTML=
-    `<div>
+    let prodCard = document.createElement('div');
+    prodCard.innerHTML = `<div class="Ziehstapel">
+   
     <p> ${_c.Zahl}</p>
     <p> ${_c.Symbol}</p>
+    <p> ${_c.Farbe}</p>
     </div>`
     document.getElementById("Spielplan").appendChild(prodCard)
 
