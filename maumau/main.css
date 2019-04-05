@@ -1,0 +1,28 @@
+
+.Ziehstapel{
+    position:absolute;
+    top:20px;
+    left:30px;
+    height:200px;
+    width:100px;
+}
+
+.Ablage{
+    position:absolute;
+    top:20px;
+    right: 30px;
+    height:200px;
+    width:100px;
+}
+
+.Handkarten{
+    height:200px;
+    width:600px;
+    margin: 30px;
+    bottom: 30px;
+    position: absolute;
+
+}
+body{
+    background-color: aqua;
+}
