@@ -169,16 +169,28 @@ function HandAnzahl() {
     let AnzahlHandkarten = prompt("Anzahl der Handkarten:");
     console.log(AnzahlHandkarten);
     let Anzahl = parseInt(AnzahlHandkarten, base);
-    HandKartengenerator(Anzahl);
+    Kartengenerator(Anzahl);
 }
-function HandKartengenerator(_Anzahl) {
-    for (let i = 0; i <= AlleKarten.length - 1; i++) {
+function Kartengenerator(_Anzahl) {
+    for (let i = 0; i <= _Anzahl - 1; i++) {
         let k = Math.floor(Math.random() * AlleKarten.length);
         Handkarten.push(AlleKarten[k]);
         let removed = AlleKarten.splice(k, 1);
-        Ablagestapel(AlleKarten[k]);
-        Ziehstapel(AlleKarten[k]);
-        Handkartenstapel(AlleKarten[k]);
+        // Ablagestapel(AlleKarten[k]);
+        // Ziehstapel(AlleKarten[k]);
+        Handkartenstapel(Handkarten[i]);
+    }
+    Ablagekarte();
+    for (let i = 0; i < 32; i++) {
+        Ziehstapel(AlleKarten[i]);
+    }
+}
+function Ablagekarte() {
+    for (let i = 0; i < 1; i++) {
+        let k = Math.floor(Math.random() * AlleKarten.length);
+        Ablage.push(AlleKarten[k]);
+        let removed = AlleKarten.splice(k, 1);
+        Ablagestapel(Ablage[i]);
     }
 }
 function Handkartenstapel(_c) {
@@ -189,6 +201,7 @@ function Handkartenstapel(_c) {
     <p> ${_c.Symbol}</p>
     <p> ${_c.Farbe}</p>
     </div>`;
+    console.log(Handkartenstapel);
     document.getElementById("Spielplan").appendChild(prodCard);
 }
 function Ablagestapel(_c) {
@@ -199,6 +212,7 @@ function Ablagestapel(_c) {
     <p> ${_c.Symbol}</p>
     <p> ${_c.Farbe}</p>
     </div>`;
+    console.log(Ablagestapel);
     document.getElementById("Spielplan").appendChild(prodCard);
 }
 function Ziehstapel(_c) {
@@ -209,6 +223,7 @@ function Ziehstapel(_c) {
     <p> ${_c.Symbol}</p>
     <p> ${_c.Farbe}</p>
     </div>`;
+    console.log(Ziehstapel);
     document.getElementById("Spielplan").appendChild(prodCard);
 }
 //# sourceMappingURL=main.js.map
