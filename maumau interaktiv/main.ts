@@ -341,20 +341,20 @@ function kartenachziehen(): void {
     }
 }
 
-function neuekartenachziehen(_event:Event):void{
+function neuekartenachziehen(): void {
     let x: number = Math.floor(Math.random() * alleKarten.length);
     handkarten.push(alleKarten[x]);
     let removed = alleKarten.splice(x, 1);
 
-    document.getElementById("handstapelkarten").innerHTML ="";
-    for(let i:number =0; i <handkarten.length;i++){
-        aktualisierterHandstapel(handkarten[i],i);
-        
+    document.getElementById("handstapelkarten").innerHTML = "";
+    for (let i: number = 0; i < handkarten.length; i++) {
+        aktualisierterHandstapel(handkarten[i], i);
+
     }
     handkarteablegen()
 }
 
-function aktualisierterHandstapel(_c: Karte, i:number){
+function aktualisierterHandstapel(_c: Karte, i: number) {
     let prodCard = document.createElement('div');
     prodCard.innerHTML = `<fieldset class=Handkarten>
    
@@ -362,12 +362,24 @@ function aktualisierterHandstapel(_c: Karte, i:number){
     <p> ${_c.Symbol}</p>
     <p> ${_c.Farbe}</p>
     </fieldset>`
-    
+
 
     document.getElementById("handstapelkarten").appendChild(prodCard)
- 
+
 }
 
+document.addEventListener("keydown", function keydownnachziehen(_event) {
+    if (_event.keyCode == 32) {
+        neuekartenachziehen();
+    }
+
+});
 
 
-    
+
+
+
+
+
+
+

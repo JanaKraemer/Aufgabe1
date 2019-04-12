@@ -268,7 +268,7 @@ function kartenachziehen() {
         ziehkartenEvent.addEventListener("click", neuekartenachziehen);
     }
 }
-function neuekartenachziehen(_event) {
+function neuekartenachziehen() {
     let x = Math.floor(Math.random() * alleKarten.length);
     handkarten.push(alleKarten[x]);
     let removed = alleKarten.splice(x, 1);
@@ -288,4 +288,9 @@ function aktualisierterHandstapel(_c, i) {
     </fieldset>`;
     document.getElementById("handstapelkarten").appendChild(prodCard);
 }
+document.addEventListener("keydown", function keydownnachziehen(_event) {
+    if (_event.keyCode == 32) {
+        neuekartenachziehen();
+    }
+});
 //# sourceMappingURL=main.js.map
