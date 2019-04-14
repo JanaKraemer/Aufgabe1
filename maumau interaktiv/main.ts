@@ -3,7 +3,8 @@
 interface Karte {
     Zahl: string;
     Symbol: string;
-    Farbe: string
+    Farbe: string;
+    zeichen:string;
 
 }
 
@@ -11,96 +12,112 @@ let Karte_1: Karte = {
     Zahl: "7",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen:"1",
 }
 
 let Karte_2: Karte = {
     Zahl: "8",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen:"1",
 }
 
 let Karte_3: Karte = {
     Zahl: "9",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen:"1",
 }
 
 let Karte_4: Karte = {
     Zahl: "10",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen:"1",
 }
 
 let Karte_5: Karte = {
     Zahl: "Bube",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen:"1",
 }
 
 let Karte_6: Karte = {
     Zahl: "Dame",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen:"1",
 }
 
 let Karte_7: Karte = {
     Zahl: "König",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen:"1",
 }
 
 let Karte_8: Karte = {
     Zahl: "Ass",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen:"1",
 }
 
 let Karte_9: Karte = {
     Zahl: "7",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 }
 
 let Karte_10: Karte = {
     Zahl: "8",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 }
 
 let Karte_11: Karte = {
     Zahl: "9",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 }
 
 let Karte_12: Karte = {
     Zahl: "10",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 }
 
 let Karte_13: Karte = {
     Zahl: "Bube",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 }
 
 let Karte_14: Karte = {
     Zahl: "Dame",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 }
 
 let Karte_15: Karte = {
     Zahl: "König",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 }
 
 let Karte_16: Karte = {
     Zahl: "Ass",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 }
 
 
@@ -108,48 +125,56 @@ let Karte_17: Karte = {
     Zahl: "7",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 }
 
 let Karte_18: Karte = {
     Zahl: "8",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 }
 
 let Karte_19: Karte = {
     Zahl: "9",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 }
 
 let Karte_20: Karte = {
     Zahl: "10",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 }
 
 let Karte_21: Karte = {
     Zahl: "Bube",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 }
 
 let Karte_22: Karte = {
     Zahl: "Dame",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 }
 
 let Karte_23: Karte = {
     Zahl: "König",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 }
 
 let Karte_24: Karte = {
     Zahl: "Ass",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 }
 
 
@@ -157,48 +182,56 @@ let Karte_25: Karte = {
     Zahl: "7",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 }
 
 let Karte_26: Karte = {
     Zahl: "8",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 }
 
 let Karte_27: Karte = {
     Zahl: "9",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 }
 
 let Karte_28: Karte = {
     Zahl: "10",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 }
 
 let Karte_29: Karte = {
     Zahl: "Bube",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 }
 
 let Karte_30: Karte = {
     Zahl: "Dame",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 }
 
 let Karte_31: Karte = {
     Zahl: "König",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 }
 
 let Karte_32: Karte = {
     Zahl: "Ass",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 }
 
 let alleKarten: Karte[] = [Karte_1, Karte_2, Karte_3, Karte_4, Karte_5, Karte_6, Karte_7, Karte_8, Karte_9, Karte_10, Karte_11, Karte_12, Karte_13, Karte_14,
@@ -211,22 +244,22 @@ let handkarten: Karte[] = []
 document.addEventListener("DOMContentLoaded", handAnzahl);
 
 
-function handAnzahl(): void {
-    let base: number = 10;
+function handAnzahl(): void { //Es wird abgefragt, wie viele Karten der Speiler zu Beginn haben möchte//
+    
     let anzahlHandkarten: string = prompt("Anzahl der Handkarten:");
     console.log(anzahlHandkarten)
-    let anzahl = parseInt(anzahlHandkarten, base)
+    let anzahl = parseInt(anzahlHandkarten)
     Kartengenerator(anzahl);
 }
 
-function Kartengenerator(_Anzahl: number): void {
+function Kartengenerator(_Anzahl: number): void { //Die Schleife wird so oft durchlaufen, wie i <= die Anzahl der gewünschten Karten ist.//
+                                                    //So viele random Karten werden dann in das Handkartenarray gepushed und aus dem anderen entfernt.//
     for (let i: number = 0; i <= _Anzahl - 1; i++) {
         let k: number = Math.floor(Math.random() * alleKarten.length)
         handkarten.push(alleKarten[k])
         let removed = alleKarten.splice(k, 1);
-        // Ablagestapel(AlleKarten[k]);
-        // Ziehstapel(AlleKarten[k]);
-        handkartenstapel(handkarten[i], i);
+        
+        handkartenstapel(handkarten[i], i); // Die zufällig ausgewählte Karte wird in der neuen Funktion generiert//
     }
     ablagekarte()
 
@@ -239,7 +272,7 @@ function Kartengenerator(_Anzahl: number): void {
 }
 
 
-function ablagekarte(): void {
+function ablagekarte(): void { // Eine Anfangs-Karte wird für den Ablagestapel ausgewählt und in das Ablage-Array gepushed.//
     for (let i: number = 0; i < 1; i++) {
         let k: number = Math.floor(Math.random() * alleKarten.length)
         ablage.push(alleKarten[k])
@@ -294,12 +327,12 @@ document.addEventListener("DOMContentLoaded", handkarteablegen);
 
 function handkarteablegen(): void {
 
-    for (let i: number = 0; i <= handkarten.length; i++) {
+    for (let i: number = 0; i < handkarten.length; i++) {
         let handkartenEvent: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementsByClassName("Handkarten")[i];
-        handkartenEvent.addEventListener("click", handkarteinSpielstapel);
+        handkartenEvent.addEventListener("click", handkarteinSpielstapel); // Durch das Klick-Event wird die Funktion handkarteinSpielstapel aufgerufen.//
     }
 
-    function handkarteinSpielstapel(_event: Event): void {
+    function handkarteinSpielstapel(_event: Event): void { //Die geklickte Karte bekommt eine ID, damit genau diese auf den Ablagestapel gepushed werden kann.//
         console.log(_event);
         let clickedCard: HTMLFieldSetElement = <HTMLFieldSetElement>_event.target;
         let cardID: string = clickedCard.id;
@@ -314,7 +347,7 @@ function handkarteablegen(): void {
 }
 
 function handkartelöschen(_cardIdNumber: number): void {
-    document.getElementById("handstapelkarten").innerHTML = "";
+    document.getElementById("handstapelkarten").innerHTML = ""; //Der Inhalt des Arrays wird komplett gelöscht//
     for (let i: number = 0; i < handkarten.length; i++) {
         neueHandkarten(handkarten[i], i)
     }
@@ -343,7 +376,7 @@ function kartenachziehen(): void {
 }
 
 function neuekartenachziehen(): void {
-    let x: number = Math.floor(Math.random() * alleKarten.length);
+    let x: number = Math.floor(Math.random() * alleKarten.length); // Eine zufällige Karte wird ausgewählt aus dem alleKarten-Array//
     handkarten.push(alleKarten[x]);
     let removed = alleKarten.splice(x, 1);
 
@@ -370,18 +403,44 @@ function aktualisierterHandstapel(_c: Karte, i: number) {
 }
 
 document.addEventListener("keydown", function keydownnachziehen(_event) {
-    if (_event.keyCode == 32) {
+    if (_event.keyCode == 32) { //Wenn die Leertaste gedrückt wird, dann wir die Funktion aufgerufen, die eine neue Handkarte auswählt und generiert.//
         neuekartenachziehen();
     }
 
 });
 
-document.addEventListener("DOMContentLoaded", sortieren);
 
-function sortieren() {
-    handkarten.sort();
-    console.log(handkarten.sort());
+
+function sortieren():void {
+    handkarten.sort(kartensortieren);
+    console.log(handkarten);
+    document.getElementById("handstapelkarten").innerHTML = "";
+    for (let i:number = 0; i <handkarten.length; i++ ){
+        aktualisierterHandstapel(handkarten[i], i);
+    }
+    handkarteablegen()
 }
+
+
+function kartensortieren(_x:Karte, _y:Karte):number{
+    if (_x.zeichen < _y.zeichen){ //Die zugewiesenen Werte der Karten werden miteinander verglichen und somit wird eine Reihenfolge erstellt.//
+        return -1;
+    }
+    if(_x.zeichen > _y.zeichen){
+        return 1
+    }
+    return 0
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

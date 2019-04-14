@@ -2,161 +2,193 @@ let Karte_1 = {
     Zahl: "7",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen: "1",
 };
 let Karte_2 = {
     Zahl: "8",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen: "1",
 };
 let Karte_3 = {
     Zahl: "9",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen: "1",
 };
 let Karte_4 = {
     Zahl: "10",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen: "1",
 };
 let Karte_5 = {
     Zahl: "Bube",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen: "1",
 };
 let Karte_6 = {
     Zahl: "Dame",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen: "1",
 };
 let Karte_7 = {
     Zahl: "König",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen: "1",
 };
 let Karte_8 = {
     Zahl: "Ass",
     Symbol: "Herz",
     Farbe: "rot",
+    zeichen: "1",
 };
 let Karte_9 = {
     Zahl: "7",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 };
 let Karte_10 = {
     Zahl: "8",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 };
 let Karte_11 = {
     Zahl: "9",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 };
 let Karte_12 = {
     Zahl: "10",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 };
 let Karte_13 = {
     Zahl: "Bube",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 };
 let Karte_14 = {
     Zahl: "Dame",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 };
 let Karte_15 = {
     Zahl: "König",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 };
 let Karte_16 = {
     Zahl: "Ass",
     Symbol: "Karo",
     Farbe: "rot",
+    zeichen: "2",
 };
 let Karte_17 = {
     Zahl: "7",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 };
 let Karte_18 = {
     Zahl: "8",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 };
 let Karte_19 = {
     Zahl: "9",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 };
 let Karte_20 = {
     Zahl: "10",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 };
 let Karte_21 = {
     Zahl: "Bube",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 };
 let Karte_22 = {
     Zahl: "Dame",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 };
 let Karte_23 = {
     Zahl: "König",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 };
 let Karte_24 = {
     Zahl: "Ass",
     Symbol: "Piek",
     Farbe: "schwarz",
+    zeichen: "3",
 };
 let Karte_25 = {
     Zahl: "7",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 };
 let Karte_26 = {
     Zahl: "8",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 };
 let Karte_27 = {
     Zahl: "9",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 };
 let Karte_28 = {
     Zahl: "10",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 };
 let Karte_29 = {
     Zahl: "Bube",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 };
 let Karte_30 = {
     Zahl: "Dame",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 };
 let Karte_31 = {
     Zahl: "König",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 };
 let Karte_32 = {
     Zahl: "Ass",
     Symbol: "Kreuz",
     Farbe: "schwarz",
+    zeichen: "4",
 };
 let alleKarten = [Karte_1, Karte_2, Karte_3, Karte_4, Karte_5, Karte_6, Karte_7, Karte_8, Karte_9, Karte_10, Karte_11, Karte_12, Karte_13, Karte_14,
     Karte_15, Karte_16, Karte_17, Karte_18, Karte_19, Karte_20, Karte_21, Karte_21, Karte_22, Karte_23, Karte_24, Karte_25, Karte_26, Karte_27,
@@ -165,20 +197,18 @@ let ablage = [];
 let handkarten = [];
 document.addEventListener("DOMContentLoaded", handAnzahl);
 function handAnzahl() {
-    let base = 10;
     let anzahlHandkarten = prompt("Anzahl der Handkarten:");
     console.log(anzahlHandkarten);
-    let anzahl = parseInt(anzahlHandkarten, base);
+    let anzahl = parseInt(anzahlHandkarten);
     Kartengenerator(anzahl);
 }
 function Kartengenerator(_Anzahl) {
+    //So viele random Karten werden dann in das Handkartenarray gepushed und aus dem anderen entfernt.//
     for (let i = 0; i <= _Anzahl - 1; i++) {
         let k = Math.floor(Math.random() * alleKarten.length);
         handkarten.push(alleKarten[k]);
         let removed = alleKarten.splice(k, 1);
-        // Ablagestapel(AlleKarten[k]);
-        // Ziehstapel(AlleKarten[k]);
-        handkartenstapel(handkarten[i], i);
+        handkartenstapel(handkarten[i], i); // Die zufällig ausgewählte Karte wird in der neuen Funktion generiert//
     }
     ablagekarte();
     for (let i = 0; i < 32; i++) {
@@ -228,9 +258,9 @@ function ziehstapel(_c) {
 }
 document.addEventListener("DOMContentLoaded", handkarteablegen);
 function handkarteablegen() {
-    for (let i = 0; i <= handkarten.length; i++) {
+    for (let i = 0; i < handkarten.length; i++) {
         let handkartenEvent = document.getElementsByClassName("Handkarten")[i];
-        handkartenEvent.addEventListener("click", handkarteinSpielstapel);
+        handkartenEvent.addEventListener("click", handkarteinSpielstapel); // Durch das Klick-Event wird die Funktion handkarteinSpielstapel aufgerufen.//
     }
     function handkarteinSpielstapel(_event) {
         console.log(_event);
@@ -246,7 +276,7 @@ function handkarteablegen() {
     }
 }
 function handkartelöschen(_cardIdNumber) {
-    document.getElementById("handstapelkarten").innerHTML = "";
+    document.getElementById("handstapelkarten").innerHTML = ""; //Der Inhalt des Arrays wird komplett gelöscht//
     for (let i = 0; i < handkarten.length; i++) {
         neueHandkarten(handkarten[i], i);
     }
@@ -269,7 +299,7 @@ function kartenachziehen() {
     }
 }
 function neuekartenachziehen() {
-    let x = Math.floor(Math.random() * alleKarten.length);
+    let x = Math.floor(Math.random() * alleKarten.length); // Eine zufällige Karte wird ausgewählt aus dem alleKarten-Array//
     handkarten.push(alleKarten[x]);
     let removed = alleKarten.splice(x, 1);
     document.getElementById("handstapelkarten").innerHTML = "";
@@ -289,13 +319,26 @@ function aktualisierterHandstapel(_c, i) {
     document.getElementById("handstapelkarten").appendChild(prodCard);
 }
 document.addEventListener("keydown", function keydownnachziehen(_event) {
-    if (_event.keyCode == 32) {
+    if (_event.keyCode == 32) { //Wenn die Leertaste gedrückt wird, dann wir die Funktion aufgerufen, die eine neue Handkarte auswählt und generiert.//
         neuekartenachziehen();
     }
 });
-document.addEventListener("DOMContentLoaded", sortieren);
 function sortieren() {
-    handkarten.sort();
-    console.log(handkarten.sort());
+    handkarten.sort(kartensortieren);
+    console.log(handkarten);
+    document.getElementById("handstapelkarten").innerHTML = "";
+    for (let i = 0; i < handkarten.length; i++) {
+        aktualisierterHandstapel(handkarten[i], i);
+    }
+    handkarteablegen();
+}
+function kartensortieren(_x, _y) {
+    if (_x.zeichen < _y.zeichen) { //Die zugewiesenen Werte der Karten werden miteinander verglichen und somit wird eine Reihenfolge erstellt.//
+        return -1;
+    }
+    if (_x.zeichen > _y.zeichen) {
+        return 1;
+    }
+    return 0;
 }
 //# sourceMappingURL=main.js.map
