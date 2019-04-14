@@ -263,7 +263,7 @@ function neueHandkarten(_c, _i) {
 }
 document.addEventListener("DOMContentLoaded", kartenachziehen);
 function kartenachziehen() {
-    for (let i = 0; i <= alleKarten.length; i++) {
+    for (let i = 0; i < alleKarten.length; i++) {
         let ziehkartenEvent = document.getElementsByClassName("Ziehstapel")[i];
         ziehkartenEvent.addEventListener("click", neuekartenachziehen);
     }
@@ -293,4 +293,9 @@ document.addEventListener("keydown", function keydownnachziehen(_event) {
         neuekartenachziehen();
     }
 });
+document.addEventListener("DOMContentLoaded", sortieren);
+function sortieren() {
+    handkarten.sort();
+    console.log(handkarten.sort());
+}
 //# sourceMappingURL=main.js.map

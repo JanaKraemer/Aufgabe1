@@ -207,6 +207,7 @@ let alleKarten: Karte[] = [Karte_1, Karte_2, Karte_3, Karte_4, Karte_5, Karte_6,
 let ablage: Karte[] = []
 let handkarten: Karte[] = []
 
+
 document.addEventListener("DOMContentLoaded", handAnzahl);
 
 
@@ -335,7 +336,7 @@ document.addEventListener("DOMContentLoaded", kartenachziehen);
 
 function kartenachziehen(): void {
 
-    for (let i: number = 0; i <= alleKarten.length; i++) {
+    for (let i: number = 0; i < alleKarten.length; i++) {
         let ziehkartenEvent: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementsByClassName("Ziehstapel")[i];
         ziehkartenEvent.addEventListener("click", neuekartenachziehen);
     }
@@ -374,6 +375,14 @@ document.addEventListener("keydown", function keydownnachziehen(_event) {
     }
 
 });
+
+document.addEventListener("DOMContentLoaded", sortieren);
+
+function sortieren() {
+    handkarten.sort();
+    console.log(handkarten.sort());
+}
+
 
 
 
