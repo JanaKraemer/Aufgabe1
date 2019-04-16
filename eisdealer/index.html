@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Eisdealer</title>
+    <link rel="stylesheet" href="main.css" type="text/css" media="screen" />
+    <script src="main.js" type="text/javascript" charset="utf-8"></script>
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet"> 
+</head>
+
+<body>
+
+    <h1>Eisdealer</h1>
+    <fieldset id="radio">
+        <legend> Optionen </legend>
+        <input type="radio" name="Radiogroup" value="radio1" id="radio1" />
+        <label for="radio1">Waffel</label>
+        <input type="radio" name="Radiogroup" value="radio2" id="radio2" />
+        <label for="radio2">Becher</label>
+    </fieldset>
+
+    <fieldset id="checkbox">
+        <legend> Eissorten</legend>
+        <input type="checkbox" name="Checkbox1" value="check1" id="check1" />
+        <label for="check1">Haselnuss</label>
+        <input type="checkbox" name="Checkbox2" value="check2" id="check2" />
+        <label for="check2">Schokolade</label>
+        <input type="checkbox" name="Checkbox3" value="check3" id="check3" />
+        <label for="check3">Erdbeer</label>
+        <input type="checkbox" name="Checkbox4" value="check4" id="check4" />
+        <label for="check4">Vanille</label>
+        <input type="checkbox" name="Checkbox5" value="check5" id="check5" />
+        <label for="check5">Mango</label>
+        <input type="checkbox" name="Checkbox6" value="check6" id="check6" />
+        <label for="check6">Joghurt</label>
+    </fieldset>
+
+    <fieldset id="checkbox">
+        <legend> Toppings</legend>
+        
+        <input type="checkbox" name="Checkbox1" value="check1" id="check1" />
+        <label for="check1">Sahne</label>
+        <input type="checkbox" name="Checkbox2" value="check2" id="check2" />
+        <label for="check2">Streußel</label>
+        <input type="checkbox" name="Checkbox3" value="check3" id="check3" />
+        <label for="check3">Schoko-Soße</label>
+        <input type="checkbox" name="Checkbox4" value="check4" id="check4" />
+        <label for="check4">Erdbeer-Soße</label>
+    </fieldset>
+
+    <fieldset id="text">
+            <legend> Eingabedaten </legend>
+            Name
+            <input type="text" name="Text" placeholder="Name, Nachname" required/>
+            <hr/>
+            Adresse
+            <input type="text" name="Text" placeholder="Straße" required/>
+            <hr/>
+            Polstleitzahl
+		    <input type="text" name="Pattern" pattern="[0-9]{5}" placeholder="67256"/>
+            <hr/>
+            Wohnort
+            <input type="text" name="Text" placeholder="Einhausen" required/>
+            <hr/>
+        
+    </fieldset>
