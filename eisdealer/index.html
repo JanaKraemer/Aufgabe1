@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="utf-8" />
     <title>Eisdealer</title>
     <link rel="stylesheet" href="main.css" type="text/css" media="screen" />
     <script src="main.js" type="text/javascript" charset="utf-8"></script>
-    <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
 </head>
 
 <body>
 
     <h1>Eisdealer</h1>
-    <fieldset id="radio">
+    <fieldset id="radio_optionen">
         <legend> Optionen </legend>
+        <p>1€ </p>
         <input type="radio" name="Radiogroup" value="radio1" id="radio1" />
         <label for="radio1">Waffel</label>
         <input type="radio" name="Radiogroup" value="radio2" id="radio2" />
         <label for="radio2">Becher</label>
     </fieldset>
 
-    <fieldset id="checkbox">
-        <legend> Eissorten</legend>
+    <fieldset id="checkbox_eissorten">
+        <legend> Eissorten </legend>
+        <p>Je Kugel 1€</p>
         <input type="checkbox" name="Checkbox1" value="check1" id="check1" />
         <label for="check1">Haselnuss</label>
         <input type="checkbox" name="Checkbox2" value="check2" id="check2" />
@@ -36,32 +38,57 @@
         <label for="check6">Joghurt</label>
     </fieldset>
 
-    <fieldset id="checkbox">
-        <legend> Toppings</legend>
-        
-        <input type="checkbox" name="Checkbox1" value="check1" id="check1" />
-        <label for="check1">Sahne</label>
-        <input type="checkbox" name="Checkbox2" value="check2" id="check2" />
-        <label for="check2">Streußel</label>
-        <input type="checkbox" name="Checkbox3" value="check3" id="check3" />
-        <label for="check3">Schoko-Soße</label>
-        <input type="checkbox" name="Checkbox4" value="check4" id="check4" />
-        <label for="check4">Erdbeer-Soße</label>
+    <fieldset id="checkbox_toppings">
+        <legend> Toppings </legend>
+        <p>Je Topping 0,50€</p>
+        <input type="checkbox" name="Checkbox7" value="check1" id="check1.1" />
+        <label for="check1.1">Sahne</label>
+        <input type="checkbox" name="Checkbox8" value="check2" id="check2.1" />
+        <label for="check2.1">Streußel</label>
+        <input type="checkbox" name="Checkbox9" value="check3" id="check3.1" />
+        <label for="check3.1">Schoko-Soße</label>
+        <input type="checkbox" name="Checkbox10" value="check4" id="check4.1" />
+        <label for="check4.1">Erdbeer-Soße</label>
     </fieldset>
 
-    <fieldset id="text">
-            <legend> Eingabedaten </legend>
-            Name
-            <input type="text" name="Text" placeholder="Name, Nachname" required/>
-            <hr/>
-            Adresse
-            <input type="text" name="Text" placeholder="Straße" required/>
-            <hr/>
-            Polstleitzahl
-		    <input type="text" name="Pattern" pattern="[0-9]{5}" placeholder="67256"/>
-            <hr/>
-            Wohnort
-            <input type="text" name="Text" placeholder="Einhausen" required/>
-            <hr/>
-        
+    <fieldset id="text_eingabe">
+        <legend> Eingabedaten </legend>
+        Name
+        <input type="text" name="Text" placeholder="Name, Nachname" required />
+        <hr />
+        Adresse
+        <input type="text" name="Adresse" placeholder="Straße" required />
+        <hr />
+        Polstleitzahl
+        <input type="text" name="Plz" pattern="[0-9]{5}" placeholder="67256" />
+        <hr />
+        Wohnort
+        <input type="text" name="Ort" placeholder="Einhausen" required />
+        <hr />
+        Mail
+        <input type="email" name="Mail" placeholder="mustermann@hallo.de " />
+        <hr />
+
+
     </fieldset>
+    <fieldset id="radio_lieferung">
+        <legend> Optionen </legend>
+
+        <input type="radio" name="Radiogroup" value="radio3" id="radio3" />
+        <label for="radio3">Lieferung</label>
+        <input type="radio" name="Radiogroup" value="radio4" id="radio4" />
+        <label for="radio4">Abholung</label>
+    </fieldset>
+    <fieldset id="Anmerkungen">
+        <legend> Anmerkungen</legend>
+        <textarea name="Anmerkungen" cols="35" rows="3" placeholder="..."></textarea>
+    </fieldset>
+    <P id="preis">0€</P>
+    <button>Bestellen</button>
+
+    <h2>Übersicht</h2>
+    <div id="Übersicht"></div>
+
+</body>
+
+</html>
