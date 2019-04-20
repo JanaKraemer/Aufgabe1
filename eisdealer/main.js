@@ -1,54 +1,53 @@
-let erdbeer = {
-    option: "0",
-    sorte: "erdbeer",
-    topping: "0",
-    preis: 1,
-};
-let eissorten = [erdbeer];
-let zusammenstellung = [];
-var Formelemente;
-(function (Formelemente) {
-    window.addEventListener("load", init);
-    function init(_event) {
-        console.log("Init");
-        let fieldsets = document.getElementsByTagName("fieldset");
-        for (let i = 0; i < fieldsets.length; i++) {
-            let fieldset = fieldsets[i];
-            fieldset.addEventListener("change", handleChange);
+window.addEventListener("load", init); // Preis berechnen//
+document.addEventListener("DOMContentLoaded", kaufen); //button//
+function init(_event) {
+    console.log("init");
+    let fieldsetElement = document.getElementsByTagName("fieldset");
+    for (let i = 0; i < fieldsetElement.length; i++) {
+        let fieldset = fieldsetElement[i];
+        fieldset.addEventListener("change", handleChange);
+    }
+}
+function handleChange(_event) {
+    console.log(_event);
+    berechnePreis(_event);
+}
+function berechnePreis(_event) {
+    let anfangsPreis = 0;
+    document.getElementById("Übersicht").innerHTML = ''; //Jedes mal, wenn eine neue Angabe gemacht wurde, wird die Überichts erst gelöscht und dann neu berechnet//
+    let input = document.getElementsByTagName("input");
+    for (let i = 0; i < input.length; i++) {
+        if (input[i].checked == true) { // Wenn das element aufgrund des events angesprochen wurde, dann wird der value auf den anfangspreis gerechent//
+            let preis = Number(input[i].value);
+            anfangsPreis += preis;
+            let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
+            erstellen.innerHTML = `<p>
+        <p> ${input[i].className}</p>
+        <p> ${input[i].name}</p>`;
+            document.getElementById("Übersicht").appendChild(erstellen);
+        }
+        document.getElementById("preis").innerHTML = anfangsPreis.toFixed(2).toString();
+    }
+}
+function kaufen(_event) {
+    let bestellen = document.getElementById("buy"); //Der Button wird so über die Id angesprochen//
+    bestellen.addEventListener("click", kontrolle);
+}
+function kontrolle(_event) {
+    let eingabeArray = []; //Fehlende Angaben, den den Value 0 haben werden in das leere Array gepushed//
+    let x = 0;
+    let eingabe = document.getElementsByTagName("input");
+    for (let i = 0; i < eingabe.length; i++) {
+        if (eingabe[i].value == "") { // Wenn das Element einen leeren Value hat, dann wird dessen Name in das Array gepushed//
+            let angabenotwendig = eingabe[i].name;
+            eingabeArray.push(angabenotwendig);
         }
     }
-    function handleChange(_event) {
-        console.log(_event);
-        let target = _event.target;
-        console.log("Changed " + target.name + " to " + target.value);
-        zusammenstellung.push(_event.target);
-        if (this.id == "checkbox")
-            console.log("Changed " + target.name + " to " + target.checked);
-        zusammenstellung.push(_event.target);
-        console.log(zusammenstellung);
+    if (eingabeArray.length == 0) { // Wenn das Array leer ist, kommt die Rückmeldung:"Ihre Bestellung wurde aufgenommen"//
+        alert("Ihre Bestellung wurde aufgenommen");
     }
-})(Formelemente || (Formelemente = {}));
-function preisanzeige() {
-    if (erdbeer.preis == 1) {
-        zusammenstellung.push(erdbeer);
-        preis.push();
+    else { // Wenn sich Elemente mit leerem Value im Array befinden, werden diese ausgegeben.//
+        alert(`Bitte ${eingabeArray} vervollständigen`);
     }
-}
-let preis = [];
-function addtoCart(item) {
-    preis.push(item);
-    console.info(preis);
-    console.info(preis.length);
-    Gesamtsumme();
-    document.getElementById('preis').innerHTML = preis.length.toString();
-}
-function Gesamtsumme() {
-    for (var i = 0; i <= zusammenstellung.length - 1; i++) {
-        var sum = 0;
-        sum += eissorten[i].price;
-        console.info(sum);
-        console.info('sum is', sum.toFixed(2));
-    }
-    document.getElementById('preis').innerHTML = sum.toFixed(2).toString();
 }
 //# sourceMappingURL=main.js.map

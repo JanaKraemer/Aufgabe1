@@ -29,8 +29,25 @@ p{
 }
 #preis{
     font-size:1.5rem;
-    margin:auto;
+    color:purple;
+    position:absolute;
+    top:30px;
+    right:30px;
+    background-color:white;
   
+ }
+ #buy{
+    font-size:1rem;
+    
+    position:absolute;
+    top:120px;
+    right:30px;
+
+ }
+ #zusammenfassung{
+    
+     border: 2px solid purple;
+     
  }
 
 @media screen and (min-width:450px){
@@ -38,16 +55,31 @@ p{
         width:300px;
         margin:auto;
 }
+#zusammenfassung{
+    width:300px; 
+    margin:auto;
+    margin-top: 10px;
+}
 }
 @media screen and (min-width:700px){
     fieldset{
         width:500px;
         margin:auto;
+        margin-top: 10px;
+}
+#zusammenfassung{
+    width:500px; 
+    margin:auto;
+    margin-top: 10px;
 }
 }
 @media screen and (min-width : 1224px){
     fieldset{
         width:800px;
         margin:auto;
+}
+#zusammenfassung{
+    width:800px; 
+    margin:auto
 }
 }

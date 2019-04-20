@@ -1,74 +1,72 @@
 
-//
-interface Eis {
-    option: string;
-    sorte: string;
-    topping: string;
-    preis: number;
+window.addEventListener("load", init); // Preis berechnen//
+document.addEventListener("DOMContentLoaded", kaufen); //button//
+
+
+
+function init(_event: Event): void { // über diese Funktion werden alle Fieldsets angesprochen und durchlaufen. Sie bekommen ein change-event//
+    console.log("init");
+    let fieldsetElement: HTMLCollectionOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
+
+    for (let i: number = 0; i < fieldsetElement.length; i++) {
+        let fieldset: HTMLFieldSetElement = fieldsetElement[i];
+        fieldset.addEventListener("change", handleChange);
+
+    }
 }
 
-let erdbeer: Eis = {
-    option: "0",
-    sorte: "erdbeer",
-    topping: "0",
-    preis: 1,
+function handleChange(_event: Event): void {
+    console.log(_event);
+    berechnePreis(_event);
+
 }
-let eissorten: Eis[] = [erdbeer]
-let zusammenstellung: Eis[] = []
-var Formelemente;
-(function (Formelemente) {
-    window.addEventListener("load", init);
-    function init(_event) {
-        console.log("Init");
-        let fieldsets = document.getElementsByTagName("fieldset");
-        for (let i = 0; i < fieldsets.length; i++) {
-            let fieldset = fieldsets[i];
-            fieldset.addEventListener("change", handleChange);
+
+function berechnePreis(_event: Event): void {
+    let anfangsPreis: number = 0;
+    document.getElementById("Übersicht").innerHTML = ''; //Jedes mal, wenn eine neue Angabe gemacht wurde, wird die Überichts erst gelöscht und dann neu berechnet//
+    let input: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
+    for (let i: number = 0; i < input.length; i++) {
+        if (input[i].checked == true) { // Wenn das element aufgrund des events angesprochen wurde, dann wird der value auf den anfangspreis gerechent//
+            let preis: number = Number(input[i].value);
+            anfangsPreis += preis;
+
+            let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
+            erstellen.innerHTML = `<p>
+        <p> ${input[i].className}</p>
+        <p> ${input[i].name}</p>`
+            document.getElementById("Übersicht").appendChild(erstellen);
+
+
         }
-    }
-    function handleChange(_event) {
-        console.log(_event);
+        document.getElementById("preis").innerHTML = anfangsPreis.toFixed(2).toString();
 
-        let target = _event.target;
-        console.log("Changed " + target.name + " to " + target.value);
-        zusammenstellung.push(_event.target)
 
-        if (this.id == "checkbox")
-            console.log("Changed " + target.name + " to " + target.checked);
-        zusammenstellung.push(_event.target)
-        console.log(zusammenstellung);
-
-    }
-})(Formelemente || (Formelemente = {}));
-
-function preisanzeige() {
-
-    if (erdbeer.preis == 1) {
-        zusammenstellung.push(erdbeer)
-        preis.push()
-        
     }
 }
 
+ function kaufen(_event:Event):void{     // Der Button bekommt ein Click-Event zugewiesen//
+     let bestellen : HTMLButtonElement = <HTMLButtonElement>document.getElementById("buy"); //Der Button wird so über die Id angesprochen//
+     bestellen.addEventListener("click", kontrolle);
+     
 
-let preis: Eis[] = [];
-function addtoCart(item: Eis) {
-    preis.push(item);
-    console.info(preis);
-    console.info(preis.length);
-    Gesamtsumme();
-    document.getElementById('preis').innerHTML = preis.length.toString();
-}
-
-
-
-
-function Gesamtsumme() {
-    for (var i: number = 0; i <= zusammenstellung.length - 1; i++) {
-        var sum: number = 0;
-        sum += eissorten[i].price;
-        console.info(sum);
-        console.info('sum is', sum.toFixed(2))
+ }
+  function kontrolle(_event:Event):void{
+    let eingabeArray:string[] = []; //Fehlende Angaben, den den Value 0 haben werden in das leere Array gepushed//
+    let x:number =0;
+     let eingabe: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
+     for( let i:number= 0; i< eingabe.length; i++){ 
+         if( eingabe[i].value == ""){   // Wenn das Element einen leeren Value hat, dann wird dessen Name in das Array gepushed//
+         let angabenotwendig: string = eingabe[i].name;
+         eingabeArray.push(angabenotwendig);
+         
+     }
     }
-    document.getElementById('preis').innerHTML = sum.toFixed(2).toString();
+     if(eingabeArray.length == 0){ // Wenn das Array leer ist, kommt die Rückmeldung:"Ihre Bestellung wurde aufgenommen"//
+        alert("Ihre Bestellung wurde aufgenommen");
+     }
+     else{ // Wenn sich Elemente mit leerem Value im Array befinden, werden diese ausgegeben.//
+         alert(`Bitte ${eingabeArray} vervollständigen`);
+
+     }
+     
 }
