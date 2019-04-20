@@ -4,7 +4,7 @@ interface Karte {
     Zahl: string;
     Symbol: string;
     Farbe: string;
-    zeichen:string;
+    zeichen: string;
 
 }
 
@@ -12,56 +12,56 @@ let Karte_1: Karte = {
     Zahl: "7",
     Symbol: "Herz",
     Farbe: "rot",
-    zeichen:"1",
+    zeichen: "1",
 }
 
 let Karte_2: Karte = {
     Zahl: "8",
     Symbol: "Herz",
     Farbe: "rot",
-    zeichen:"1",
+    zeichen: "1",
 }
 
 let Karte_3: Karte = {
     Zahl: "9",
     Symbol: "Herz",
     Farbe: "rot",
-    zeichen:"1",
+    zeichen: "1",
 }
 
 let Karte_4: Karte = {
     Zahl: "10",
     Symbol: "Herz",
     Farbe: "rot",
-    zeichen:"1",
+    zeichen: "1",
 }
 
 let Karte_5: Karte = {
     Zahl: "Bube",
     Symbol: "Herz",
     Farbe: "rot",
-    zeichen:"1",
+    zeichen: "1",
 }
 
 let Karte_6: Karte = {
     Zahl: "Dame",
     Symbol: "Herz",
     Farbe: "rot",
-    zeichen:"1",
+    zeichen: "1",
 }
 
 let Karte_7: Karte = {
     Zahl: "König",
     Symbol: "Herz",
     Farbe: "rot",
-    zeichen:"1",
+    zeichen: "1",
 }
 
 let Karte_8: Karte = {
     Zahl: "Ass",
     Symbol: "Herz",
     Farbe: "rot",
-    zeichen:"1",
+    zeichen: "1",
 }
 
 let Karte_9: Karte = {
@@ -245,22 +245,24 @@ document.addEventListener("DOMContentLoaded", handAnzahl);
 
 
 function handAnzahl(): void { //Es wird abgefragt, wie viele Karten der Speiler zu Beginn haben möchte//
-    
+
     let anzahlHandkarten: string = prompt("Anzahl der Handkarten:");
     console.log(anzahlHandkarten)
     let anzahl = parseInt(anzahlHandkarten)
     Kartengenerator(anzahl);
+    document.getElementById("handstapelkarten").addEventListener("click",handkarteablegen);
 }
 
 function Kartengenerator(_Anzahl: number): void { //Die Schleife wird so oft durchlaufen, wie i <= die Anzahl der gewünschten Karten ist.//
-                                                    //So viele random Karten werden dann in das Handkartenarray gepushed und aus dem anderen entfernt.//
+    //So viele random Karten werden dann in das Handkartenarray gepushed und aus dem anderen entfernt.//
     for (let i: number = 0; i <= _Anzahl - 1; i++) {
         let k: number = Math.floor(Math.random() * alleKarten.length)
         handkarten.push(alleKarten[k])
-        let removed = alleKarten.splice(k, 1);
+        alleKarten.splice(k, 1);
+     // Die zufällig ausgewählte Karte wird in der neuen Funktion generiert//
         
-        handkartenstapel(handkarten[i], i); // Die zufällig ausgewählte Karte wird in der neuen Funktion generiert//
     }
+    handkartenstapel(handkarten);
     ablagekarte()
 
     for (let i: number = 0; i < 32; i++) {
@@ -283,17 +285,23 @@ function ablagekarte(): void { // Eine Anfangs-Karte wird für den Ablagestapel 
 }
 
 
-function handkartenstapel(_c: Karte, _i: number): void {
-    let prodCard = document.createElement('div');
-    prodCard.innerHTML =
-        `<div class="Handkarten" id="${_i}">
-    <p> ${_c.Zahl}</p>
-    <p> ${_c.Symbol}</p>
-    <p> ${_c.Farbe}</p>
-    </div>`
+function handkartenstapel(_kartenarray: Karte[]): void {
+    while(document.getElementById("handstapelkarten").firstChild){
+        document.getElementById("handstapelkarten").firstChild.remove();
+    }
+    for(let i : number = 0 ; i< _kartenarray.length; i++){
+    let prodCard : HTMLDivElement= document.createElement('div');
+    prodCard.classList.add("Handkarten")
+    prodCard.setAttribute("id", i.toString());
+    prodCard.innerHTML =`
+    <p> ${_kartenarray[i].Zahl}</p>
+    <p> ${_kartenarray[i].Symbol}</p>
+    <p> ${_kartenarray[i].Farbe}</p>`;
+    document.getElementById("handstapelkarten").appendChild(prodCard);    
+}
     console.log(handkartenstapel)
 
-    document.getElementById("handstapelkarten").appendChild(prodCard)
+    
 
 }
 
@@ -312,39 +320,38 @@ function ablagestapel(_c: Karte): void {
 function ziehstapel(_c: Karte): void {
 
     let prodCard = document.createElement('div');
-    prodCard.innerHTML = `<div class="Ziehstapel" >
-   
-    <p> ${_c.Zahl}</p>
-    <p> ${_c.Symbol}</p>
-    <p> ${_c.Farbe}</p>
-    </div>`
+    prodCard.innerHTML = `<div class="Ziehstapel" >`
+
+
     console.log(ziehstapel)
-    document.getElementById("ziehstapelkarten").appendChild(prodCard)
+    document.getElementById("ziehstapelkarten").appendChild(prodCard);
 
 }
 
-document.addEventListener("DOMContentLoaded", handkarteablegen);
 
-function handkarteablegen(): void {
-
-    for (let i: number = 0; i < handkarten.length; i++) {
-        let handkartenEvent: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementsByClassName("Handkarten")[i];
-        handkartenEvent.addEventListener("click", handkarteinSpielstapel); // Durch das Klick-Event wird die Funktion handkarteinSpielstapel aufgerufen.//
-    }
-
-    function handkarteinSpielstapel(_event: Event): void { //Die geklickte Karte bekommt eine ID, damit genau diese auf den Ablagestapel gepushed werden kann.//
-        console.log(_event);
-        let clickedCard: HTMLFieldSetElement = <HTMLFieldSetElement>_event.target;
-        let cardID: string = clickedCard.id;
-        let cardIdNumber: number = Number(cardID);
-        let karteInSpielstapel: Karte = handkarten[cardIdNumber];
-        ablage.push(handkarten[cardIdNumber])
-        handkarten.splice(cardIdNumber, 1)
-        ablagestapel(karteInSpielstapel)
-        handkartelöschen(cardIdNumber);
-        handkarteablegen()
-    }
+function handkarteablegen(_event:Event): void {
+    let clickedCard : HTMLDivElement =<HTMLDivElement> _event.target;
+    let index : number = parseInt(clickedCard.getAttribute("id"));
+    ablage.push(handkarten[index]);
+    ablagestapel(handkarten[index]);
+    handkarten.splice(index,1);
+    handkartenstapel(handkarten);
 }
+
+
+function handkarteinSpielstapel(_event: Event): void { //Die geklickte Karte bekommt eine ID, damit genau diese auf den Ablagestapel gepushed werden kann.//
+    console.log(_event);
+    let clickedCard: HTMLFieldSetElement = <HTMLFieldSetElement>_event.target;
+    let cardID: string = clickedCard.id;
+    let cardIdNumber: number = Number(cardID);
+    let karteInSpielstapel: Karte = handkarten[cardIdNumber];
+    ablage.push(handkarten[cardIdNumber]);
+    handkarten.splice(cardIdNumber, 1);
+    ablagestapel(karteInSpielstapel);
+    handkartelöschen(cardIdNumber);
+    //handkarteablegen();
+}
+
 
 function handkartelöschen(_cardIdNumber: number): void {
     document.getElementById("handstapelkarten").innerHTML = ""; //Der Inhalt des Arrays wird komplett gelöscht//
@@ -355,7 +362,7 @@ function handkartelöschen(_cardIdNumber: number): void {
 
 function neueHandkarten(_c: Karte, _i: number): void {
     let prodCard = document.createElement('div');
-    prodCard.innerHTML = `<fieldset class=Handkarten>
+    prodCard.innerHTML = `<fieldset class=Handkarten >
    
     <p> ${_c.Zahl}</p>
     <p> ${_c.Symbol}</p>
@@ -385,7 +392,7 @@ function neuekartenachziehen(): void {
         aktualisierterHandstapel(handkarten[i], i);
 
     }
-    handkarteablegen()
+    //handkarteablegen()
 }
 
 function aktualisierterHandstapel(_c: Karte, i: number) {
@@ -411,22 +418,22 @@ document.addEventListener("keydown", function keydownnachziehen(_event) {
 
 
 
-function sortieren():void {
+function sortieren(): void {
     handkarten.sort(kartensortieren);
     console.log(handkarten);
     document.getElementById("handstapelkarten").innerHTML = "";
-    for (let i:number = 0; i <handkarten.length; i++ ){
+    for (let i: number = 0; i < handkarten.length; i++) {
         aktualisierterHandstapel(handkarten[i], i);
     }
-    handkarteablegen()
+   // handkarteablegen()
 }
 
 
-function kartensortieren(_x:Karte, _y:Karte):number{
-    if (_x.zeichen < _y.zeichen){ //Die zugewiesenen Werte der Karten werden miteinander verglichen und somit wird eine Reihenfolge erstellt.//
+function kartensortieren(_x: Karte, _y: Karte): number {
+    if (_x.zeichen < _y.zeichen) { //Die zugewiesenen Werte der Karten werden miteinander verglichen und somit wird eine Reihenfolge erstellt.//
         return -1;
     }
-    if(_x.zeichen > _y.zeichen){
+    if (_x.zeichen > _y.zeichen) {
         return 1
     }
     return 0

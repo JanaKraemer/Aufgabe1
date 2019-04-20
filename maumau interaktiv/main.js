@@ -201,15 +201,17 @@ function handAnzahl() {
     console.log(anzahlHandkarten);
     let anzahl = parseInt(anzahlHandkarten);
     Kartengenerator(anzahl);
+    document.getElementById("handstapelkarten").addEventListener("click", handkarteablegen);
 }
 function Kartengenerator(_Anzahl) {
     //So viele random Karten werden dann in das Handkartenarray gepushed und aus dem anderen entfernt.//
     for (let i = 0; i <= _Anzahl - 1; i++) {
         let k = Math.floor(Math.random() * alleKarten.length);
         handkarten.push(alleKarten[k]);
-        let removed = alleKarten.splice(k, 1);
-        handkartenstapel(handkarten[i], i); // Die zufällig ausgewählte Karte wird in der neuen Funktion generiert//
+        alleKarten.splice(k, 1);
+        // Die zufällig ausgewählte Karte wird in der neuen Funktion generiert//
     }
+    handkartenstapel(handkarten);
     ablagekarte();
     for (let i = 0; i < 32; i++) {
         ziehstapel(alleKarten[i]);
@@ -223,16 +225,21 @@ function ablagekarte() {
         ablagestapel(ablage[i]);
     }
 }
-function handkartenstapel(_c, _i) {
-    let prodCard = document.createElement('div');
-    prodCard.innerHTML =
-        `<div class="Handkarten" id="${_i}">
-    <p> ${_c.Zahl}</p>
-    <p> ${_c.Symbol}</p>
-    <p> ${_c.Farbe}</p>
-    </div>`;
+function handkartenstapel(_kartenarray) {
+    while (document.getElementById("handstapelkarten").firstChild) {
+        document.getElementById("handstapelkarten").firstChild.remove();
+    }
+    for (let i = 0; i < _kartenarray.length; i++) {
+        let prodCard = document.createElement('div');
+        prodCard.classList.add("Handkarten");
+        prodCard.setAttribute("id", i.toString());
+        prodCard.innerHTML = `
+    <p> ${_kartenarray[i].Zahl}</p>
+    <p> ${_kartenarray[i].Symbol}</p>
+    <p> ${_kartenarray[i].Farbe}</p>`;
+        document.getElementById("handstapelkarten").appendChild(prodCard);
+    }
     console.log(handkartenstapel);
-    document.getElementById("handstapelkarten").appendChild(prodCard);
 }
 function ablagestapel(_c) {
     let prodCard = document.createElement('div');
@@ -247,33 +254,29 @@ function ablagestapel(_c) {
 }
 function ziehstapel(_c) {
     let prodCard = document.createElement('div');
-    prodCard.innerHTML = `<div class="Ziehstapel" >
-   
-    <p> ${_c.Zahl}</p>
-    <p> ${_c.Symbol}</p>
-    <p> ${_c.Farbe}</p>
-    </div>`;
+    prodCard.innerHTML = `<div class="Ziehstapel" >`;
     console.log(ziehstapel);
     document.getElementById("ziehstapelkarten").appendChild(prodCard);
 }
-document.addEventListener("DOMContentLoaded", handkarteablegen);
-function handkarteablegen() {
-    for (let i = 0; i < handkarten.length; i++) {
-        let handkartenEvent = document.getElementsByClassName("Handkarten")[i];
-        handkartenEvent.addEventListener("click", handkarteinSpielstapel); // Durch das Klick-Event wird die Funktion handkarteinSpielstapel aufgerufen.//
-    }
-    function handkarteinSpielstapel(_event) {
-        console.log(_event);
-        let clickedCard = _event.target;
-        let cardID = clickedCard.id;
-        let cardIdNumber = Number(cardID);
-        let karteInSpielstapel = handkarten[cardIdNumber];
-        ablage.push(handkarten[cardIdNumber]);
-        handkarten.splice(cardIdNumber, 1);
-        ablagestapel(karteInSpielstapel);
-        handkartelöschen(cardIdNumber);
-        handkarteablegen();
-    }
+function handkarteablegen(_event) {
+    let clickedCard = _event.target;
+    let index = parseInt(clickedCard.getAttribute("id"));
+    ablage.push(handkarten[index]);
+    ablagestapel(handkarten[index]);
+    handkarten.splice(index, 1);
+    handkartenstapel(handkarten);
+}
+function handkarteinSpielstapel(_event) {
+    console.log(_event);
+    let clickedCard = _event.target;
+    let cardID = clickedCard.id;
+    let cardIdNumber = Number(cardID);
+    let karteInSpielstapel = handkarten[cardIdNumber];
+    ablage.push(handkarten[cardIdNumber]);
+    handkarten.splice(cardIdNumber, 1);
+    ablagestapel(karteInSpielstapel);
+    handkartelöschen(cardIdNumber);
+    //handkarteablegen();
 }
 function handkartelöschen(_cardIdNumber) {
     document.getElementById("handstapelkarten").innerHTML = ""; //Der Inhalt des Arrays wird komplett gelöscht//
@@ -283,7 +286,7 @@ function handkartelöschen(_cardIdNumber) {
 }
 function neueHandkarten(_c, _i) {
     let prodCard = document.createElement('div');
-    prodCard.innerHTML = `<fieldset class=Handkarten>
+    prodCard.innerHTML = `<fieldset class=Handkarten >
    
     <p> ${_c.Zahl}</p>
     <p> ${_c.Symbol}</p>
@@ -306,7 +309,7 @@ function neuekartenachziehen() {
     for (let i = 0; i < handkarten.length; i++) {
         aktualisierterHandstapel(handkarten[i], i);
     }
-    handkarteablegen();
+    //handkarteablegen()
 }
 function aktualisierterHandstapel(_c, i) {
     let prodCard = document.createElement('div');
@@ -330,7 +333,7 @@ function sortieren() {
     for (let i = 0; i < handkarten.length; i++) {
         aktualisierterHandstapel(handkarten[i], i);
     }
-    handkarteablegen();
+    // handkarteablegen()
 }
 function kartensortieren(_x, _y) {
     if (_x.zeichen < _y.zeichen) { //Die zugewiesenen Werte der Karten werden miteinander verglichen und somit wird eine Reihenfolge erstellt.//

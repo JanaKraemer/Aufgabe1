@@ -178,52 +178,39 @@ function Kartengenerator(_Anzahl) {
         let removed = AlleKarten.splice(k, 1);
         // Ablagestapel(AlleKarten[k]);
         // Ziehstapel(AlleKarten[k]);
-        Handkartenstapel(Handkarten[i]);
+        Kartenausgabe(Handkarten[i]);
     }
     Ablagekarte();
     for (let i = 0; i < 32; i++) {
-        Ziehstapel(AlleKarten[i]);
+        Kartenausgabe(AlleKarten[i]);
     }
 }
 function Ablagekarte() {
-    for (let i = 0; i < 1; i++) {
-        let k = Math.floor(Math.random() * AlleKarten.length);
-        Ablage.push(AlleKarten[k]);
-        let removed = AlleKarten.splice(k, 1);
-        Ablagestapel(Ablage[i]);
+    let k = Math.floor(Math.random() * AlleKarten.length);
+    Ablage.push(AlleKarten[k]);
+    let removed = AlleKarten.splice(k, 1);
+    Kartenausgabe(Ablage[k]);
+}
+function Kartenausgabe(_c) {
+    let prodCard = document.createElement('div');
+    prodCard.innerHTML =
+        ` class="Handkarten"
+        
+    <p> ${_c.Zahl}</p>
+    <p> ${_c.Symbol}</p>
+    <p> ${_c.Farbe}</p>`;
+    document.getElementById("Spielplan").appendChild(prodCard);
+}
+document.addEventListener("DOMContentLoaded", Handkarteablegen);
+function Handkarteablegen() {
+    for (let i = 0; i <= Handkarten.length; i++) {
+        let HandkartenEvent = document.getElementById("Spielplan");
+        HandkartenEvent.addEventListener("click", HandkarteinSpielstapel);
     }
-}
-function Handkartenstapel(_c) {
-    let prodCard = document.createElement('div');
-    prodCard.innerHTML =
-        `<div class="Handkarten">
-    <p> ${_c.Zahl}</p>
-    <p> ${_c.Symbol}</p>
-    <p> ${_c.Farbe}</p>
-    </div>`;
-    console.log(Handkartenstapel);
-    document.getElementById("Spielplan").appendChild(prodCard);
-}
-function Ablagestapel(_c) {
-    let prodCard = document.createElement('div');
-    prodCard.innerHTML =
-        `<div class="Ablage">
-    <p> ${_c.Zahl}</p>
-    <p> ${_c.Symbol}</p>
-    <p> ${_c.Farbe}</p>
-    </div>`;
-    console.log(Ablagestapel);
-    document.getElementById("Spielplan").appendChild(prodCard);
-}
-function Ziehstapel(_c) {
-    let prodCard = document.createElement('div');
-    prodCard.innerHTML = `<div class="Ziehstapel">
-   
-    <p> ${_c.Zahl}</p>
-    <p> ${_c.Symbol}</p>
-    <p> ${_c.Farbe}</p>
-    </div>`;
-    console.log(Ziehstapel);
-    document.getElementById("Spielplan").appendChild(prodCard);
+    function HandkarteinSpielstapel(_event) {
+        console.log(_event);
+        console.log(_event.target);
+        _event.target;
+    }
 }
 //# sourceMappingURL=main.js.map
