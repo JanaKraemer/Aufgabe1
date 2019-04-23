@@ -21,13 +21,24 @@ function berechnePreis(_event) {
             let preis = Number(input[i].value);
             anfangsPreis += preis;
             let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
-            erstellen.innerHTML = `<p>
-        <p> ${input[i].className}</p>
-        <p> ${input[i].name}</p>`;
+            erstellen.innerHTML = `
+
+         <p> ${input[i].name}</p>`;
             document.getElementById("Übersicht").appendChild(erstellen);
         }
-        document.getElementById("preis").innerHTML = anfangsPreis.toFixed(2).toString();
+        if (input[i].name == "Stepper") {
+            let anzahlKugeln = Number(input[i].value);
+            let anzahlPreis = Number(input[i].id);
+            anfangsPreis += anzahlKugeln * anzahlPreis;
+            if (anzahlKugeln > 0) {
+                let erstellen = document.createElement("p");
+                erstellen.innerHTML = `
+                <p>${input[i].value} ${input[i].className}</p>`;
+                document.getElementById("Übersicht").appendChild(erstellen);
+            }
+        }
     }
+    document.getElementById("preis").innerHTML = anfangsPreis.toFixed(2).toString();
 }
 function kaufen(_event) {
     let bestellen = document.getElementById("buy"); //Der Button wird so über die Id angesprochen//

@@ -23,6 +23,7 @@ button{
     color:white;
   
 }
+
 p{
     font-size:0.6rem;
     color:palevioletred;
@@ -44,10 +45,13 @@ p{
     right:30px;
 
  }
+ .step{
+     width:40px;
+ }
  #zusammenfassung{
     
      border: 2px solid purple;
-     
+    
  }
 
 @media screen and (min-width:450px){
@@ -68,18 +72,28 @@ p{
         margin-top: 10px;
 }
 #zusammenfassung{
-    width:500px; 
     margin:auto;
-    margin-top: 10px;
+    position: absolute;
+    margin: 100px;
+    top:50px;
+    right:0px;
+    width:200px;
 }
 }
 @media screen and (min-width : 1224px){
     fieldset{
-        width:800px;
+       width: 800px;
         margin:auto;
+       
+        
 }
 #zusammenfassung{
-    width:800px; 
-    margin:auto
+    
+    margin:auto;
+    position: absolute;
+    margin: 100px;
+    top:50px;
+    right:10px;
+    width:200px;
 }
 }
