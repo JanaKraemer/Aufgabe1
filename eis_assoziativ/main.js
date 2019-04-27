@@ -52,7 +52,7 @@ function berechnePreis(_event) {
             anfangsPreis += preis;
             let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
             erstellen.innerHTML = `<p>
-        <p> ${input[i].className}</p>
+          
         <p> ${input[i].name}</p>`;
             document.getElementById("Übersicht").appendChild(erstellen);
         }

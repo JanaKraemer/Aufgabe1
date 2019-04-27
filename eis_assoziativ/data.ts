@@ -17,7 +17,7 @@ namespace assoziative_Arrays {
 		[key: string]: Eis[];
 }
 
-    export let data: HomogenousArray = {
+    export let data: HomogenousArray  = {
         "Optionen": [
             { type:"radio", wahl:"Waffel",name:"Waffel/Becher" ,value:"1" ,id:"radio1",class:"0", step:"0", min:"0", max:"0",alt:"1"},
             { type: "radio", wahl:"Becher",name: "Waffel/Becher", value: "1", id: "radio2",class:"0", step:"0", min:"0", max:"0",alt:"1" },
