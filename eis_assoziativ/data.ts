@@ -33,10 +33,10 @@ namespace assoziative_Arrays {
         ],
 
         "Toppings": [
-            { type: "checkbox", wahl:"Sahne",name: "Sahne", value: "0.50", id: "check1.1",class:"0", step:"0", min:"0", max:"0",alt:"0.5" },
-            { type: "checkbox", wahl:" Streußel",name: "Streußel", value: "0.50", id: "check2.1" ,class:"0", step:"0", min:"0", max:"0",alt:"0.5"  },
-            { type: "checkbox", wahl:"Schoko_soße",name: "Schoko-Soße", value: "0.50", id: "check3.1",class:"0", step:"0", min:"0", max:"0",alt:"0.5"  },
-            { type: "checkbox",wahl:"Erdbeer-Soße", name: "Erdbeer-Sopße", value: "0.50", id: "check4.1" ,class:"0", step:"0", min:"0", max:"0",alt:"0.5"  },
+            { type: "checkbox", wahl:"Sahne",name: "Sahne", value: "0.50", id: "check1.1",class:"0", step:"1", min:"0", max:"0",alt:"0.5" },
+            { type: "checkbox", wahl:" Streußel",name: "Streußel", value: "0.50", id: "check2.1" ,class:"1", step:"0", min:"0", max:"0",alt:"0.5"  },
+            { type: "checkbox", wahl:"Schoko_soße",name: "Schoko-Soße", value: "0.50", id: "check3.1",class:"1", step:"0", min:"0", max:"0",alt:"0.5"  },
+            { type: "checkbox",wahl:"Erdbeer-Soße", name: "Erdbeer-Sopße", value: "0.50", id: "check4.1" ,class:"1", step:"0", min:"0", max:"0",alt:"0.5"  },
 
         ]
     }
