@@ -14,11 +14,12 @@
 </head>
 
 <body>
-    <main>
-        <fieldset id="inhalt">
+    <form action="index.html" id="senden">
+        <main>
+            <fieldset id="inhalt">
 
-            <h1>Eisdealer</h1>
-            <!--   <fieldset id="radio_optionen">
+                <h1>Eisdealer</h1>
+                <!--   <fieldset id="radio_optionen">
         <legend> Optionen </legend>
         <p>1€ </p>
         <input type="radio" name="Waffel/Becher" value="1" id="radio1" />
@@ -68,45 +69,49 @@
         <label for="check4.1">Erdbeer-Soße</label>
     </fieldset>
 -->
-        </fieldset>
-        <fieldset id="text_eingabe">
-            <legend> Eingabedaten </legend>
-            Name
-            <input type="text" name="Name" placeholder="Name, Nachname" value="" required />
-            <hr />
-            Adresse
-            <input type="text" name="Adresse" placeholder="Straße" value="" required />
-            <hr />
-            Polstleitzahl
-            <input type="text" name="Plz" pattern="[0-9]{5}" value="" placeholder="67256" />
-            <hr />
-            Wohnort
-            <input type="text" name="Ort" placeholder="Einhausen" value="" required />
-            <hr />
-            Mail
-            <input type="email" name="Mail" value="" placeholder="mustermann@hallo.de " />
-            <hr />
+            </fieldset>
+            <fieldset id="text_eingabe">
+                <legend> Eingabedaten </legend>
+                Name
+                <input type="text" name="Name" placeholder="Name, Nachname" value="" required />
+                <hr />
+                Adresse
+                <input type="text" name="Adresse" placeholder="Straße" value="" required />
+                <hr />
+                Polstleitzahl
+                <input type="text" name="Plz" pattern="[0-9]{5}" value="" placeholder="67256" />
+                <hr />
+                Wohnort
+                <input type="text" name="Ort" placeholder="Einhausen" value="" required />
+                <hr />
+                Mail
+                <input type="email" name="Mail" value="" placeholder="mustermann@hallo.de " />
+                <hr />
 
 
-        </fieldset>
-        <fieldset id="radio_lieferung">
-            <legend> Optionen </legend>
+            </fieldset>
+            <fieldset id="radio_lieferung">
+                <legend> Optionen </legend>
 
-            <input type="radio" name="Zustellung" value="2" id="radio3" />
-            <label for="radio3">Lieferung</label>
-            <input type="radio" name="Zustellung" value="0" id="radio4" />
-            <label for="radio4">Abholung</label>
+                <input type="radio" name="Zustellung" value="2" id="radio3" />
+                <label for="radio3">Lieferung</label>
+                <input type="radio" name="Zustellung" value="0" id="radio4" />
+                <label for="radio4">Abholung</label>
 
-            <legend> Anmerkungen</legend>
-            <textarea name="Anmerkungen" cols="35" rows="3" placeholder="..."></textarea>
-        </fieldset>
+                <legend> Anmerkungen</legend>
+                <textarea name="Anmerkungen" cols="35" rows="3" placeholder="..."></textarea>
+            </fieldset>
+            <fieldset>
+                <button type="submit" id="buy">Bestellen</button>
+            </fieldset>
+    </form>
 
-        <P id="preis">0€</P>
-        <button id="buy">Bestellen</button>
-        <div id="zusammenfassung">
-            <h2>Übersicht</h2>
-            <div id="Übersicht"></div>
-        </div>
+    <P id="preis">0€</P>
+
+    <div id="zusammenfassung">
+        <h2>Übersicht</h2>
+        <div id="Übersicht"></div>
+    </div>
     </main>
 </body>
 
