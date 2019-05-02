@@ -5,7 +5,7 @@
 	"author": " adapted by Lukas",
 	"main": "Server.js",
 	"scripts": {
-		"start": "../Server/main.js"
+		"start": "../main.js"
 	},
 	"engines": {
 		"node": "8.11.3"
