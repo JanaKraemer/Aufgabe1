@@ -23,12 +23,12 @@ namespace assoziative_Arrays {
             { type: "radio", wahl:"Becher",name: "Waffel/Becher", value: "1", id: "radio2",class:"0", step:"0", min:"0", max:"0",alt:"1" },
         ],
         "Eissorten": [
-            { class: " Kugel/n Haselnuss", wahl:"Haselnuss",type: "number", name: "Stepper", step: "1", min: "0", max: "3", id: "1", value: "1" ,alt:"1"},
-            { class: " Kugel/n Schokolade", wahl:"Schokolade",type: "number", name: "Stepper", step: "1", min: "0", max: "3", id: "1", value: "1",alt:"1"},
-            { class: " Kugel/n Erdbeer", wahl:"Erdbeere",type: "number", name: "Stepper", step: "1", min: "0", max: "3", id: "1", value: "1" ,alt:"1"},
-            { class: " Kugel/n Vanille", wahl:"Vanille",type: "number", name: "Stepper", step: "1", min: "0", max: "3", id: "1", value: "1",alt:"1"},
-            { class: " Kugel/n Mango", type: "number", wahl:"Mango", name: "Stepper", step: "1", min: "0", max: "3", id: "1", value: "1",alt:"1" },
-            { class: " Kugel/n Joghurt", type: "number", wahl:"Joghurt",name: "Stepper", step: "1", min: "0", max: "3", id: "1", value: "1",alt:"1"},
+            { class: " Stepper", wahl:"Stepper",type: "number", name: "Haselnuss", step: "1", min: "0", max: "3", id: "1", value: "0" ,alt:"1"},
+            { class: "Stepper", wahl:"Stepper",type: "number", name: "Schokolade", step: "1", min: "0", max: "3", id: "1", value: "0",alt:"1"},
+            { class: " Stepper", wahl:"Stepper",type: "number", name: "Erdbeer", step: "1", min: "0", max: "3", id: "1", value: "0" ,alt:"1"},
+            { class: " Stepper", wahl:"Stepper",type: "number", name: "Vanille", step: "1", min: "0", max: "3", id: "1", value: "0",alt:"1"},
+            { class: " Stepper", type: "Stepper", wahl:"Mango", name: "Mango", step: "1", min: "0", max: "3", id: "1", value: "0",alt:"1" },
+            { class: " Stepper", type: "Stepper", wahl:"Joghurt",name: "Joghurt", step: "1", min: "0", max: "3", id: "1", value: "0",alt:"1"},
 
         ],
 

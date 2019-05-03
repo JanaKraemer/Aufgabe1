@@ -47,7 +47,7 @@ function berechnePreis(_event) {
     let input = document.getElementsByTagName("input");
     for (let i = 0; i < input.length; i++) {
         if (input[i].checked == true) { // Wenn das element aufgrund des events angesprochen wurde, dann wird der value auf den anfangspreis gerechent//
-            let preis = Number(input[i].alt);
+            let preis = Number(input[i].value);
             //  let target:number = Number(_event.target)
             anfangsPreis += preis;
             let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
@@ -56,14 +56,14 @@ function berechnePreis(_event) {
         <p> ${input[i].name}</p>`;
             document.getElementById("Übersicht").appendChild(erstellen);
         }
-        if (input[i].name == "Stepper") {
+        if (input[i].id == "1") {
             let anzahlKugeln = Number(input[i].value);
-            let anzahlPreis = Number(input[i].id);
+            let anzahlPreis = Number(input[i].alt);
             anfangsPreis += anzahlKugeln * anzahlPreis;
             if (anzahlKugeln > 0) {
                 let erstellen = document.createElement("p");
                 erstellen.innerHTML = `
-                <p>${input[i].value} ${input[i].className}</p>`;
+                <p>${input[i].value} ${input[i].name}</p>`;
                 document.getElementById("Übersicht").appendChild(erstellen);
             }
         }

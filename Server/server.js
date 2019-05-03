@@ -1,6 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Http = require("http"); // Ein http Objekt wird im Code generiert//
+let address = "http://localhost:8100";
+function rueckgabe() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", address);
+}
 var L05_Server;
 (function (L05_Server) {
     console.log("Starting server"); //Starting server wird in der Konsole ausgegeben.//

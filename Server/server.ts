@@ -1,4 +1,10 @@
 import * as Http from "http"; // Ein http Objekt wird im Code generiert//
+let address: string = "http://localhost:8100";
+
+function rueckgabe(){
+	let xhr: XMLHttpRequest = new XMLHttpRequest();
+	xhr.open("GET", address);
+}
 
 namespace L05_Server {  //Die Namen sind nur im Namespace bekannt//
 	console.log("Starting server");  //Starting server wird in der Konsole ausgegeben.//
