@@ -21,7 +21,7 @@ var assoziative_Arrays;
     function displayHeteroPredef(_E) {
         let formelement = document.createElement("input");
         let legend = document.createElement("label");
-        legend.innerText = _E.wahl;
+        legend.innerText = _E.name;
         formelement.setAttribute("type", _E.type);
         formelement.setAttribute("name", _E.name);
         formelement.setAttribute("step", _E.step);
@@ -30,11 +30,13 @@ var assoziative_Arrays;
         formelement.setAttribute("id", _E.id);
         formelement.setAttribute("value", _E.value);
         formelement.setAttribute("class", _E.class);
-        formelement.setAttribute("wahl", _E.wahl);
         formelement.setAttribute("alt", _E.alt);
         formelement.appendChild(legend);
         document.getElementById("inhalt").appendChild(legend);
         legend.appendChild(formelement);
+        if (_E.type = "radio") {
+            formelement.setAttribute("name", _E.class);
+        }
     }
 })(assoziative_Arrays || (assoziative_Arrays = {}));
 function handleChange(_event) {
@@ -47,13 +49,13 @@ function berechnePreis(_event) {
     let input = document.getElementsByTagName("input");
     for (let i = 0; i < input.length; i++) {
         if (input[i].checked == true) { // Wenn das element aufgrund des events angesprochen wurde, dann wird der value auf den anfangspreis gerechent//
-            let preis = Number(input[i].value);
+            let preis = Number(input[i].alt);
             //  let target:number = Number(_event.target)
             anfangsPreis += preis;
             let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
             erstellen.innerHTML = `<p>
           
-        <p> ${input[i].name}</p>`;
+        <p> ${input[i].name} </p>`;
             document.getElementById("Übersicht").appendChild(erstellen);
         }
         if (input[i].id == "1") {

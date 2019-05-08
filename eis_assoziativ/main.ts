@@ -35,7 +35,7 @@ namespace assoziative_Arrays {
         let legend: HTMLLabelElement = document.createElement("label");
 
 
-        legend.innerText = _E.wahl;
+        legend.innerText = _E.name;
 
 
         formelement.setAttribute("type", _E.type);
@@ -46,7 +46,7 @@ namespace assoziative_Arrays {
         formelement.setAttribute("id", _E.id);
         formelement.setAttribute("value", _E.value);
         formelement.setAttribute("class", _E.class);
-        formelement.setAttribute("wahl", _E.wahl);
+        
         formelement.setAttribute("alt", _E.alt);
 
 
@@ -54,8 +54,10 @@ namespace assoziative_Arrays {
         document.getElementById("inhalt").appendChild(legend);
         legend.appendChild(formelement);
 
-
+        if(_E.type= "radio"){
+            formelement.setAttribute("name", _E.class)}
     }
+  
 }
 function handleChange(_event: Event): void {
     console.log(_event);
@@ -70,16 +72,17 @@ function berechnePreis(_event: Event): void {
     let input: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
     for (let i: number = 0; i < input.length; i++) {
         if (input[i].checked == true) { // Wenn das element aufgrund des events angesprochen wurde, dann wird der value auf den anfangspreis gerechent//
-            let preis: number = Number(input[i].value);
+            let preis: number = Number(input[i].alt);
             //  let target:number = Number(_event.target)
             anfangsPreis += preis;
 
             let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
             erstellen.innerHTML = `<p>
           
-        <p> ${input[i].name}</p>`
+        <p> ${input[i].name} </p>`
             document.getElementById("Übersicht").appendChild(erstellen);
         }
+       
         if (input[i].id == "1") {
             let anzahlKugeln: number = Number(input[i].value);
             let anzahlPreis: number = Number(input[i].alt)

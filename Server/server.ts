@@ -1,6 +1,7 @@
 import * as Http from "http"; // Ein http Objekt wird im Code generiert//
+import * as URL from "url"
 let address: string = "http://localhost:8100";
-
+ 
 function rueckgabe(){
 	let xhr: XMLHttpRequest = new XMLHttpRequest();
 	xhr.open("GET", address);
