@@ -21,7 +21,7 @@ var assoziative_Arrays;
     function displayHeteroPredef(_E) {
         let formelement = document.createElement("input");
         let legend = document.createElement("label");
-        legend.innerText = _E.name;
+        legend.innerText = _E.class;
         formelement.setAttribute("type", _E.type);
         formelement.setAttribute("name", _E.name);
         formelement.setAttribute("step", _E.step);
@@ -35,8 +35,9 @@ var assoziative_Arrays;
         document.getElementById("inhalt").appendChild(legend);
         legend.appendChild(formelement);
         if (_E.type = "radio") {
-            formelement.setAttribute("name", _E.class);
+            formelement.setAttribute("value", _E.class);
         }
+        console.log(_E.name);
     }
 })(assoziative_Arrays || (assoziative_Arrays = {}));
 function handleChange(_event) {
@@ -55,7 +56,7 @@ function berechnePreis(_event) {
             let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
             erstellen.innerHTML = `<p>
           
-        <p> ${input[i].name} </p>`;
+        <p> ${input[i].className} </p>`;
             document.getElementById("Übersicht").appendChild(erstellen);
         }
         if (input[i].id == "1") {
@@ -65,7 +66,7 @@ function berechnePreis(_event) {
             if (anzahlKugeln > 0) {
                 let erstellen = document.createElement("p");
                 erstellen.innerHTML = `
-                <p>${input[i].value} ${input[i].name}</p>`;
+                <p>${input[i].value} ${input[i].className}</p>`;
                 document.getElementById("Übersicht").appendChild(erstellen);
             }
         }
@@ -80,7 +81,7 @@ function kontrolle(_event) {
     let eingabeArray = []; //Fehlende Angaben, den den Value 0 haben werden in das leere Array gepushed//
     let eingabe = document.getElementsByTagName("input");
     for (let i = 0; i < eingabe.length; i++) {
-        if (eingabe[i].value == "") { // Wenn das Element einen leeren Value hat, dann wird dessen Name in das Array gepushed//
+        if (eingabe[i].value == "" && eingabe[i].type == "text") { // Wenn das Element einen leeren Value hat, dann wird dessen Name in das Array gepushed//
             let angabenotwendig = eingabe[i].name;
             eingabeArray.push(angabenotwendig);
         }

@@ -1,4 +1,3 @@
-
 namespace assoziative_Arrays {
 
     window.addEventListener("load", init); // Preis berechnen//
@@ -35,7 +34,7 @@ namespace assoziative_Arrays {
         let legend: HTMLLabelElement = document.createElement("label");
 
 
-        legend.innerText = _E.name;
+        legend.innerText = _E.class;
 
 
         formelement.setAttribute("type", _E.type);
@@ -55,7 +54,8 @@ namespace assoziative_Arrays {
         legend.appendChild(formelement);
 
         if(_E.type= "radio"){
-            formelement.setAttribute("name", _E.class)}
+            formelement.setAttribute("value", _E.class)}
+            console.log(_E.name)
     }
   
 }
@@ -79,7 +79,7 @@ function berechnePreis(_event: Event): void {
             let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
             erstellen.innerHTML = `<p>
           
-        <p> ${input[i].name} </p>`
+        <p> ${input[i].className} </p>`
             document.getElementById("Übersicht").appendChild(erstellen);
         }
        
@@ -91,7 +91,7 @@ function berechnePreis(_event: Event): void {
 
                 let erstellen = document.createElement("p");
                 erstellen.innerHTML = `
-                <p>${input[i].value} ${input[i].name}</p>`
+                <p>${input[i].value} ${input[i].className}</p>`
 
                 document.getElementById("Übersicht").appendChild(erstellen);
             }
@@ -116,7 +116,7 @@ function kontrolle(_event: Event): void {
 
     let eingabe: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
     for (let i: number = 0; i < eingabe.length; i++) {
-        if (eingabe[i].value == "") {   // Wenn das Element einen leeren Value hat, dann wird dessen Name in das Array gepushed//
+        if (eingabe[i].value == "" && eingabe[i].type=="text" )  {   // Wenn das Element einen leeren Value hat, dann wird dessen Name in das Array gepushed//
             let angabenotwendig: string = eingabe[i].name;
             eingabeArray.push(angabenotwendig);
 
