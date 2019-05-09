@@ -1,6 +1,6 @@
 var assoziative_Arrays;
 (function (assoziative_Arrays) {
-    let address = "http://localhost:8100";
+    let address = "https://janakraemer.github.io/EIA2-Aufgabe/eis_assoziativ/";
     function sendRequestWithCustomData(_color) {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", address + "?color=" + _color, true);

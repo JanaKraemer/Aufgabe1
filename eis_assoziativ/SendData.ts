@@ -1,5 +1,5 @@
 namespace assoziative_Arrays {
-    let address: string = "http://localhost:8100";
+    let address: string = "https://janakraemer.github.io/EIA2-Aufgabe/eis_assoziativ/";
 
 
     function sendRequestWithCustomData(_color: string): void {

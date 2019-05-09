@@ -1,0 +1,99 @@
+html{
+    font-size:1rem;
+    color:black;
+    font-family: 'Rock Salt', cursive;
+}
+fieldset{
+    width:300px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    color:palevioletred;
+
+}
+main{
+    width:300px;
+    margin-right:200px;
+    margin-left:200px;
+}
+legend{
+    color:purple;
+    font-size:1.5em;
+}
+
+button{
+    background-color:purple;
+    color:white;
+  
+}
+p{
+    font-size:0.6rem;
+    color:palevioletred;
+}
+#preis{
+    font-size:1.5rem;
+    color:purple;
+    position:absolute;
+    top:30px;
+    right:30px;
+    background-color:white;
+  
+ }
+ #buy{
+    font-size:1rem;
+    
+    position:absolute;
+    top:120px;
+    right:30px;
+
+ }
+ #zusammenfassung{
+    
+     border: 2px solid purple;
+     
+ }
+
+@media screen and (min-width:450px){
+    fieldset{
+        width:300px;
+        margin:auto;
+}
+#zusammenfassung{
+    width:300px; 
+    margin:auto;
+    margin-top: 10px;
+}
+}
+@media screen and (min-width:700px){
+    fieldset{
+        width:500px;
+        margin:auto;
+        margin-top: 10px;
+}
+#zusammenfassung{
+  
+    position: absolute;
+    margin: 100px;
+    top:50px;
+    right:0px;
+    width:200px;
+}
+}
+@media screen and (min-width : 1224px){
+    fieldset{
+        width:800px;
+        margin:auto;
+}
+#zusammenfassung{
+    
+ 
+    position: absolute;
+    margin: 100px;
+    top:50px;
+    right:10px;
+    width:200px;
+    
+}
+}

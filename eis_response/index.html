@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Eisdealer</title>
+    <link rel="stylesheet" href="../eis_response/main.css" type="text/css" media="screen" />
+    <script src="../eis_response/data.ts"></script>
+    <script src="../eis_response/main.ts"></script>
+    <script src="SendData.js" type="text/javascript" charset="utf-8"></script>
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+</head>
+
+<body>
+    <form action="https://kraemerj.herokuapp.com/" method="get" id="senden">
+       
+        <main>
+            <fieldset id="inhalt">
+
+                <h1>Eisdealer</h1>
+                <!--   <fieldset id="radio_optionen">
+        <legend> Optionen </legend>
+        <p>1€ </p>
+        <input type="radio" name="Waffel/Becher" value="1" id="radio1" />
+        <label for="radio1">Waffel</label>
+        <input type="radio" name="Waffel/Becher" value="1" id="radio2" />
+        <label for="radio2">Becher</label>
+
+        <legend> Eissorten </legend>
+        <p>Je Kugel 1€</p>
+
+        <label for="Kugel/n Haselnuss">Hazelnuss</label>
+        <input  class=" Kugel/n Haselnuss" type="number" name="Stepper" step="1" min="0" max="3" id ="1" value="0"/>
+        <br>
+        
+        <label for=" Kugel/n Schokolade">Schokolade</label>
+        <input  class=" Kugel/n Schokolade" type="number" name="Stepper" step="1" min="0" max="3" id ="1" value="0"/>
+        <br>
+        
+        
+        <label for=" Kugel/n Erdbeer">Erdbeer</label>
+        <input  class=" Kugel/n Erdbeer" type="number" name="Stepper" step="1" min="0" max="3" id ="1" value="0"/>
+        <br>
+        
+        <label for=" Kugel/n Vanille">Vanille</label>
+        <input  class=" Kugel/n Vanille" type="number" name="Stepper" step="1" min="0" max="3" id ="1" value="0"/>
+        <br>
+        
+        <label for=" Kugel/n Mango">Mango</label>
+        <input  class=" Kugel/n Mango" type="number" name="Stepper" step="1" min="0" max="3" id ="1" value="0"/>
+        <br>
+       
+        <label for=" Kugel/n Joghurt">Joghurt</label>
+        <input  class=" Kugel/n Joghurt" type="number" name="Stepper" step="1" min="0" max="3" id ="1" value="0"/>
+        <br>
+
+        
+
+        <legend> Toppings </legend>
+        <p>Je Topping 0,50€</p>
+        <input type="checkbox" name="Sahne" value="0.50" id="check1.1" />
+        <label for="check1.1">Sahne</label>
+        <input type="checkbox" name="Streußel" value="0.50" id="check2.1" />
+        <label for="check2.1">Streußel</label>
+        <input type="checkbox" name="Schoko-Soße" value="0.50" id="check3.1" />
+        <label for="check3.1">Schoko-Soße</label>
+        <input type="checkbox" name="Erdbeer-Sopße" value="0.50" id="check4.1" />
+        <label for="check4.1">Erdbeer-Soße</label>
+    </fieldset>
+-->
+            </fieldset>
+            <fieldset id="text_eingabe">
+                <legend> Eingabedaten </legend>
+                Name
+                <input type="text" name="Name" placeholder="Name, Nachname" value="" required />
+                <hr />
+                Adresse
+                <input type="text" name="Adresse" placeholder="Straße" value="" required />
+                <hr />
+                Polstleitzahl
+                <input type="text" name="Plz" pattern="[0-9]{5}" value="" placeholder="67256" />
+                <hr />
+                Wohnort
+                <input type="text" name="Ort" placeholder="Einhausen" value="" required />
+                <hr />
+                Mail
+                <input type="email" name="Mail" value="" placeholder="mustermann@hallo.de " />
+                <hr />
+
+
+            </fieldset>
+            <fieldset id="radio_lieferung">
+                <legend> Optionen </legend>
+
+                <input type="radio" name="Zustellung" value="2" id="radio3" />
+                <label for="radio3">Lieferung</label>
+                <input type="radio" name="Zustellung" value="0" id="radio4" />
+                <label for="radio4">Abholung</label>
+
+                <legend> Anmerkungen</legend>
+                <textarea name="Anmerkungen" cols="35" rows="3" placeholder="..."></textarea>
+            </fieldset>
+            <fieldset>
+                <button type="submit" id="buy">Bestellen</button>
+            </fieldset>
+    </form>
+
+    <P id="preis">0€</P>
+
+    <div id="zusammenfassung">
+        <h2>Übersicht</h2>
+        <div id="Übersicht"></div>
+    </div>
+    </main>
+</body>
+
+</html>
