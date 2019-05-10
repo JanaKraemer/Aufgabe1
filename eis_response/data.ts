@@ -19,8 +19,8 @@ namespace response {
 
     export let data: HomogenousArray  = {
         "Optionen": [
-            { type:"radio", name:"Behalter" ,value:"1" ,id:"radio1",class:"Waffel", step:"0", min:"0", max:"0",alt:"1"},
-            { type: "radio",name: "Behalter", value: "1", id: "radio1",class:"Becher", step:"0", min:"0", max:"0",alt:"1" },
+            { type:"radio", name:"Behalter" ,value:"0" ,id:"radio1",class:"Waffel", step:"0", min:"0", max:"0",alt:"1"},
+            { type: "radio",name: "Behalter", value: "0", id: "radio1",class:"Becher", step:"0", min:"0", max:"0",alt:"1" },
         ],
         "Eissorten": [
             { class: " Haselnuss",type: "number", name: "Haselnuss", step: "1", min: "0", max: "3", id: "1", value: "0" ,alt:"1"},

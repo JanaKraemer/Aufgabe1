@@ -11,7 +11,7 @@
     <script src="../eis_response/data.js"></script>
     <script src="../eis_response/main.js"></script>
     <script src="../eis_response/Server.js"></script>
-    <script src="SendData.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../eis_response/SendData.js" type="text/javascript" charset="utf-8"></script>
     <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
 </head>
 
@@ -22,6 +22,7 @@
             <fieldset id="inhalt">
 
                 <h1>Eisdealer</h1>
+                <button type="button" id="senden">Bestellung senden</button>
                 <!--   <fieldset id="radio_optionen">
         <legend> Optionen </legend>
         <p>1€ </p>
@@ -96,9 +97,9 @@
             <fieldset id="radio_lieferung">
                 <legend> Optionen </legend>
 
-                <input type="radio" name="Zustellung" value="2" id="radio3" />
+                <input type="radio" name="Zustellung" value="Lieferung" id="radio3"  />
                 <label for="radio3">Lieferung</label>
-                <input type="radio" name="Zustellung" value="0" id="radio4" />
+                <input type="radio" name="Zustellung" value="Abholung" id="radio4" />
                 <label for="radio4">Abholung</label>
 
                 <legend> Anmerkungen</legend>
@@ -106,6 +107,8 @@
             </fieldset>
             <fieldset>
                 <button type="submit" id="buy">Bestellen</button>
+                
+                
             </fieldset>
     </form>
 
@@ -116,6 +119,7 @@
         <div id="Übersicht"></div>
     </div>
     </main>
+    <div id="Bestatigung"></div>
 </body>
 
 </html>
