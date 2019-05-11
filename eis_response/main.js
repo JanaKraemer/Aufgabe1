@@ -37,7 +37,6 @@ var response;
         if (_E.type = "radio") {
             formelement.setAttribute("value", _E.class);
         }
-        console.log(_E.name);
     }
 })(response || (response = {}));
 function handleChange(_event) {

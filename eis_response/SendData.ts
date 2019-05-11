@@ -1,12 +1,11 @@
 namespace response {
     window.addEventListener("load", bestellen);
     let adress: string = "https://kraemerj.herokuapp.com/";
-    let input: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
-
+    
     function bestellen(_event: Event): void {
         let button: HTMLButtonElement = <HTMLButtonElement>document.getElementById("senden");
         button.addEventListener("click", datenanServer);
-        console.log(button)
+       
     }
 
     function datenanServer(_event: Event): void {

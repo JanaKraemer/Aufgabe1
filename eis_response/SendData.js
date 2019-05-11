@@ -2,11 +2,9 @@ var response;
 (function (response) {
     window.addEventListener("load", bestellen);
     let adress = "https://kraemerj.herokuapp.com/";
-    let input = document.getElementsByTagName("input");
     function bestellen(_event) {
         let button = document.getElementById("senden");
         button.addEventListener("click", datenanServer);
-        console.log(button);
     }
     function datenanServer(_event) {
         let input = document.getElementsByTagName("input");
