@@ -45,7 +45,7 @@ namespace response {
         formelement.setAttribute("id", _E.id);
         formelement.setAttribute("value", _E.value);
         formelement.setAttribute("class", _E.class);
-        
+
         formelement.setAttribute("alt", _E.alt);
 
 
@@ -53,11 +53,14 @@ namespace response {
         document.getElementById("inhalt").appendChild(legend);
         legend.appendChild(formelement);
 
-        if(_E.type= "radio"){
-            formelement.setAttribute("value", _E.class)}
-            
+        if (_E.type = "radio") {
+            formelement.setAttribute("value", _E.class)
+        }
+        
+        
+
     }
-  
+
 }
 function handleChange(_event: Event): void {
     console.log(_event);
@@ -82,7 +85,7 @@ function berechnePreis(_event: Event): void {
         <p> ${input[i].className} </p>`
             document.getElementById("Übersicht").appendChild(erstellen);
         }
-       
+
         if (input[i].id == "1") {
             let anzahlKugeln: number = Number(input[i].value);
             let anzahlPreis: number = Number(input[i].alt)
@@ -98,7 +101,7 @@ function berechnePreis(_event: Event): void {
         }
     }
     document.getElementById("preis").innerHTML = anfangsPreis.toFixed(2).toString();
-    
+
 }
 
 
@@ -116,7 +119,7 @@ function kontrolle(_event: Event): void {
 
     let eingabe: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
     for (let i: number = 0; i < eingabe.length; i++) {
-        if (eingabe[i].value == "" && eingabe[i].type=="text" )  {   // Wenn das Element einen leeren Value hat, dann wird dessen Name in das Array gepushed//
+        if (eingabe[i].value == "" && eingabe[i].type == "text") {   // Wenn das Element einen leeren Value hat, dann wird dessen Name in das Array gepushed//
             let angabenotwendig: string = eingabe[i].name;
             eingabeArray.push(angabenotwendig);
 

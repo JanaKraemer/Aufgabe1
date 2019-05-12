@@ -36,6 +36,10 @@ namespace response {
             { type: "checkbox",name: "Schoko-Streußel", value: "0", id: "check3.1",class:"Schoko-Streußel", step:"0", min:"0", max:"0",alt:"0.5"  },
             { type: "checkbox",name: "Erdbeer-Soße", value: "0", id: "check4.1" ,class:"Erdbeer-Soße", step:"0", min:"0", max:"0",alt:"0.5"  },
 
+        ],
+        "Zustellung":[
+            { type:"radio", name:"Zustellung" ,value:"0" ,id:"radio1",class:"Lieferung", step:"0", min:"0", max:"0",alt:"2"},
+            { type: "radio",name: "Zustellung", value: "0", id: "radio1",class:"Abholung", step:"0", min:"0", max:"0",alt:"0" },
         ]
     }
 
