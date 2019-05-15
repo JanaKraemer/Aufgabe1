@@ -1,22 +1,36 @@
 namespace response {
     window.addEventListener("load", bestellen);
     let adress: string = "https://kraemerj.herokuapp.com/";
-    
+
     function bestellen(_event: Event): void {
         let button: HTMLButtonElement = <HTMLButtonElement>document.getElementById("Datensenden");
         button.addEventListener("click", datenanServer);
-       
+
     }
 
     function datenanServer(_event: Event): void {
         let zutat: string = "?";
         let input: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
-        
+
         for (let i: number = 0; i < input.length; i++) {
-            
-            if (input[i].value != "" && input[i].value != "0") {
-            zutat += input[i].name + ":" + input[i].value + "&";
-               
+
+            if (input[i].type == "checkbox" || input[i].type == "radio") {
+                if (input[i].checked == true) {
+                    zutat += input[i].name + ":" + input[i].value + "&";
+
+                }
+            }
+
+            if(input[i].type == "text" || input[i].type == "email"){
+                if(input[i].value != "0"){
+                    zutat += input[i].name + ":" + input[i].value + "&";
+                }
+            }
+
+            if(input[i].type == "number"){
+                if(input[i].value > "0"){
+                    zutat += input[i].name + ":" + input[i].value + "&";
+                }
             }
         }
         let xhr: XMLHttpRequest = new XMLHttpRequest();

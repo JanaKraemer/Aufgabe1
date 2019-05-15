@@ -10,8 +10,20 @@ var response;
         let zutat = "?";
         let input = document.getElementsByTagName("input");
         for (let i = 0; i < input.length; i++) {
-            if (input[i].value != "" && input[i].value != "0") {
-                zutat += input[i].name + ":" + input[i].value + "&";
+            if (input[i].type == "checkbox" || input[i].type == "radio") {
+                if (input[i].checked == true) {
+                    zutat += input[i].name + ":" + input[i].value + "&";
+                }
+            }
+            if (input[i].type == "text" || input[i].type == "email") {
+                if (input[i].value != "0") {
+                    zutat += input[i].name + ":" + input[i].value + "&";
+                }
+            }
+            if (input[i].type == "number") {
+                if (input[i].value > "0") {
+                    zutat += input[i].name + ":" + input[i].value + "&";
+                }
             }
         }
         let xhr = new XMLHttpRequest();
