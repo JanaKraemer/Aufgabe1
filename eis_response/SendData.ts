@@ -20,6 +20,7 @@ namespace response {
 
                 }
             }
+            
 
             if(input[i].type == "text" || input[i].type == "email"){
                 if(input[i].value != "0"){
