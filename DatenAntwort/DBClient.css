@@ -1,0 +1,16 @@
+html{
+font-size: 2rem;
+display:block;
+}
+
+button{
+    background-color: lightgreen;
+    color:red;
+}
+legend{
+    color:green;
+    text-decoration: underline;
+}
+fieldset{
+    width:500px;
+}
