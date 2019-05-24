@@ -14,8 +14,8 @@ let students;
 // running on heroku?
 if (process.env.NODE_ENV == "production") {
     // databaseURL = "mongodb+srv://username:password@hostname:port/database";
-    databaseURL = "mongodb+srv://testuser:testpassword@eia2-57vpd.mongodb.net/eia2";
-    databaseName = "eia2";
+    databaseURL = "mongodb+srv://Jana:kraemer99.@eia2-0bg0r.mongodb.net/eia2";
+    databaseName = "Aufgabe";
 }
 // try to connect to database, then activate callback "handleConnect" 
 Mongo.MongoClient.connect(databaseURL, { connectTimeoutMS: 8000 }, handleConnect);
@@ -42,6 +42,7 @@ function handleInsert(_e) {
 function findAll(_callback) {
     // cursor points to the retreived set of documents in memory
     var cursor = students.find();
+    let cursorFilter = students.find();
     // try to convert to array, then activate callback "prepareAnswer"
     cursor.toArray(prepareAnswer);
     // toArray-handler receives two standard parameters, an error object and the array
@@ -55,4 +56,15 @@ function findAll(_callback) {
     }
 }
 exports.findAll = findAll;
+function findMatrikel(_gesuchtematrikel, callback) {
+    let cursor = students.find({ "matrikel": _gesuchtematrikel });
+    cursor.toArray(prepareAnswer);
+    function prepareAnswer(_e) {
+        if (_e)
+            callback("Error" + _e);
+        else
+            callback(JSON.stringify(cursor));
+    }
+}
+exports.findMatrikel = findMatrikel;
 //# sourceMappingURL=Datebase.js.map

@@ -1,14 +1,22 @@
 var DBClient;
 (function (DBClient) {
     window.addEventListener("load", init);
-    let serverAddress = "http://localhost:8100/";
+    let serverAddress = "https://kraemerj.herokuapp.com/";
     // let serverAddress: string = "https://eia2-testserver.herokuapp.com/";
     function init(_event) {
         console.log("Init");
         let insertButton = document.getElementById("insert");
         let refreshButton = document.getElementById("refresh");
+        let filterButton = document.getElementById("filterButton");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
+        filterButton.addEventListener("click", filter);
+    }
+    function filter(_event) {
+        let inputs = document.getElementById("filterInput");
+        let query = "command=filterButton";
+        query += "&matrikel=" + inputs.value;
+        sendRequest(query, handleFindResponse);
     }
     function insert(_event) {
         let inputs = document.getElementsByTagName("input");

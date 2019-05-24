@@ -15,8 +15,8 @@ let students: Mongo.Collection;
 // running on heroku?
 if (process.env.NODE_ENV == "production") {
     // databaseURL = "mongodb+srv://username:password@hostname:port/database";
-    databaseURL = "mongodb+srv://testuser:testpassword@eia2-57vpd.mongodb.net/eia2";
-    databaseName = "eia2";
+    databaseURL = "mongodb+srv://Jana:kraemer99.@eia2-0bg0r.mongodb.net/eia2";
+    databaseName = "Aufgabe";
 }
 
 // try to connect to database, then activate callback "handleConnect" 
@@ -47,6 +47,7 @@ function handleInsert(_e: Mongo.MongoError): void {
 export function findAll(_callback: Function): void {
     // cursor points to the retreived set of documents in memory
     var cursor: Mongo.Cursor = students.find();
+    let cursorFilter: Mongo.Cursor = students.find();
     // try to convert to array, then activate callback "prepareAnswer"
     cursor.toArray(prepareAnswer);
 
@@ -59,4 +60,16 @@ export function findAll(_callback: Function): void {
             // stringify creates a json-string, passed it back to _callback
             _callback(JSON.stringify(studentArray));
     }
+}
+export function findMatrikel(_gesuchtematrikel: number, callback: Function): void {
+    let cursor: Mongo.Cursor = students.find({ "matrikel": _gesuchtematrikel });
+    cursor.toArray(prepareAnswer);
+
+    function prepareAnswer(_e: Mongo.MongoError): void {
+        if (_e)
+            callback("Error" + _e);
+        else
+            callback(JSON.stringify(cursor));
+    }
+
 }

@@ -1,15 +1,25 @@
 
 namespace DBClient {
     window.addEventListener("load", init);
-    let serverAddress: string = "http://localhost:8100/";
+    let serverAddress: string = "https://kraemerj.herokuapp.com/";
     // let serverAddress: string = "https://eia2-testserver.herokuapp.com/";
 
     function init(_event: Event): void {
         console.log("Init");
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
+        let filterButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("filterButton");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
+        filterButton.addEventListener("click", filter);
+    }
+
+    function filter(_event: Event): void {
+        let inputs: HTMLInputElement = <HTMLInputElement>document.getElementById("filterInput");
+        let query: string = "command=filterButton";
+
+        query += "&matrikel=" + inputs.value;
+        sendRequest(query, handleFindResponse);
     }
 
     function insert(_event: Event): void {

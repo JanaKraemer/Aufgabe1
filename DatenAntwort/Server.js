@@ -7,7 +7,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Http = require("http");
 const Url = require("url");
-const Database = require("./Database");
+const Database = require("./Datebase");
 console.log("Server starting");
 let port = Number(process.env.PORT);
 if (!port)
@@ -35,6 +35,10 @@ function handleRequest(_request, _response) {
             break;
         case "refresh":
             Database.findAll(findCallback);
+            break;
+        case "filterButton":
+            let gesuchtematrikel = parseInt(query["matrikel"]);
+            Database.findMatrikel(gesuchtematrikel, findCallback);
             break;
         default:
             respond(_response, "unknown command: " + command);

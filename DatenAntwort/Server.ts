@@ -6,7 +6,7 @@
 
 import * as Http from "http";
 import * as Url from "url";
-import * as Database from "./Database";
+import * as Database from "./Datebase";
 
 console.log("Server starting");
 
@@ -28,7 +28,7 @@ function handleListen(): void {
 function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
     console.log("Request received");
 
-    let query: AssocStringString = <AssocStringString> Url.parse(_request.url, true).query;
+    let query: AssocStringString = <AssocStringString>Url.parse(_request.url, true).query;
     let command: string = query["command"];
 
     switch (command) {
@@ -43,6 +43,10 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
             break;
         case "refresh":
             Database.findAll(findCallback);
+            break;
+        case "filterButton":
+            let gesuchtematrikel: number = parseInt(query["matrikel"]);
+            Database.findMatrikel(gesuchtematrikel, findCallback);
             break;
         default:
             respond(_response, "unknown command: " + command);
