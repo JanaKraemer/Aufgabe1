@@ -157,5 +157,6 @@ function fish2(_x: number, _y: number): void {
     crc.fillStyle = "black";
     crc.fill(auge2);
     crc.stroke(auge2);
+    
 }
 
