@@ -9,7 +9,7 @@ function init() {
         let y = Math.random() * canvas.height;
         wasser(x, y);
     }
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
         let x = Math.random() * canvas.width;
         let y = Math.random() * canvas.height;
         blase(x, y);
@@ -19,6 +19,11 @@ function init() {
         let y = Math.random() * canvas.height;
         fish2(x, y);
     }
+    for (let i = 0; i < 7; i++) {
+        let x = Math.random() * canvas.width;
+        let y = Math.random() * canvas.height;
+        fish1(x, y);
+    }
     for (let i = 0; i < 15; i++) {
         let x = 15 * canvas.height;
         steine(x);
@@ -27,7 +32,6 @@ function init() {
 function steine(_x) {
     let steine = new Path2D();
     steine.arc(_x + 30, 584, 15, 0, 360);
-    steine.closePath();
     crc.fillStyle = "grey";
     crc.fill(steine);
     crc.stroke(steine);
@@ -35,41 +39,14 @@ function steine(_x) {
 function wasser(_x, _y) {
     let wasser = new Path2D();
     wasser.rect(0, 0, 600, 600);
-    wasser.closePath();
     crc.fillStyle = "lightblue";
     crc.fill(wasser);
     crc.stroke(wasser);
     let sand = new Path2D();
     sand.rect(0, 500, 600, 100);
-    sand.closePath();
     crc.fillStyle = "burlywood";
     crc.fill(sand);
     crc.stroke(sand);
-    let fish1 = new Path2D();
-    fish1.arc(200, 200, 30, 0, 360);
-    crc.fillStyle = "red";
-    crc.fill(fish1);
-    crc.stroke(fish1);
-    let flosse1 = new Path2D();
-    flosse1.moveTo(210, 200);
-    flosse1.lineTo(250, 170);
-    flosse1.lineTo(250, 230);
-    flosse1.closePath();
-    crc.fillStyle = "red";
-    crc.fill(flosse1);
-    crc.stroke(flosse1);
-    let blase = new Path2D();
-    blase.arc(_x, _y - 50, 10, 0, 360);
-    blase.closePath();
-    crc.fillStyle = "white";
-    crc.fill(blase);
-    crc.stroke(blase);
-    let blase2 = new Path2D();
-    blase2.arc(_x + 70, _y - 70, 30, 0, 360);
-    blase2.closePath();
-    crc.fillStyle = "white";
-    crc.fill(blase2);
-    crc.stroke(blase2);
     let pflanze = new Path2D();
     pflanze.bezierCurveTo(100, 300, 100, 150, 200, 600);
     crc.fillStyle = "darkgreen";
@@ -92,9 +69,9 @@ function wasser(_x, _y) {
     crc.fill(mast);
     crc.stroke(mast);
     let segel = new Path2D();
-    segel.moveTo(330, 380);
-    segel.lineTo(330, 350);
-    segel.lineTo(330, 400);
+    segel.moveTo(260, 380);
+    segel.lineTo(300, 350);
+    segel.lineTo(300, 400);
     crc.fillStyle = "orange";
     crc.fill(segel);
     crc.stroke(segel);
@@ -102,13 +79,11 @@ function wasser(_x, _y) {
 function blase(_x, _y) {
     let blase = new Path2D();
     blase.arc(_x, _y - 50, 10, 0, 360);
-    blase.closePath();
     crc.fillStyle = "white";
     crc.fill(blase);
     crc.stroke(blase);
     let blase2 = new Path2D();
-    blase2.arc(_x + 70, _y - 70, 30, 0, 360);
-    blase2.closePath();
+    blase2.arc(_x + 70, _y - 70, 20, 0, 360);
     crc.fillStyle = "white";
     crc.fill(blase2);
     crc.stroke(blase2);
@@ -116,7 +91,6 @@ function blase(_x, _y) {
 function fish2(_x, _y) {
     let fish2 = new Path2D();
     fish2.arc(_x - 30, _y + 30, 40, 0.75 * Math.PI, 1.5 * Math.PI);
-    fish2.closePath();
     crc.fillStyle = "yellow";
     crc.fill(fish2);
     crc.stroke(fish2);
@@ -124,7 +98,6 @@ function fish2(_x, _y) {
     flosse2.moveTo(_x - 45, _y + 20);
     flosse2.lineTo(_x - 30, _y + 60);
     flosse2.lineTo(_x - 10, _y + 10);
-    crc.closePath();
     crc.fillStyle = "yellow";
     crc.fill(flosse2);
     crc.stroke(flosse2);
@@ -133,5 +106,19 @@ function fish2(_x, _y) {
     crc.fillStyle = "black";
     crc.fill(auge2);
     crc.stroke(auge2);
+}
+function fish1(_x, _y) {
+    let fish1 = new Path2D();
+    fish1.arc(_x + 200, _y - 200, 30, 0, 360);
+    crc.fillStyle = "red";
+    crc.fill(fish1);
+    crc.stroke(fish1);
+    let flosse1 = new Path2D();
+    flosse1.moveTo(_x + 210, _y - 200);
+    flosse1.lineTo(_x + 250, _y - 170);
+    flosse1.lineTo(_x + 250, _y - 230);
+    crc.fillStyle = "red";
+    crc.fill(flosse1);
+    crc.stroke(flosse1);
 }
 //# sourceMappingURL=main.js.map
