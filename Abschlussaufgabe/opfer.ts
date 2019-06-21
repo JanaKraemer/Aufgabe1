@@ -2,6 +2,13 @@ namespace catchthefish {
 
     export class Opfer extends Hai {
        
+        constructor() {
+            super();
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.dx = Math.random() * 5;
+            this.dy = Math.random() * 0;
+        }
 
         draw(): void {
             let opfer: Path2D = new Path2D();
@@ -25,7 +32,7 @@ namespace catchthefish {
             crc.fillStyle = "blue";
             crc.fill(flosse);
             crc.stroke(flosse);
-            super.draw();
+          //  super.draw();
             
         }
         

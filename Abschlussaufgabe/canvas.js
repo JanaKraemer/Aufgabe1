@@ -1,7 +1,9 @@
 var catchthefish;
 (function (catchthefish) {
     document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("keydown", steuerung);
     let haiArray = [];
+    let kleinerFischArray = [];
     let fps = 30;
     let imageData;
     function init() {
@@ -17,29 +19,43 @@ var catchthefish;
         //Fisch orange
         for (let i = 0; i < 1; i++) {
             let fisch = new catchthefish.Fisch();
-            haiArray.push(fisch);
+            kleinerFischArray.push(fisch);
+        }
+        //Qualle
+        for (let i = 0; i < 5; i++) {
+            let qualle = new catchthefish.Qualle();
+            haiArray.push(qualle);
+        }
+        //Opfer fisch
+        for (let i = 0; i < 8; i++) {
+            let opfer = new catchthefish.Opfer();
+            haiArray.push(opfer);
+        }
+        update();
+    }
+    function steuerung(_event) {
+        if (_event.keyCode == 38) { // move forward
+            kleinerFischArray[0].update(0, -5);
+        }
+        if (_event.keyCode == 40) { //runter
+            kleinerFischArray[0].update(0, 5);
+        }
+        if (_event.keyCode == 39) { //left
+            kleinerFischArray[0].update(5, 0);
+        }
+        if (_event.keyCode == 37) { //right
+            kleinerFischArray[0].update(-5, 0);
         }
     }
-    //Qualle
-    for (let i = 0; i < 5; i++) {
-        let qualle = new catchthefish.Qualle();
-        haiArray.push(qualle);
-    }
-    //Opfer fisch
-    for (let i = 0; i < 8; i++) {
-        let opfer = new catchthefish.Opfer();
-        haiArray.push(opfer);
-    }
-    //document.addEventListener("keydown", _event); {
-    //    let keyName: number = event.key;
-    //   if (keyName == 38) { // move forward
-    update();
     function update() {
         window.setTimeout(update, 1000 / fps);
         catchthefish.crc.clearRect(0, 0, catchthefish.canvas.width, catchthefish.canvas.height);
         catchthefish.crc.putImageData(imageData, 0, 0);
         for (let i = 0; i < haiArray.length; i++) {
             haiArray[i].update();
+        }
+        for (let i = 0; i < kleinerFischArray.length; i++) {
+            kleinerFischArray[0].update(0, 0);
         }
     }
     function background() {

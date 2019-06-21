@@ -1,10 +1,12 @@
 namespace catchthefish {
 
     document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("keydown", steuerung);
 
     export let crc: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
     let haiArray: Hai[] = [];
+    let kleinerFischArray: Fisch[] = [];
 
     let fps: number = 30;
     let imageData: ImageData;
@@ -29,41 +31,53 @@ namespace catchthefish {
         for (let i: number = 0; i < 1; i++) {
 
             let fisch: Fisch = new Fisch();
-            haiArray.push(fisch);
+            kleinerFischArray.push(fisch);
+
+        }
+        //Qualle
+        for (let i: number = 0; i < 5; i++) {
+
+            let qualle: Qualle = new Qualle();
+            haiArray.push(qualle);
+
+
+        }
+        //Opfer fisch
+        for (let i: number = 0; i < 8; i++) {
+
+            let opfer: Opfer = new Opfer();
+            haiArray.push(opfer);
+
 
         }
 
+        
 
-
-    }
-    //Qualle
-    for (let i: number = 0; i < 5; i++) {
-
-        let qualle: Qualle = new Qualle();
-        haiArray.push(qualle);
-
-
-    }
-    //Opfer fisch
-    for (let i: number = 0; i < 8; i++) {
-
-        let opfer: Opfer = new Opfer();
-        haiArray.push(opfer);
-
+        update();
 
     }
 
-    //document.addEventListener("keydown", _event); {
-    //    let keyName: number = event.key;
-    //   if (keyName == 38) { // move forward
+    
 
+    function steuerung(_event: KeyboardEvent): void {
+        
+        if (_event.keyCode == 38) { // move forward
+            
+            kleinerFischArray[0].update(0, - 5);
 
+        }
+        if ( _event.keyCode == 40) { //runter
+            kleinerFischArray[0].update(0,  5);
+        }
 
-
-
-    update();
-
-
+        if ( _event.keyCode == 39) { //left
+            kleinerFischArray[0].update(5,  0);
+        }
+        if ( _event.keyCode == 37) { //right
+            kleinerFischArray[0].update(- 5,  0);
+        }
+       
+    }
 
     function update(): void {
         window.setTimeout(update, 1000 / fps);
@@ -73,6 +87,9 @@ namespace catchthefish {
 
         for (let i: number = 0; i < haiArray.length; i++) {
             haiArray[i].update();
+        }
+        for (let i: number = 0; i < kleinerFischArray.length; i++) {
+            kleinerFischArray[0].update(0, 0);
         }
 
     }

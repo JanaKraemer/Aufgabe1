@@ -4,7 +4,7 @@ var catchthefish;
         constructor() {
             this.x = Math.random() * catchthefish.canvas.width;
             this.y = Math.random() * catchthefish.canvas.height;
-            this.dx = Math.random() * -5;
+            this.dx = Math.random() * 5;
             this.dy = Math.random() * 0;
         }
         draw() {

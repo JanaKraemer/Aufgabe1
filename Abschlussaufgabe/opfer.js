@@ -1,6 +1,13 @@
 var catchthefish;
 (function (catchthefish) {
     class Opfer extends catchthefish.Hai {
+        constructor() {
+            super();
+            this.x = Math.random() * catchthefish.canvas.width;
+            this.y = Math.random() * catchthefish.canvas.height;
+            this.dx = Math.random() * 5;
+            this.dy = Math.random() * 0;
+        }
         draw() {
             let opfer = new Path2D();
             opfer.moveTo(this.x + 20, this.y + 1);
@@ -21,7 +28,7 @@ var catchthefish;
             catchthefish.crc.fillStyle = "blue";
             catchthefish.crc.fill(flosse);
             catchthefish.crc.stroke(flosse);
-            super.draw();
+            //  super.draw();
         }
         move() {
             this.x += this.dx;
