@@ -1,6 +1,6 @@
 var aquarium;
 (function (aquarium) {
-    class Bubble {
+    class Bubble extends aquarium.Fisch {
         draw() {
             let blase = new Path2D();
             blase.arc(this.x, this.y - 50, 10, 0, 360);
@@ -10,10 +10,7 @@ var aquarium;
             blase2.arc(this.x + 70, this.y - 70, 20, 0, 360);
             aquarium.crc.strokeStyle = "white";
             aquarium.crc.stroke(blase2);
-        }
-        update() {
-            this.move();
-            this.draw();
+            super.draw();
         }
         move() {
             this.x += this.dx;

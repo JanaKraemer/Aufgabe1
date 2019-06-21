@@ -1,9 +1,6 @@
 namespace aquarium {
-export class Fisch2 {
-    x: number;
-    y: number;
-    dx: number;
-    dy: number;
+export class Fisch2 extends Fisch {
+   
 
     draw(): void {
         let fish2: Path2D = new Path2D();
@@ -25,21 +22,19 @@ export class Fisch2 {
         crc.fillStyle = "black";
         crc.fill(auge2);
         crc.stroke(auge2);
+        super.draw();
 
     }
-    update(): void {
-        this.move();
-        this.draw();
-
-    }
+    
     move(): void {
         this.x += this.dx;
         this.y += this.dy;
         if (this.x > canvas.width || this.x < 0 || this.y > canvas.height || this.y < 0) {
             
-            this.x = canvas.width;
-            this.y = Math.random() * canvas.height ;
+            this.x = 600;
+            this.y = canvas.height * Math.random();
+        }
+    
     }
-}
 }
 }

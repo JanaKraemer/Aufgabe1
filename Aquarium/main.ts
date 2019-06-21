@@ -1,13 +1,12 @@
 namespace aquarium {
 
     document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("mousedwon", futter);
 
     export let crc: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
 
     let fishArray: Fisch[] = [];
-    let bubbleArray: Bubble[] = [];
-    let fish2Array: Fisch2[] = [];
     let fps: number = 30;
     let imageData: ImageData;
 
@@ -16,55 +15,44 @@ namespace aquarium {
         crc = canvas.getContext("2d");
 
         wasser();
-
-
         imageData = crc.getImageData(0, 0, 600, 600);
+
         //Fisch1
-        for (let i: number = 0; i < 10; i++) {
-            let x: number = Math.random() * canvas.width;
-            let y: number = Math.random() * canvas.height;
-            let dx: number = - 5;
-            let dy: number = 0;
+        for (let i: number = 0; i < 5; i++) {
+
             let fish: Fisch = new Fisch();
-            fish.x = x;
-            fish.y = y;
-            fish.dx = dx;
-            fish.dy = dy;
             fishArray.push(fish);
-            fish.draw();
+
 
         }
         //fish2
-        for (let i: number = 0; i < 10; i++) {
-            let x: number = Math.random() * canvas.width;
-            let y: number = Math.random() * canvas.height;
-            let dx: number = -3;
-            let dy: number = 0;
+        for (let i: number = 0; i < 5; i++) {
+
             let fish2: Fisch2 = new Fisch2();
-            fish2.x = x;
-            fish2.y = y;
-            fish2.dx = dx;
-            fish2.dy = dy;
-            fish2Array.push(fish2);
-            fish2.draw();
+            fishArray.push(fish2);
+
 
         }
         //bubbles
-        for (let i: number = 0; i < 10; i++) {
-            let x: number = Math.random() * canvas.width;
-            let y: number = Math.random() * canvas.height;
-            let dx: number = 0;
-            let dy: number = -3;
-            let blase: Bubble;
-            blase = new Bubble();
-            blase.x = x;
-            blase.y = y;
-            blase.dx = dx;
-            blase.dy = dy;
-            bubbleArray.push(blase);
-            blase.draw();
+        for (let i: number = 0; i < 20; i++) {
+
+            let blase: Bubble = new Bubble();
+            fishArray.push(blase);
+
         }
         update();
+
+    }
+
+
+    function futter(_event: MouseEvent): void {
+        let x: number = _event.clientX;
+        let y: number = _event.clientY;
+        if (x < canvas.width && y < canvas.height) {
+        let futter: Futter = new Futter(x, y);
+
+        fishArray.push(futter);
+        } 
 
     }
 
@@ -75,12 +63,6 @@ namespace aquarium {
 
         for (let i: number = 0; i < fishArray.length; i++) {
             fishArray[i].update();
-        }
-        for (let i: number = 0; i < bubbleArray.length; i++) {
-            bubbleArray[i].update();
-        }
-        for (let i: number = 0; i < fish2Array.length; i++) {
-            fish2Array[i].update();
         }
     }
 
@@ -109,7 +91,7 @@ namespace aquarium {
         crc.fillStyle = "darkgreen";
         crc.fill(pflanze2);
         crc.stroke(pflanze2);
-        
+
         for (let i: number = 0; i < 20; i++) {
             let x: number = Math.random() * canvas.width;
 
@@ -117,7 +99,8 @@ namespace aquarium {
             steine.arc(x + 30, 584, 10, 0, 360);
             crc.fillStyle = "grey";
             crc.fill(steine);
-            crc.stroke(steine); }
+            crc.stroke(steine);
+        }
 
         let schiff: Path2D = new Path2D();
         schiff.arc(300, 450, 50, 2 * Math.PI, Math.PI);

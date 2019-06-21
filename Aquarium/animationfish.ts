@@ -7,6 +7,13 @@ export class Fisch {
     dx: number;
     dy: number;
 
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.dx = Math.random() * - 5;
+        this.dy = Math.random() * 0;
+    }
+
     draw(): void {
         let fish1: Path2D = new Path2D();
         fish1.arc(this.x + 1, this.y - 400, 20, 0, 360);

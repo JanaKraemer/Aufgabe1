@@ -1,9 +1,8 @@
 var aquarium;
 (function (aquarium) {
     document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("mousedwon", futter);
     let fishArray = [];
-    let bubbleArray = [];
-    let fish2Array = [];
     let fps = 30;
     let imageData;
     function init() {
@@ -12,49 +11,29 @@ var aquarium;
         wasser();
         imageData = aquarium.crc.getImageData(0, 0, 600, 600);
         //Fisch1
-        for (let i = 0; i < 10; i++) {
-            let x = Math.random() * aquarium.canvas.width;
-            let y = Math.random() * aquarium.canvas.height;
-            let dx = -5;
-            let dy = 0;
+        for (let i = 0; i < 5; i++) {
             let fish = new aquarium.Fisch();
-            fish.x = x;
-            fish.y = y;
-            fish.dx = dx;
-            fish.dy = dy;
             fishArray.push(fish);
-            fish.draw();
         }
         //fish2
-        for (let i = 0; i < 10; i++) {
-            let x = Math.random() * aquarium.canvas.width;
-            let y = Math.random() * aquarium.canvas.height;
-            let dx = -3;
-            let dy = 0;
+        for (let i = 0; i < 5; i++) {
             let fish2 = new aquarium.Fisch2();
-            fish2.x = x;
-            fish2.y = y;
-            fish2.dx = dx;
-            fish2.dy = dy;
-            fish2Array.push(fish2);
-            fish2.draw();
+            fishArray.push(fish2);
         }
         //bubbles
-        for (let i = 0; i < 10; i++) {
-            let x = Math.random() * aquarium.canvas.width;
-            let y = Math.random() * aquarium.canvas.height;
-            let dx = 0;
-            let dy = -3;
-            let blase;
-            blase = new aquarium.Bubble();
-            blase.x = x;
-            blase.y = y;
-            blase.dx = dx;
-            blase.dy = dy;
-            bubbleArray.push(blase);
-            blase.draw();
+        for (let i = 0; i < 20; i++) {
+            let blase = new aquarium.Bubble();
+            fishArray.push(blase);
         }
         update();
+    }
+    function futter(_event) {
+        let x = _event.clientX;
+        let y = _event.clientY;
+        if (x < aquarium.canvas.width && y < aquarium.canvas.height) {
+            let futter = new aquarium.Futter(x, y);
+            fishArray.push(futter);
+        }
     }
     function update() {
         window.setTimeout(update, 1000 / fps);
@@ -62,12 +41,6 @@ var aquarium;
         aquarium.crc.putImageData(imageData, 0, 0);
         for (let i = 0; i < fishArray.length; i++) {
             fishArray[i].update();
-        }
-        for (let i = 0; i < bubbleArray.length; i++) {
-            bubbleArray[i].update();
-        }
-        for (let i = 0; i < fish2Array.length; i++) {
-            fish2Array[i].update();
         }
     }
     function wasser() {

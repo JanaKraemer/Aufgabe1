@@ -1,6 +1,12 @@
 var aquarium;
 (function (aquarium) {
     class Fisch {
+        constructor() {
+            this.x = Math.random() * aquarium.canvas.width;
+            this.y = Math.random() * aquarium.canvas.height;
+            this.dx = Math.random() * -5;
+            this.dy = Math.random() * 0;
+        }
         draw() {
             let fish1 = new Path2D();
             fish1.arc(this.x + 1, this.y - 400, 20, 0, 360);

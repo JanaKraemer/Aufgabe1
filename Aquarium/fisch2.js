@@ -1,6 +1,6 @@
 var aquarium;
 (function (aquarium) {
-    class Fisch2 {
+    class Fisch2 extends aquarium.Fisch {
         draw() {
             let fish2 = new Path2D();
             fish2.arc(this.x - 30, this.y + 30, 30, 0.75 * Math.PI, 1.5 * Math.PI);
@@ -19,17 +19,14 @@ var aquarium;
             aquarium.crc.fillStyle = "black";
             aquarium.crc.fill(auge2);
             aquarium.crc.stroke(auge2);
-        }
-        update() {
-            this.move();
-            this.draw();
+            super.draw();
         }
         move() {
             this.x += this.dx;
             this.y += this.dy;
             if (this.x > aquarium.canvas.width || this.x < 0 || this.y > aquarium.canvas.height || this.y < 0) {
-                this.x = aquarium.canvas.width;
-                this.y = Math.random() * aquarium.canvas.height;
+                this.x = 600;
+                this.y = aquarium.canvas.height * Math.random();
             }
         }
     }
