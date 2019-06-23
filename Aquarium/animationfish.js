@@ -4,7 +4,7 @@ var aquarium;
         constructor() {
             this.x = Math.random() * aquarium.canvas.width;
             this.y = Math.random() * aquarium.canvas.height;
-            this.dx = Math.random() * -5;
+            this.dx = Math.random() * -3;
             this.dy = Math.random() * 0;
         }
         draw() {

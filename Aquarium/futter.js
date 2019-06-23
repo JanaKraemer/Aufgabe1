@@ -3,9 +3,9 @@ var aquarium;
     class Futter extends aquarium.Fisch {
         constructor(x, y) {
             super();
-            this.x = Math.random() * aquarium.canvas.width;
-            this.y = Math.random() * aquarium.canvas.height;
-            this.dy = Math.random() * 0;
+            this.x = x;
+            this.y = y;
+            this.dy = Math.random() * 10;
         }
         draw() {
             let futter = new Path2D();

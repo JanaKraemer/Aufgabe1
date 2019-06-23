@@ -1,6 +1,13 @@
 var aquarium;
 (function (aquarium) {
     class Bubble extends aquarium.Fisch {
+        constructor() {
+            super();
+            this.x = Math.random() * aquarium.canvas.width;
+            this.y = Math.random() * aquarium.canvas.height;
+            this.dx = Math.random() * 0;
+            this.dy = Math.random() * 2;
+        }
         draw() {
             let blase = new Path2D();
             blase.arc(this.x, this.y - 50, 10, 0, 360);
@@ -10,14 +17,14 @@ var aquarium;
             blase2.arc(this.x + 70, this.y - 70, 20, 0, 360);
             aquarium.crc.strokeStyle = "white";
             aquarium.crc.stroke(blase2);
-            super.draw();
+            // super.draw();
         }
         move() {
             this.x += this.dx;
             this.y += this.dy;
             if (this.x > aquarium.canvas.width || this.x < 0 || this.y > aquarium.canvas.height || this.y < 0) {
                 this.x = aquarium.canvas.width * Math.random();
-                this.y = aquarium.canvas.height;
+                this.y = 0;
             }
         }
     }

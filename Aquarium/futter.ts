@@ -4,10 +4,10 @@ namespace aquarium {
 
         constructor(x: number , y: number) {
             super();
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
+            this.x = x;
+            this.y = y;
             
-            this.dy = Math.random() * 0;
+            this.dy = Math.random() * 10;
         }
         draw(): void {
             let futter: Path2D = new Path2D();
