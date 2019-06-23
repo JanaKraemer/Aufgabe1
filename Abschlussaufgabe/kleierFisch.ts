@@ -2,6 +2,7 @@ namespace catchthefish {
 
     export class Fisch {
 
+        
         x: number;
         y: number;
         dx: number;
