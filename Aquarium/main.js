@@ -1,7 +1,7 @@
 var aquarium;
 (function (aquarium) {
     document.addEventListener("DOMContentLoaded", init);
-    document.addEventListener("mousedwon", futter);
+    document.addEventListener("mousedown", futter);
     let fishArray = [];
     let fps = 30;
     let imageData;

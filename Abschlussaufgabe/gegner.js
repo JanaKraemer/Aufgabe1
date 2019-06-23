@@ -1,6 +1,13 @@
 var catchthefish;
 (function (catchthefish) {
     class Qualle extends catchthefish.Hai {
+        constructor() {
+            super();
+            this.x = Math.random() * catchthefish.canvas.width;
+            this.y = Math.random() * catchthefish.canvas.height;
+            this.dx = Math.random() * 5;
+            this.dy = Math.random() * 0;
+        }
         draw() {
             let qualle = new Path2D();
             qualle.arc(this.x + 100, this.y - 100, 25, Math.PI, 2 * Math.PI);
@@ -23,7 +30,7 @@ var catchthefish;
             catchthefish.crc.fillStyle = " palevioletred";
             catchthefish.crc.fill(bein3);
             catchthefish.crc.stroke(bein3);
-            super.draw();
+            //super.draw();
         }
         move() {
             this.x += this.dx;

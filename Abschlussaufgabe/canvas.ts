@@ -83,6 +83,7 @@ namespace catchthefish {
         window.setTimeout(update, 1000 / fps);
         crc.clearRect(0, 0, canvas.width, canvas.height);
         crc.putImageData(imageData, 0, 0);
+        let i: number = 0;
 
 
         for (let i: number = 0; i < haiArray.length; i++) {
@@ -90,6 +91,10 @@ namespace catchthefish {
         }
         for (let i: number = 0; i < kleinerFischArray.length; i++) {
             kleinerFischArray[0].update(0, 0);
+        }
+        if ( kleinerFischArray[i].x == haiArray[i].x || kleinerFischArray[i].y == haiArray[i].y) {
+            console.log("hii");
+
         }
 
     }

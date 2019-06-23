@@ -1,7 +1,7 @@
 namespace aquarium {
 
     document.addEventListener("DOMContentLoaded", init);
-    document.addEventListener("mousedwon", futter);
+    document.addEventListener("mousedown", futter);
 
     export let crc: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;

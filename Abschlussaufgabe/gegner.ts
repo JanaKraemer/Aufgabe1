@@ -2,6 +2,13 @@ namespace catchthefish {
 
     export class Qualle extends Hai {
         
+        constructor() {
+            super();
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.dx = Math.random() * 5;
+            this.dy = Math.random() * 0;
+        }
 
         draw(): void {
             let qualle: Path2D = new Path2D();
@@ -28,7 +35,7 @@ namespace catchthefish {
             crc.fillStyle = " palevioletred";
             crc.fill(bein3);
             crc.stroke(bein3);
-            super.draw();
+            //super.draw();
         }
        
         

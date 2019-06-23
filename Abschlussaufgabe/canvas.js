@@ -51,11 +51,15 @@ var catchthefish;
         window.setTimeout(update, 1000 / fps);
         catchthefish.crc.clearRect(0, 0, catchthefish.canvas.width, catchthefish.canvas.height);
         catchthefish.crc.putImageData(imageData, 0, 0);
+        let i = 0;
         for (let i = 0; i < haiArray.length; i++) {
             haiArray[i].update();
         }
         for (let i = 0; i < kleinerFischArray.length; i++) {
             kleinerFischArray[0].update(0, 0);
+        }
+        if (kleinerFischArray[i].x == haiArray[i].x || kleinerFischArray[i].y == haiArray[i].y) {
+            console.log("hii");
         }
     }
     function background() {
