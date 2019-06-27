@@ -4,13 +4,15 @@ var catchthefish;
     document.addEventListener("keydown", steuerung);
     let haiArray = [];
     let kleinerFischArray = [];
+    let scoreArray = [];
     let fps = 30;
     let imageData;
+    let name = prompt("Name:");
     function init() {
         catchthefish.canvas = document.getElementsByTagName("canvas")[0];
         catchthefish.crc = catchthefish.canvas.getContext("2d");
         background();
-        imageData = catchthefish.crc.getImageData(0, 0, 1000, 1000);
+        imageData = catchthefish.crc.getImageData(0, 0, 1000, 600);
         //Hai
         for (let i = 0; i < 3; i++) {
             let hai = new catchthefish.Hai();
@@ -33,8 +35,32 @@ var catchthefish;
         }
         update();
     }
+    function eatfish() {
+        for (let x = 0; x < haiArray.length; x++) {
+            if (haiArray[x].x > kleinerFischArray[0].x - 20 && haiArray[x].x < kleinerFischArray[0].x + 20 && haiArray[x].y > kleinerFischArray[0].y - 20 && haiArray[x].y < kleinerFischArray[0].y + 20) {
+                console.log("Hi");
+                haiArray.splice(x, 1);
+                scoreArray.push(haiArray[x]);
+                let opfer = new catchthefish.Opfer();
+                haiArray.push(opfer);
+                scaleFisch();
+                if (kleinerFischArray[0].size < haiArray[x].size) {
+                    alert("Game over");
+                }
+            }
+        }
+    }
+    function scaleFisch() {
+        kleinerFischArray[0].a += 1;
+        console.log("scale");
+        scoreFisch();
+    }
+    catchthefish.scaleFisch = scaleFisch;
+    function scoreFisch() {
+        document.getElementById("score").innerHTML = scoreArray.length.toString();
+    }
     function steuerung(_event) {
-        if (_event.keyCode == 38) { // move forward
+        if (_event.keyCode == 38) { // hoch
             kleinerFischArray[0].update(0, -5);
         }
         if (_event.keyCode == 40) { //runter
@@ -58,9 +84,7 @@ var catchthefish;
         for (let i = 0; i < kleinerFischArray.length; i++) {
             kleinerFischArray[0].update(0, 0);
         }
-        if (kleinerFischArray[i].x == haiArray[i].x || kleinerFischArray[i].y == haiArray[i].y) {
-            console.log("hii");
-        }
+        eatfish();
     }
     function background() {
         catchthefish.crc.fillStyle = "lightblue";
