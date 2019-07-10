@@ -46,6 +46,7 @@ var catchthefish;
                 scaleFisch();
                 if (kleinerFischArray[0].size < haiArray[x].size) {
                     alert("Game over");
+                    scoreSpeicher();
                 }
             }
         }
@@ -58,6 +59,10 @@ var catchthefish;
     catchthefish.scaleFisch = scaleFisch;
     function scoreFisch() {
         document.getElementById("score").innerHTML = scoreArray.length.toString();
+    }
+    function scoreSpeicher() {
+        let query;
+        query += name;
     }
     function steuerung(_event) {
         if (_event.keyCode == 38) { // hoch

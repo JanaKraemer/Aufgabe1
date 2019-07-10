@@ -71,6 +71,7 @@ namespace catchthefish {
 
                 if (kleinerFischArray[0].size < haiArray[x].size) {
                     alert("Game over");
+                    scoreSpeicher();
                 }
             }
         }
@@ -87,6 +88,11 @@ namespace catchthefish {
     function scoreFisch(): void {
         document.getElementById("score").innerHTML = scoreArray.length.toString();
 
+    }
+
+    function scoreSpeicher(): void {
+        let query: string;
+        query += name;
     }
 
     function steuerung(_event: KeyboardEvent): void {
