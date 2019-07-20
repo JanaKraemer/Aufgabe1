@@ -37,9 +37,7 @@
                 Datenbank.insert(gamer);
                 respond(_response, "storing data");
                 break;
-            case "refresh":
-                Datenbank.findAll(findCallback);
-                break;
+            
             case "finden":
                 Datenbank.findAll(findCallback);
                 break;
