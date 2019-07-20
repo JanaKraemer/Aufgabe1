@@ -1,9 +1,4 @@
 "use strict";
-/**
- * Simple database insertion and query for MongoDB
- * @author: Jirka Dell'Oro-Friedl
- * @adapted: Lukas Scheuerle
- */
 Object.defineProperty(exports, "__esModule", { value: true });
 const Mongo = require("mongodb");
 console.log("Database starting");
@@ -11,10 +6,10 @@ let databaseURL = "mongodb://localhost:27017";
 let databaseName = "Test";
 let db;
 let score;
-// running on heroku?
+//running on heroku?
 if (process.env.NODE_ENV == "production") {
-    // databaseURL = "mongodb+srv://username:password@hostname:port/database";
-    databaseURL = "mongodb+srv://Jana:kraemer99.@eia2-0bg0r.mongodb.net/eia2";
+    //databaseURL = "mongodb+srv://username:password@hostname:port/database";
+    databaseURL = "mongodb+srv://Jana:kraemer99.@eia2-0bg0r.mongodb.net/Liste";
     databaseName = "Liste";
 }
 // try to connect to database, then activate callback "handleConnect" 
@@ -55,15 +50,4 @@ function findAll(_callback) {
     }
 }
 exports.findAll = findAll;
-function findMatrikel(_gesuchtematrikel, callback) {
-    let cursor = score.find({ "matrikel": _gesuchtematrikel });
-    cursor.toArray(prepareAnswer);
-    function prepareAnswer(_e, studentArray) {
-        if (_e)
-            callback("Error" + _e);
-        else
-            callback(JSON.stringify(studentArray));
-    }
-}
-exports.findMatrikel = findMatrikel;
-//# sourceMappingURL=Datenbank.js.map
+//# sourceMappingURL=datenbank.js.map

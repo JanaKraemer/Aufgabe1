@@ -1,41 +1,28 @@
 
-namespace DBClient {
+namespace catchthefish {
     window.addEventListener("load", init);
+   
     let serverAddress: string = "https://kraemerj.herokuapp.com/";
+    //let serverAddress: string = "htttp://localhost:8100";
     // let serverAddress: string = "https://eia2-testserver.herokuapp.com/";
 
     function init(_event: Event): void {
         console.log("Init");
-        let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
-        let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
-        let filterButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("filterButton");
-        insertButton.addEventListener("click", insert);
-        refreshButton.addEventListener("click", refresh);
-        filterButton.addEventListener("click", filter);
+        
     }
 
-    function filter(_event: Event): void {
-        let inputs: HTMLInputElement = <HTMLInputElement>document.getElementById("filterInput");
-        let query: string = "command=filterButton";
 
-        query += "&matrikel=" + inputs.value;
-        sendRequest(query, handleFindResponse);
-    }
 
-    function insert(_event: Event): void {
-        let inputs: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
+    export function insertquery(_name: string, _score: number): void {
+
         let query: string = "command=insert";
-        query += "&name=" + inputs[0].value;
-        query += "&firstname=" + inputs[1].value;
-        query += "&matrikel=" + inputs[2].value;
+        query += "&name=" + _name;
+        query += "&highscore=" + _score;
+
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
 
-    function refresh(_event: Event): void {
-        let query: string = "command=refresh";
-        sendRequest(query, handleFindResponse);
-    }
 
     function sendRequest(_query: string, _callback: EventListener): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
@@ -43,21 +30,26 @@ namespace DBClient {
         xhr.addEventListener("readystatechange", _callback);
         xhr.send();
     }
-
+    export function find(): void {
+        let query: string = "command=find";
+        sendRequest(query, handleFindResponse);
+    }
     function handleInsertResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
             alert(xhr.response);
         }
     }
-
+    
     function handleFindResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
-            output.value = xhr.response;
-            //let responseAsJson: JSON = JSON.parse(xhr.response);
-            //console.log(responseAsJson);
+            let hightscore: Player[] = JSON.parse(xhr.response);
+            for (let i: number = 0; i <= hightscore.length; i++) {
+                let playerName: string = hightscore[i].name;
+                let playerScore: string = hightscore[i].score;
+                document.getElementById("daten").innerHTML = "Spielername" + playerName + "Spielerscore" + playerScore;
+            }
         }
     }
 }

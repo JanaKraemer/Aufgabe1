@@ -1,13 +1,8 @@
 "use strict";
-/**
- * Simple server managing between client and database
- * @author: Jirka Dell'Oro-Friedl
- * @adapted: Lukas Scheuerle
- */
 Object.defineProperty(exports, "__esModule", { value: true });
 const Http = require("http");
 const Url = require("url");
-const Datenbank = require("./Datenbank");
+const Datenbank = require("./datenbank");
 console.log("Server starting");
 let port = Number(process.env.PORT);
 if (!port)
@@ -35,9 +30,8 @@ function handleRequest(_request, _response) {
         case "refresh":
             Datenbank.findAll(findCallback);
             break;
-        case "filterButton":
-            let gesuchtematrikel = parseInt(query["matrikel"]);
-            Datenbank.findMatrikel(gesuchtematrikel, findCallback);
+        case "finden":
+            Datenbank.findAll(findCallback);
             break;
         default:
             respond(_response, "unknown command: " + command);

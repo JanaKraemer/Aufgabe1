@@ -2,12 +2,12 @@ var catchthefish;
 (function (catchthefish) {
     document.addEventListener("DOMContentLoaded", init);
     document.addEventListener("keydown", steuerung);
+    let address = "https://kraemerj.herokuapp.com/";
     let haiArray = [];
     let kleinerFischArray = [];
     let scoreArray = [];
     let fps = 30;
     let imageData;
-    let name = prompt("Name:");
     function init() {
         catchthefish.canvas = document.getElementsByTagName("canvas")[0];
         catchthefish.crc = catchthefish.canvas.getContext("2d");
@@ -37,7 +37,7 @@ var catchthefish;
     }
     function eatfish() {
         for (let x = 0; x < haiArray.length; x++) {
-            if (haiArray[x].x > kleinerFischArray[0].x - 20 && haiArray[x].x < kleinerFischArray[0].x + 20 && haiArray[x].y > kleinerFischArray[0].y - 20 && haiArray[x].y < kleinerFischArray[0].y + 20) {
+            if (haiArray[x].x > kleinerFischArray[0].x - 30 && haiArray[x].x < kleinerFischArray[0].x + 30 && haiArray[x].y > kleinerFischArray[0].y - 30 && haiArray[x].y < kleinerFischArray[0].y + 30) {
                 console.log("Hi");
                 haiArray.splice(x, 1);
                 scoreArray.push(haiArray[x]);
@@ -90,6 +90,11 @@ var catchthefish;
             kleinerFischArray[0].update(0, 0);
         }
         eatfish();
+    }
+    function name() {
+        let name = prompt("Name:");
+        catchthefish.find();
+        catchthefish.insertquery(name, scoreArray.length);
     }
     function background() {
         catchthefish.crc.fillStyle = "lightblue";

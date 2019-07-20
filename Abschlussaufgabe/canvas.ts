@@ -1,8 +1,10 @@
+
+
 namespace catchthefish {
 
     document.addEventListener("DOMContentLoaded", init);
     document.addEventListener("keydown", steuerung);
-
+    let address: string = "https://kraemerj.herokuapp.com/";
 
     export let crc: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
@@ -12,8 +14,7 @@ namespace catchthefish {
     let fps: number = 30;
     let imageData: ImageData;
 
-    let name: string = prompt("Name:");
-
+    
     function init(): void {
         canvas = document.getElementsByTagName("canvas")[0];
         crc = canvas.getContext("2d");
@@ -60,7 +61,7 @@ namespace catchthefish {
 
     function eatfish(): void {
         for (let x: number = 0; x < haiArray.length; x++) {
-            if (haiArray[x].x > kleinerFischArray[0].x - 20 && haiArray[x].x < kleinerFischArray[0].x + 20 && haiArray[x].y > kleinerFischArray[0].y - 20 && haiArray[x].y < kleinerFischArray[0].y + 20) {
+            if (haiArray[x].x > kleinerFischArray[0].x - 30 && haiArray[x].x < kleinerFischArray[0].x + 30 && haiArray[x].y > kleinerFischArray[0].y - 30 && haiArray[x].y < kleinerFischArray[0].y + 30) {
                 console.log("Hi");
                 haiArray.splice(x, 1);
                 scoreArray.push(haiArray[x]);
@@ -130,6 +131,13 @@ namespace catchthefish {
         }
         eatfish();
 
+    }
+
+    function name(): void {
+        let name: string = prompt("Name:");
+        
+        find();
+        insertquery(name, scoreArray.length);
     }
 
 

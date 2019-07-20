@@ -8,10 +8,10 @@ let databaseName: string = "Test";
 let db: Mongo.Db;
 let score: Mongo.Collection;
 
- //running on heroku?
+// running on heroku?
 if (process.env.NODE_ENV == "production") {
-     //databaseURL = "mongodb+srv://username:password@hostname:port/database";
-    databaseURL = "mongodb+srv://Jana:kraemer99.@eia2-0bg0r.mongodb.net/Liste"; 
+    // databaseURL = "mongodb+srv://username:password@hostname:port/database";
+    databaseURL = "mongodb+srv://Jana:kraemer99.@eia2-0bg0r.mongodb.net/Liste";
     databaseName = "Liste";
 }
 
@@ -32,7 +32,7 @@ function handleConnect(_e: Mongo.MongoError, _client: Mongo.MongoClient): void {
 export function insert(_doc: Player): void {
     // try insertion then activate callback "handleInsert"
     score.insertOne(_doc, handleInsert);
-    
+
 }
 
 // insertion-handler receives an error object as standard parameter
@@ -44,7 +44,7 @@ function handleInsert(_e: Mongo.MongoError): void {
 export function findAll(_callback: Function): void {
     // cursor points to the retreived set of documents in memory
     var cursor: Mongo.Cursor = score.find();
-    
+
     // try to convert to array, then activate callback "prepareAnswer"
     cursor.toArray(prepareAnswer);
 

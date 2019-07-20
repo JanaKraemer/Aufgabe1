@@ -3,6 +3,7 @@ interface AssocStringString {
 }
 
 interface Player {
+    
     name: string;
     score: string;
 }

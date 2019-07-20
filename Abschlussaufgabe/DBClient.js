@@ -1,42 +1,31 @@
-var DBClient;
-(function (DBClient) {
+var catchthefish;
+(function (catchthefish) {
     window.addEventListener("load", init);
     let serverAddress = "https://kraemerj.herokuapp.com/";
+    //let serverAddress: string = "htttp://localhost:8100";
     // let serverAddress: string = "https://eia2-testserver.herokuapp.com/";
     function init(_event) {
         console.log("Init");
-        let insertButton = document.getElementById("insert");
-        let refreshButton = document.getElementById("refresh");
-        let filterButton = document.getElementById("filterButton");
-        insertButton.addEventListener("click", insert);
-        refreshButton.addEventListener("click", refresh);
-        filterButton.addEventListener("click", filter);
     }
-    function filter(_event) {
-        let inputs = document.getElementById("filterInput");
-        let query = "command=filterButton";
-        query += "&matrikel=" + inputs.value;
-        sendRequest(query, handleFindResponse);
-    }
-    function insert(_event) {
-        let inputs = document.getElementsByTagName("input");
+    function insertquery(_name, _score) {
         let query = "command=insert";
-        query += "&name=" + inputs[0].value;
-        query += "&firstname=" + inputs[1].value;
-        query += "&matrikel=" + inputs[2].value;
+        query += "&name=" + _name;
+        query += "&highscore=" + _score;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
-    function refresh(_event) {
-        let query = "command=refresh";
-        sendRequest(query, handleFindResponse);
-    }
+    catchthefish.insertquery = insertquery;
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);
         xhr.addEventListener("readystatechange", _callback);
         xhr.send();
     }
+    function find() {
+        let query = "command=find";
+        sendRequest(query, handleFindResponse);
+    }
+    catchthefish.find = find;
     function handleInsertResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
@@ -46,11 +35,13 @@ var DBClient;
     function handleFindResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            let output = document.getElementsByTagName("textarea")[0];
-            output.value = xhr.response;
-            //let responseAsJson: JSON = JSON.parse(xhr.response);
-            //console.log(responseAsJson);
+            let hightscore = JSON.parse(xhr.response);
+            for (let i = 0; i <= hightscore.length; i++) {
+                let playerName = hightscore[i].name;
+                let playerScore = hightscore[i].score;
+                document.getElementById("daten").innerHTML = "Spielername" + playerName + "Spielerscore" + playerScore;
+            }
         }
     }
-})(DBClient || (DBClient = {}));
+})(catchthefish || (catchthefish = {}));
 //# sourceMappingURL=DBClient.js.map

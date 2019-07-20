@@ -4,8 +4,7 @@ namespace catchthefish {
         
         constructor() {
             super();
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
+            
             this.dx = Math.random() * - 5;
             this.dy = Math.random() * 0;
             this.size = 5;
