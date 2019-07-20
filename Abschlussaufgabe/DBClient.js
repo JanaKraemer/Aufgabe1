@@ -1,12 +1,8 @@
 var catchthefish;
 (function (catchthefish) {
-    window.addEventListener("load", init);
     let serverAddress = "https://kraemerj.herokuapp.com/";
     //let serverAddress: string = "htttp://localhost:8100";
     // let serverAddress: string = "https://eia2-testserver.herokuapp.com/";
-    function init(_event) {
-        console.log("Init");
-    }
     function insertquery(_name, _score) {
         let query = "command=insert";
         query += "&name=" + _name;

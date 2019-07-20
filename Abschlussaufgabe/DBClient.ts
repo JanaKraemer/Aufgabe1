@@ -1,16 +1,12 @@
 
 namespace catchthefish {
-    window.addEventListener("load", init);
+  
    
     let serverAddress: string = "https://kraemerj.herokuapp.com/";
     //let serverAddress: string = "htttp://localhost:8100";
     // let serverAddress: string = "https://eia2-testserver.herokuapp.com/";
 
-    function init(_event: Event): void {
-        console.log("Init");
-        
-    }
-
+    
 
 
     export function insertquery(_name: string, _score: number): void {

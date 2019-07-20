@@ -2,7 +2,6 @@ var catchthefish;
 (function (catchthefish) {
     document.addEventListener("DOMContentLoaded", init);
     document.addEventListener("keydown", steuerung);
-    let address = "https://kraemerj.herokuapp.com/";
     let haiArray = [];
     let kleinerFischArray = [];
     let scoreArray = [];
@@ -37,7 +36,7 @@ var catchthefish;
     }
     function eatfish() {
         for (let x = 0; x < haiArray.length; x++) {
-            if (haiArray[x].x > kleinerFischArray[0].x - 30 && haiArray[x].x < kleinerFischArray[0].x + 30 && haiArray[x].y > kleinerFischArray[0].y - 30 && haiArray[x].y < kleinerFischArray[0].y + 30) {
+            if (haiArray[x].x > kleinerFischArray[0].x - 10 && haiArray[x].x < kleinerFischArray[0].x + 10 && haiArray[x].y > kleinerFischArray[0].y - 10 && haiArray[x].y < kleinerFischArray[0].y + 10) {
                 console.log("Hi");
                 haiArray.splice(x, 1);
                 scoreArray.push(haiArray[x]);
