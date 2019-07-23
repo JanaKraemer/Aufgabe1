@@ -31,12 +31,12 @@ var catchthefish;
             this.draw(x, y);
         }
         move(x, y) {
-            this.x += x;
-            this.y += y;
-            if (this.x > catchthefish.canvas.width || this.x < 0 || this.y > catchthefish.canvas.height || this.y < 0) {
-                this.x = 600;
-                this.y = catchthefish.canvas.height * Math.random();
+            if (this.x <= 0 || this.x >= 1000 || this.y <= 0 || this.y >= 700) {
+                this.x = 1000;
+                this.y = Math.floor(Math.random() * catchthefish.crc.canvas.height);
             }
+            this.x += this.dx;
+            this.y += this.dy;
         }
     }
     catchthefish.Fisch = Fisch;
