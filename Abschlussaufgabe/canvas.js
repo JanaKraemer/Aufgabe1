@@ -35,15 +35,15 @@ var catchthefish;
         update();
     }
     function eatfish() {
-        for (let x = 0; x < haiArray.length; x++) {
-            if (haiArray[x].x > kleinerFischArray[0].x - 10 && haiArray[x].x < kleinerFischArray[0].x + 10 && haiArray[x].y > kleinerFischArray[0].y - 10 && haiArray[x].y < kleinerFischArray[0].y + 10) {
+        for (let i = 0; i < haiArray.length; i++) {
+            if (haiArray[i].x > kleinerFischArray[0].x - 10 && haiArray[i].x < kleinerFischArray[0].x + 10 && haiArray[i].y > kleinerFischArray[0].y - 10 && haiArray[i].y < kleinerFischArray[0].y + 10) {
                 console.log("Hi");
-                haiArray.splice(x, 1);
-                scoreArray.push(haiArray[x]);
+                haiArray.splice(i, 1);
+                scoreArray.push(haiArray[i]);
                 let opfer = new catchthefish.Opfer();
                 haiArray.push(opfer);
                 scaleFisch();
-                if (kleinerFischArray[0].size < haiArray[x].size) {
+                if (kleinerFischArray[0].size < haiArray[i].size) {
                     alert("Game over");
                     scoreSpeicher();
                 }
