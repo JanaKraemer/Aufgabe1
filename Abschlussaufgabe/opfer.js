@@ -5,7 +5,7 @@ var catchthefish;
             super();
             this.dx = Math.random() * 5;
             this.dy = Math.random() * 0;
-            this.size = 2;
+            this.size = 1;
         }
         draw() {
             let opfer = new Path2D();

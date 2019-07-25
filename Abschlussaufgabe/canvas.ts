@@ -4,7 +4,7 @@ namespace catchthefish {
 
     document.addEventListener("DOMContentLoaded", init);
     document.addEventListener("keydown", steuerung);
-   // let address: string ="https://kraemerj.herokuapp.com/";
+    // let address: string ="https://kraemerj.herokuapp.com/";
 
     export let crc: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
@@ -14,7 +14,7 @@ namespace catchthefish {
     let fps: number = 30;
     let imageData: ImageData;
 
-    
+
     function init(): void {
         canvas = document.getElementsByTagName("canvas")[0];
         crc = canvas.getContext("2d");
@@ -61,8 +61,8 @@ namespace catchthefish {
 
     function eatfish(): void {
         for (let i: number = 0; i < haiArray.length; i++) {
-            if (haiArray[i].x > kleinerFischArray[0].x - 15 && haiArray[i].x < kleinerFischArray[0].x + 15 && haiArray[i].y > kleinerFischArray[0].y - 15 && haiArray[i].y < kleinerFischArray[0].y + 15) {
-                
+            if (haiArray[i].x > kleinerFischArray[0].x - 20 && haiArray[i].x < kleinerFischArray[0].x + 20 && haiArray[i].y > kleinerFischArray[0].y - 20 && haiArray[i].y < kleinerFischArray[0].y + 20) {
+
                 haiArray.splice(i, 1);
                 scoreArray.push(haiArray[i]);
 
@@ -73,6 +73,15 @@ namespace catchthefish {
                 if (kleinerFischArray[0].size < haiArray[i].size) {
                     alert("Game over");
                     scoreSpeicher();
+                }
+                if (kleinerFischArray[0].size > haiArray[i].size) {
+                    haiArray.splice(i, 1);
+                    scoreArray.push(haiArray[i]);
+
+                    let opfer: Opfer = new Opfer();
+                    haiArray.push(opfer);
+                    scaleFisch();
+                    
                 }
             }
         }
@@ -120,7 +129,7 @@ namespace catchthefish {
         window.setTimeout(update, 1000 / fps);
         crc.clearRect(0, 0, canvas.width, canvas.height);
         crc.putImageData(imageData, 0, 0);
-      
+
 
 
         for (let i: number = 0; i < haiArray.length; i++) {
@@ -135,7 +144,7 @@ namespace catchthefish {
 
     function name(): void {
         let name: string = prompt("Name:");
-        
+
         find();
         insertquery(name, scoreArray.length);
     }

@@ -2,7 +2,7 @@ namespace catchthefish {
 
     export class Fisch {
 
-        
+
         x: number;
         y: number;
         dx: number;
@@ -15,44 +15,32 @@ namespace catchthefish {
             this.dx = Math.random() * - 5;
             this.dy = Math.random() * 0;
             this.a = 1;
-            this.size = 4;
+            this.size = 2;
 
         }
-        draw(x: number, y: number): void {
+        draw(): void {
             let fisch: Path2D = new Path2D();
-            fisch.arc(this.x + 200 + this.a, this.y - 200 + this.a, 15 + this.a, 0, 360);
+            fisch.arc(this.x + 100 + this.a, this.y - 100 + this.a, 15 + this.a, 0, 360);
             crc.fillStyle = "orange";
             crc.fill(fisch);
             crc.stroke(fisch);
 
-            let flosse: Path2D = new Path2D();
-            flosse.moveTo(this.x + 215 + this.a, this.y - 200 + this.a );
-            flosse.lineTo(this.x + 230 + this.a, this.y - 190 + this.a);
-            flosse.lineTo(this.x + 230 + this.a, this.y - 208 + this.a);
-            flosse.closePath();
-            crc.fill(flosse);
-            crc.stroke(flosse);
-            
-            if (crc.isPointInPath(fisch, x, y)) {
-            console.log("I´m here");
-            }
+    }
 
-        }
+    update(x: number, y: number): void {
+        this.move(x, y);
+        this.draw();
+    }
 
-        update(x: number, y: number): void {
-            this.move(x, y);
-            this.draw(x, y);
-        }
+    move(x: number, y: number): void {
 
-        move(x: number, y: number): void {
+        this.x += x;
+        this.y += y;
+        if (this.x > canvas.width || this.x < 0 || this.y > canvas.height || this.y < 0) {
 
-            this.x += x;
-            this.y += y;
-            if (this.x > canvas.width || this.x < 0 || this.y > canvas.height || this.y < 0) {
-
-                this.x = 600;
-                this.y = canvas.height * Math.random();
-            }
-        }
+        this.x = 600;
+        this.y = canvas.height * Math.random();
+    }
+}
     }
 }

@@ -18,40 +18,40 @@ namespace catchthefish {
 
         draw(): void {
             let hai: Path2D = new Path2D();
-            hai.moveTo(this.x + 100, this.y + 100);
-            hai.quadraticCurveTo(this.x + 150, this.y + 50, this.x + 200, this.y + 100);
+            hai.moveTo(this.x + 50, this.y + 50);
+            hai.quadraticCurveTo(this.x + 100, this.y + 0, this.x + 150, this.y + 50);
         
             crc.fillStyle = "grey";
             crc.fill(hai);
             crc.stroke(hai);
 
             let bauch: Path2D = new Path2D();
-            bauch.moveTo(this.x + 100, this.y + 100);
-            bauch.quadraticCurveTo(this.x + 150, this.y + 120, this.x + 200, this.y + 100);
+            bauch.moveTo(this.x + 50, this.y + 50);
+            bauch.quadraticCurveTo(this.x + 100, this.y + 70, this.x + 150, this.y + 50);
             crc.fillStyle = "white";
             crc.fill(bauch);
             crc.stroke(bauch);
 
             let flosseunten: Path2D = new Path2D();
-            flosseunten.moveTo(this.x + 150, this.y + 100);
-            flosseunten.lineTo(this.x + 160, this.y + 100);
-            flosseunten.lineTo(this.x + 150, this.y + 120);
+            flosseunten.moveTo(this.x + 100, this.y + 50);
+            flosseunten.lineTo(this.x + 110, this.y + 50);
+            flosseunten.lineTo(this.x + 100, this.y + 70);
             crc.fillStyle = "grey";
             crc.fill(flosseunten);
             crc.stroke(flosseunten);
 
             let flosseoben: Path2D = new Path2D();
-            flosseoben.moveTo(this.x + 135, this.y + 80);
-            flosseoben.lineTo(this.x + 150, this.y + 55);
-            flosseoben.lineTo(this.x + 165, this.y + 80);
+            flosseoben.moveTo(this.x + 85, this.y + 30);
+            flosseoben.lineTo(this.x + 100, this.y + 5);
+            flosseoben.lineTo(this.x + 115, this.y + 30);
             crc.fillStyle = "grey";
             crc.fill(flosseoben);
             crc.stroke(flosseoben);
 
             let flossehinten: Path2D = new Path2D();
-            flossehinten.moveTo(this.x + 100, this.y + 100);
-            flossehinten.lineTo(this.x + 80, this.y + 85);
-            flossehinten.lineTo(this.x + 80, this.y + 115);
+            flossehinten.moveTo(this.x + 50, this.y + 50);
+            flossehinten.lineTo(this.x + 30, this.y + 35);
+            flossehinten.lineTo(this.x + 30, this.y + 65);
             flossehinten.closePath();
             crc.fillStyle = "grey";
             crc.fill(flossehinten);

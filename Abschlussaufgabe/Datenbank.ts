@@ -50,12 +50,12 @@ export function findAll(_callback: Function): void {
 
     // toArray-handler receives two standard parameters, an error object and the array
     // implemented as inner function, so _callback is in scope
-    function prepareAnswer(_e: Mongo.MongoError, studentArray: Player[]): void {
+    function prepareAnswer(_e: Mongo.MongoError, player: Player[]): void {
         if (_e)
             _callback("Error" + _e);
         else
             // stringify creates a json-string, passed it back to _callback
-            _callback(JSON.stringify(studentArray));
+            _callback(JSON.stringify(player));
     }
 }
 
