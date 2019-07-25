@@ -46,13 +46,13 @@ namespace catchthefish {
 
         move(x: number, y: number): void {
 
-            if (this.x <= 0 ||  this.x >= 1000 || this.y <= 0 || this.y >= 700) {
-                this.x = 1000;
-                this.y = Math.floor(Math.random() * crc.canvas.height);
-            }
-            this.x += this.dx;
-            this.y += this.dy;
+            this.x += x;
+            this.y += y;
+            if (this.x > canvas.width || this.x < 0 || this.y > canvas.height || this.y < 0) {
+
+                this.x = 600;
+                this.y = canvas.height * Math.random();
             }
         }
     }
-
+}

@@ -61,8 +61,8 @@ namespace catchthefish {
 
     function eatfish(): void {
         for (let i: number = 0; i < haiArray.length; i++) {
-            if (haiArray[i].x > kleinerFischArray[0].x - 10 && haiArray[i].x < kleinerFischArray[0].x + 10 && haiArray[i].y > kleinerFischArray[0].y - 10 && haiArray[i].y < kleinerFischArray[0].y + 10) {
-                console.log("Hi");
+            if (haiArray[i].x > kleinerFischArray[0].x - 15 && haiArray[i].x < kleinerFischArray[0].x + 15 && haiArray[i].y > kleinerFischArray[0].y - 15 && haiArray[i].y < kleinerFischArray[0].y + 15) {
+                
                 haiArray.splice(i, 1);
                 scoreArray.push(haiArray[i]);
 
@@ -120,7 +120,7 @@ namespace catchthefish {
         window.setTimeout(update, 1000 / fps);
         crc.clearRect(0, 0, canvas.width, canvas.height);
         crc.putImageData(imageData, 0, 0);
-        let i: number = 0;
+      
 
 
         for (let i: number = 0; i < haiArray.length; i++) {
