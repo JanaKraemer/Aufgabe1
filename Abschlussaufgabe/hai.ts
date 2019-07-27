@@ -13,14 +13,15 @@ namespace catchthefish {
             this.dx = Math.random() * 5;
             this.dy = Math.random() * 0;
             this.size = 5;
+            
         }
-    
+
 
         draw(): void {
             let hai: Path2D = new Path2D();
             hai.moveTo(this.x + 50, this.y + 50);
             hai.quadraticCurveTo(this.x + 100, this.y + 0, this.x + 150, this.y + 50);
-        
+
             crc.fillStyle = "grey";
             crc.fill(hai);
             crc.stroke(hai);
@@ -58,21 +59,24 @@ namespace catchthefish {
             crc.stroke(flossehinten);
 
 
+
         }
         update(): void {
             this.move();
             this.draw();
         }
-        
+
         move(): void {
             this.x += this.dx;
             this.y += this.dy;
             if (this.x > canvas.width || this.x < 0 || this.y > canvas.height || this.y < 0) {
-                
+
                 this.x = 0;
                 this.y = canvas.height * Math.random();
             }
+
         }
-        
-    }
+       
+
+}
 }

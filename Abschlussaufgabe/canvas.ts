@@ -73,6 +73,7 @@ namespace catchthefish {
                 if (kleinerFischArray[0].size < haiArray[i].size) {
                     alert("Game over");
                     scoreSpeicher();
+                    name();
                 }
                 if (kleinerFischArray[0].size > haiArray[i].size) {
                     haiArray.splice(i, 1);
@@ -139,6 +140,7 @@ namespace catchthefish {
             kleinerFischArray[0].update(0, 0);
         }
         eatfish();
+       
 
     }
 

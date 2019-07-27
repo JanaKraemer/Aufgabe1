@@ -3,12 +3,7 @@ namespace catchthefish {
   
    
     let serverAddress: string = "https://kraemerj.herokuapp.com/";
-    //let serverAddress: string = "htttp://localhost:8100";
-    // let serverAddress: string = "https://eia2-testserver.herokuapp.com/";
-
     
-
-
     export function insertquery(_name: string, _score: number): void {
 
         let query: string = "command=insert";
