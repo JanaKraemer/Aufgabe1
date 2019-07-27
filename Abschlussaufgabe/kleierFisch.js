@@ -24,7 +24,7 @@ var catchthefish;
             this.x += x;
             this.y += y;
             if (this.x > catchthefish.canvas.width || this.x < 0 || this.y > catchthefish.canvas.height || this.y < 0) {
-                this.x = 600;
+                this.x = 600 + this.dx;
                 this.y = catchthefish.canvas.height * Math.random();
             }
         }

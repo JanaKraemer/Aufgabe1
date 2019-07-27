@@ -38,7 +38,7 @@ namespace catchthefish {
         this.y += y;
         if (this.x > canvas.width || this.x < 0 || this.y > canvas.height || this.y < 0) {
 
-        this.x = 600;
+        this.x = 600 + this.dx;
         this.y = canvas.height * Math.random();
     }
 }
