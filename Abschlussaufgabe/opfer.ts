@@ -5,8 +5,7 @@ namespace catchthefish {
         constructor() {
             super();
          
-            this.dx = Math.random() * 5;
-            this.dy = Math.random() * 0;
+            
             this.size = 1;
         }
 
