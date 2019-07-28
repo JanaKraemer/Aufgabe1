@@ -62,14 +62,8 @@ namespace catchthefish {
     function eatfish(): void {
         for (let i: number = 0; i < haiArray.length; i++) {
             if (haiArray[i].x > kleinerFischArray[0].x - 20 && haiArray[i].x < kleinerFischArray[0].x + 20 && haiArray[i].y > kleinerFischArray[0].y - 20 && haiArray[i].y < kleinerFischArray[0].y + 20) {
-
-                haiArray.splice(i, 1);
-                scoreArray.push(haiArray[i]);
-
-                let opfer: Opfer = new Opfer();
-                haiArray.push(opfer);
-                scaleFisch();
-
+                console.log("Treffer");
+                
                 if (kleinerFischArray[0].size < haiArray[i].size) {
                     alert("Game over");
                     scoreSpeicher();
