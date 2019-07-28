@@ -8,9 +8,9 @@ namespace catchthefish {
 
     export let crc: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
-    let haiArray: Hai[] = [];
+    let haiArray: Fisch[] = [];
     let kleinerFischArray: Fisch[] = [];
-    let scoreArray: Hai[] = [];
+    let scoreArray: Fisch[] = [];
     let fps: number = 30;
     let imageData: ImageData;
 
@@ -132,7 +132,7 @@ namespace catchthefish {
 
 
         for (let i: number = 0; i < haiArray.length; i++) {
-            haiArray[i].update();
+            haiArray[i].update(0, 0);
         }
         for (let i: number = 0; i < kleinerFischArray.length; i++) {
             kleinerFischArray[0].update(0, 0);

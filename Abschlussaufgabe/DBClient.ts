@@ -7,8 +7,8 @@ namespace catchthefish {
     export function insertquery(_name: string, _score: number): void {
 
         let query: string = "command=insert";
-        query += "&name=" + _name;
-        query += "&highscore=" + _score;
+        query += "&name=" + _name + "&highscore=" + _score;
+       
 
         console.log(query);
         sendRequest(query, handleInsertResponse);

@@ -1,10 +1,8 @@
 var catchthefish;
 (function (catchthefish) {
-    class Qualle extends catchthefish.Hai {
+    class Qualle extends catchthefish.Fisch {
         constructor() {
             super();
-            this.dx = Math.random() * -5;
-            this.dy = Math.random() * 0;
             this.size = 5;
         }
         draw() {

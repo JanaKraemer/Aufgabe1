@@ -88,7 +88,7 @@ var catchthefish;
         catchthefish.crc.clearRect(0, 0, catchthefish.canvas.width, catchthefish.canvas.height);
         catchthefish.crc.putImageData(imageData, 0, 0);
         for (let i = 0; i < haiArray.length; i++) {
-            haiArray[i].update();
+            haiArray[i].update(0, 0);
         }
         for (let i = 0; i < kleinerFischArray.length; i++) {
             kleinerFischArray[0].update(0, 0);

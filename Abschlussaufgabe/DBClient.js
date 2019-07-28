@@ -3,8 +3,7 @@ var catchthefish;
     let serverAddress = "https://kraemerj.herokuapp.com/";
     function insertquery(_name, _score) {
         let query = "command=insert";
-        query += "&name=" + _name;
-        query += "&highscore=" + _score;
+        query += "&name=" + _name + "&highscore=" + _score;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }

@@ -1,19 +1,15 @@
 namespace catchthefish {
 
-    export class Hai {
-        x: number;
-        y: number;
-        dx: number;
-        dy: number;
-        size: number;
+    export class Hai extends Fisch {
+
 
         constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
+            super();
+          
             this.dx = Math.random() * 5;
             this.dy = Math.random() * 0;
             this.size = 5;
-            
+
         }
 
 
@@ -76,7 +72,7 @@ namespace catchthefish {
             }
 
         }
-       
 
-}
+
+    }
 }
