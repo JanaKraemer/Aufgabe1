@@ -41,7 +41,6 @@ var catchthefish;
                 if (kleinerFischArray[0].size < haiArray[i].size) {
                     alert("Game over");
                     scoreSpeicher();
-                    scoreFisch();
                     name();
                 }
                 if (kleinerFischArray[0].size > haiArray[i].size) {
