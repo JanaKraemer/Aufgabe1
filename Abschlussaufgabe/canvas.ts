@@ -67,15 +67,19 @@ namespace catchthefish {
                 if (kleinerFischArray[0].size < haiArray[i].size) {
                     alert("Game over");
                     scoreSpeicher();
+                    scoreFisch();
                     name();
                 }
                 if (kleinerFischArray[0].size > haiArray[i].size) {
-                    haiArray.splice(i, 1);
                     scoreArray.push(haiArray[i]);
+                    haiArray.splice(i, 1);
+                   
 
                     let opfer: Opfer = new Opfer();
                     haiArray.push(opfer);
                     scaleFisch();
+                    scoreSpeicher();
+                    scoreFisch();
                     
                 }
             }
