@@ -1,6 +1,6 @@
 namespace catchthefish {
 
-    export class Hai  {
+    export class Hai {
         x: number;
         y: number;
         dx: number;
