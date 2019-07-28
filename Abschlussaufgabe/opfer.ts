@@ -1,6 +1,6 @@
 namespace catchthefish {
 
-    export class Opfer extends Fisch {
+    export class Opfer extends Hai {
        
         constructor() {
             super();

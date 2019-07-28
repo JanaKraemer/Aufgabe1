@@ -1,6 +1,6 @@
 var catchthefish;
 (function (catchthefish) {
-    class Opfer extends catchthefish.Fisch {
+    class Opfer extends catchthefish.Hai {
         constructor() {
             super();
             this.dx = Math.random() * 5;

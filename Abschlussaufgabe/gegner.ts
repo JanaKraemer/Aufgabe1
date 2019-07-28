@@ -1,11 +1,12 @@
 namespace catchthefish {
 
-    export class Qualle extends Fisch {
+    export class Qualle extends Hai {
         
         constructor() {
             super();
             
-    
+            this.dx = Math.random() * - 5;
+            this.dy = Math.random() * 0;
             this.size = 5;
         }
 
