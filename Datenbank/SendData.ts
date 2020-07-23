@@ -1,1 +1,1 @@
-let adress:string ="https://mongodbrowser.herokuapp.com/"
+let adress: string = "https://mongodbrowser.herokuapp.com/";

@@ -1,0 +1,37 @@
+var Zauberbild;
+(function (Zauberbild) {
+    class Groese extends Zauberbild.Element {
+        constructor() {
+            super();
+            this.x = Math.random() * Zauberbild.canvas.width;
+            this.y = Math.random() * Zauberbild.canvas.height;
+            this.dx = Math.random() * 0;
+            this.dy = Math.random() * 2;
+            this.size = 10;
+        }
+        draw() {
+            let circle = new Path2D();
+            circle.arc(this.x, this.y, 20, 0, 360);
+            Zauberbild.crc.fillStyle = "green";
+            Zauberbild.crc.fill(circle);
+            Zauberbild.crc.stroke(circle);
+            console.log("rotation rot");
+        }
+        update() {
+            this.move();
+            this.draw();
+            console.log(this.x, this.y);
+        }
+        move() {
+            this.x += this.dx;
+            //this.y += this.dy ;
+            if (this.x > Zauberbild.canvas.width || this.x < 0 || this.y > Zauberbild.canvas.height || this.y < 0) {
+                this.x = 0;
+                // this.y = canvas.height * Math.random();
+            }
+            // console.log(this.x, this.y);
+        }
+    }
+    Zauberbild.Groese = Groese;
+})(Zauberbild || (Zauberbild = {}));
+//# sourceMappingURL=groese.js.map
