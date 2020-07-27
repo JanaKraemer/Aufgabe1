@@ -1,3 +1,5 @@
+
+
 namespace Zauberbild {
 
     // Kommentare zum Code, warum was......!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -9,16 +11,20 @@ namespace Zauberbild {
 
     export let crc: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
+    export let ausgewaehltesElement: number;
+    export let color: string;
+    export let serverAddress: string = "https://kraemerj.herokuapp.com/";
 
     //let zauberbild: Element[] = [];
     export let kreisArray: Element[] = [];
     //export let newpositionArray: Element[] = [];
     export let auswahlArray: Element[] = [];
     let fps: number = 30;
-    let imageData: ImageData;
+    //let imageData: ImageData;
     //export let kreisArraymove: Move[] = [];
 
     let bg: string = "white";
+    let auswahl: Boolean = false;
     export let input: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
 
 
@@ -29,7 +35,7 @@ namespace Zauberbild {
 
         canvas = document.getElementsByTagName("canvas")[0];
         crc = canvas.getContext("2d");
-        imageData = crc.getImageData(0, 0, 600, 600);
+        //imageData = crc.getImageData(0, 0, 600, 600);
 
         //let test: HTMLButtonElement = <HTMLButtonElement>document.getElementById("test");
         //test.addEventListener("click", zeichneKreis);
@@ -48,6 +54,20 @@ namespace Zauberbild {
         let weiß: HTMLButtonElement = <HTMLButtonElement>document.getElementById("weiß");
         weiß.addEventListener("click", Weiß);
 
+        let lauf: HTMLButtonElement = <HTMLButtonElement>document.getElementById("lauf");
+        lauf.addEventListener("click", zeichneKreis);
+
+        let wachstum: HTMLButtonElement = <HTMLButtonElement>document.getElementById("wachstum");
+        wachstum.addEventListener("click", zeichneWachstum);
+
+        let lauf2: HTMLButtonElement = <HTMLButtonElement>document.getElementById("lauf2");
+        lauf2.addEventListener("click", zeichneDreieck);
+
+        let wachstum2: HTMLButtonElement = <HTMLButtonElement>document.getElementById("wachstum2");
+        wachstum2.addEventListener("click", zeichneWachstum2);
+
+        let save: HTMLButtonElement = <HTMLButtonElement>document.getElementById("save");
+        save.addEventListener("click", saveName);
 
         update();
 
@@ -57,28 +77,22 @@ namespace Zauberbild {
     function update(): void {
         window.setTimeout(update, 1000 / fps);
         crc.clearRect(0, 0, canvas.width, canvas.height);
+        // crc.putImageData(imageData, 0, 0);
+
 
         crc.rect(0, 0, canvas.width, canvas.height);
         crc.fillStyle = bg;
         crc.fill();
 
-        zeichneKreis();
-
-
-
 
         for (let i: number = 0; i < kreisArray.length; i++) {
-            kreisArray[i].update();
+            kreisArray[i].update(0, 0);
             // console.log("Hiiii");
         }
 
-        //for (let i: number = 0; i < newpositionArray.length; i++) {
-          //  newpositionArray[i].update();
-            // console.log("Hiiii");
-        //}
 
         for (let i: number = 0; i < auswahlArray.length; i++) {
-            auswahlArray[i].update();
+            auswahlArray[i].update(0, 0);
             // console.log("Hiiii");
         }
     }
@@ -86,41 +100,34 @@ namespace Zauberbild {
 
 
     function zeichneKreis(): void {
+        let circle: Element = new Element();
+        kreisArray.push(circle);
 
-        let radio: HTMLInputElement = <HTMLInputElement>document.getElementById("rotate");
-        if (radio.checked == true && einkreis == false) {
-            einkreis = true;
-
-            for (let i: number = 0; i < kreisArray.length; i++) {
-                kreisArray.pop();
-                //kreisArraymove.pop();
-            }
-
-            console.log("what???");
-            let circle: Element = new Element();
-            kreisArray.push(circle);
-            // kreisArray[0].update();
-
-        }
-        // kreisArray.push(circle);
-        let radio2: HTMLInputElement = <HTMLInputElement>document.getElementById("move2");
-        if (radio2.checked == true) {
-
-            for (let i: number = 0; i < kreisArray.length; i++) {
-                //kreisArraymove.pop();
-                kreisArray.pop();
-            }
-            let circlegroese: Groese = new Groese();
-            kreisArray.push(circlegroese);
-
-
-            console.log("Ich wachse");
-            //}
-
-        }
     }
 
+    function zeichneWachstum2(): void {
+        let wachstum2: Wachstum2 = new Wachstum2();
+        kreisArray.push(wachstum2);
+    }
+
+
+    function zeichneWachstum(): void {
+
+        let circlegroese: Groese = new Groese();
+        kreisArray.push(circlegroese);
+    }
+
+    function zeichneDreieck(): void {
+        let dreieck: Test = new Test();
+        kreisArray.push(dreieck);
+    }
+
+
+
+
     function auswahlKreis(_event: MouseEvent): void {
+
+        auswahl = false;
 
         for (let i: number = 0; i < kreisArray.length; i++) {
 
@@ -128,58 +135,112 @@ namespace Zauberbild {
             let y: number = _event.clientY;
             //console.log("Auswahl");
 
-            if (kreisArray[i].x < x + 20 && kreisArray[i].x < x - 20 && kreisArray[i].y < y + 20 && kreisArray[i].y < y - 20 && x <= canvas.width && y <= canvas.height) {
-                auswahlArray.push(kreisArray[i]); // Klick mit Kreis vergleichen
+            if (kreisArray[i].x < x + 10 && kreisArray[i].x < x + 10 && kreisArray[i].y < y + 10 && kreisArray[i].y < y - 10 && x <= canvas.width && y <= canvas.height) {
+                // Klick mit Kreis vergleichen
                 // wenn Klick und Kreis übereinstimmen, kann dieser gelöscht, oder verschoben werden
 
-
-                //console.log("Auswahl");
+                if (auswahlArray.length >= 1) {
+                    kreisArray.push(auswahlArray[0]);
+                    auswahlArray.splice(0, 1);
+                }
+                ausgewaehltesElement = i;
+                auswahlArray.push(kreisArray[i]);
+                kreisArray.splice(i, 1);
 
                 let button: HTMLButtonElement = <HTMLButtonElement>document.createElement("BUTTON");   // Create a <button> element
-                button.innerHTML = "Delete Kreis";   // Insert text
-                document.body.appendChild(button); //Button erscheint im HTML
-                //console.log("button");
+                button.innerHTML = "Delete";   // Insert text
+                let div: HTMLDivElement = <HTMLDivElement>document.getElementById("buttons");
+                div.appendChild(button);
                 button.addEventListener("click", deleteButton);
 
                 let buttonposition: HTMLButtonElement = <HTMLButtonElement>document.createElement("BUTTON");   // Create a <button> element
-                buttonposition.innerHTML = "Kreis Position verändern";   // Insert text
-                document.body.appendChild(buttonposition); //Button erscheint im HTML
+                buttonposition.innerHTML = "Position";   // Insert text
+                let divposition: HTMLDivElement = <HTMLDivElement>document.getElementById("buttons");
+                divposition.appendChild(buttonposition);
                 //console.log("buttonposition");
                 buttonposition.addEventListener("click", positionButtonKreis);
 
+                let buttoncolor: HTMLButtonElement = <HTMLButtonElement>document.createElement("BUTTON");   // Create a <button> element
+                buttoncolor.innerHTML = "Farbe ändern";   // Insert text
+                let divcolor: HTMLDivElement = <HTMLDivElement>document.getElementById("buttons");
+                divcolor.appendChild(buttoncolor);
+                //console.log("buttonposition");
+                // buttoncolor.addEventListener("click", colorKreis);
             }
 
         }
     }
 
+    //function colorKreis(_event: MouseEvent): any {    // Rückgabe return statt void???????????????????????????????????????????????????????????
+
+
+    //  let elemente: string = "0123456789ABCDEF";
+    //let color: string = "#";
+    //for (let i: number = 0; i < 6; i++) {
+    //  color += elemente[Math.floor(Math.random() * 16)];
+    //  }
+
+    //console.log("farbe");
+    //document.getElementById("buttons").innerHTML = "";
+    //return color;
+    //}
+
     function positionButtonKreis(_event: MouseEvent): void {
-        for (let i: number = 0; i < kreisArray.length; i++) {
-            
-            auswahlArray.splice(i, 1);
-            kreisArray.splice(i, 1);
-            // console.log("weg mit dir");
-        }
-        let x: number = _event.clientX; // Problem, weil Button nicht in Canvas ist (wegen x,y) ??????????
-        let y: number = _event.clientY;
-        if (x < canvas.width && y < canvas.height) {
-            let newKreis: Element = new Element(x, y);
 
-            kreisArray.push(newKreis);
-        }
-        //if (x < canvas.width && y < canvas.height) {
-        //  let circle: Element = new Element(x, y);
+        auswahl = true;
 
-        //kreisArray.push(circle);
-        //}
+        document.addEventListener("keydown", steuerung);
+
     }
 
-    function deleteButton(): void {
-        for (let i: number = 0; i < kreisArray.length; i++) {
-            auswahlArray.splice(i, 1);
-            kreisArray.splice(i, 1);
-            // console.log("weg mit dir");
+    function steuerung(_event: KeyboardEvent): void {
+
+
+
+        if (auswahl == true) {
+            if (auswahlArray.length > 1) {
+                kreisArray.push(auswahlArray[0]);
+                auswahlArray.splice(0, 1);
+            }
+            if (_event.keyCode == 38) { // hoch
+
+                auswahlArray[0].update(0, - 5);
+                console.group("oben");
+
+            }
+            if (_event.keyCode == 40) { //runter
+                auswahlArray[0].update(0, 5);
+
+            }
+
+            if (_event.keyCode == 39) { //left
+                auswahlArray[0].update(5, 0);
+
+            }
+            if (_event.keyCode == 37) { //right
+                auswahlArray[0].update(- 5, 0);
+
+            }
         }
 
+        document.getElementById("buttons").innerHTML = "";
+
+    }
+
+
+    function deleteButton(): void {
+
+        auswahlArray.splice(0, 1);
+        //kreisArray.splice(ausgewaehltesElement, 1);
+        //console.log("weg mit dir");
+
+        document.getElementById("buttons").innerHTML = "";
+    }
+
+    function saveName(): void {
+        let save: string = prompt("Name");
+        let background: string = bg;
+        insert(save, background);
     }
 
     function Klein(): void {

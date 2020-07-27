@@ -1,6 +1,6 @@
 namespace Zauberbild {
 
-    export class Groese extends Element {
+    export class Farbe extends Element {
 
         constructor() {
             super();
@@ -9,7 +9,7 @@ namespace Zauberbild {
             this.dx = Math.random() * 3;
             this.dy = Math.random() * 2;
             this.size = 10;
-            this.r = Math.random() * 10 + 10;
+            this.r = Math.random() * 30 + 10;
         }
 
         draw(): void {
@@ -27,24 +27,27 @@ namespace Zauberbild {
 
 
         }
-        update(x: number, y: number): void {
-            this.move(x, y);
+        update(): void {
+            this.move();
             this.draw();
-            //console.log(this.x, this.y);
+            console.log(this.x, this.y);
         }
 
-        move(x: number, y: number): void {
-           
-
+        move(): void {
+           // this.x += this.dx;
 
             this.r += Math.random() * 2;
             if (this.r >= 40) {
                 this.r -= Math.random() * 2;
             }
+            //this.y += this.dy ;
+            //if (this.x > canvas.width || this.x < 0 || this.y > canvas.height || this.y < 0) {
 
-            this.y += y;
-            this.x += x;
-            
+              //  this.x = 0;
+               // this.y = canvas.height * Math.random();
+
+            //}
+           // console.log(this.x, this.y);
         }
 
     }

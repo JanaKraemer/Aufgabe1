@@ -3,20 +3,22 @@ var Zauberbild;
     // Kommentare zum Code, warum was......!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     document.addEventListener("DOMContentLoaded", init);
     document.addEventListener("mousedown", auswahlKreis);
+    Zauberbild.serverAddress = "https://kraemerj.herokuapp.com/";
     //let zauberbild: Element[] = [];
     Zauberbild.kreisArray = [];
     //export let newpositionArray: Element[] = [];
     Zauberbild.auswahlArray = [];
     let fps = 30;
-    let imageData;
+    //let imageData: ImageData;
     //export let kreisArraymove: Move[] = [];
     let bg = "white";
+    let auswahl = false;
     Zauberbild.input = document.getElementsByTagName("input");
     let einkreis = false;
     function init() {
         Zauberbild.canvas = document.getElementsByTagName("canvas")[0];
         Zauberbild.crc = Zauberbild.canvas.getContext("2d");
-        imageData = Zauberbild.crc.getImageData(0, 0, 600, 600);
+        //imageData = crc.getImageData(0, 0, 600, 600);
         //let test: HTMLButtonElement = <HTMLButtonElement>document.getElementById("test");
         //test.addEventListener("click", zeichneKreis);
         let klein = document.getElementById("Klein");
@@ -31,99 +33,132 @@ var Zauberbild;
         grau.addEventListener("click", Grau);
         let weiß = document.getElementById("weiß");
         weiß.addEventListener("click", Weiß);
+        let lauf = document.getElementById("lauf");
+        lauf.addEventListener("click", zeichneKreis);
+        let wachstum = document.getElementById("wachstum");
+        wachstum.addEventListener("click", zeichneWachstum);
+        let lauf2 = document.getElementById("lauf2");
+        lauf2.addEventListener("click", zeichneDreieck);
+        let wachstum2 = document.getElementById("wachstum2");
+        wachstum2.addEventListener("click", zeichneWachstum2);
+        let save = document.getElementById("save");
+        save.addEventListener("click", saveName);
         update();
     }
     function update() {
         window.setTimeout(update, 1000 / fps);
         Zauberbild.crc.clearRect(0, 0, Zauberbild.canvas.width, Zauberbild.canvas.height);
+        // crc.putImageData(imageData, 0, 0);
         Zauberbild.crc.rect(0, 0, Zauberbild.canvas.width, Zauberbild.canvas.height);
         Zauberbild.crc.fillStyle = bg;
         Zauberbild.crc.fill();
-        zeichneKreis();
         for (let i = 0; i < Zauberbild.kreisArray.length; i++) {
-            Zauberbild.kreisArray[i].update();
+            Zauberbild.kreisArray[i].update(0, 0);
             // console.log("Hiiii");
         }
-        //for (let i: number = 0; i < newpositionArray.length; i++) {
-        //  newpositionArray[i].update();
-        // console.log("Hiiii");
-        //}
         for (let i = 0; i < Zauberbild.auswahlArray.length; i++) {
-            Zauberbild.auswahlArray[i].update();
+            Zauberbild.auswahlArray[i].update(0, 0);
             // console.log("Hiiii");
         }
     }
     function zeichneKreis() {
-        let radio = document.getElementById("rotate");
-        if (radio.checked == true && einkreis == false) {
-            einkreis = true;
-            for (let i = 0; i < Zauberbild.kreisArray.length; i++) {
-                Zauberbild.kreisArray.pop();
-                //kreisArraymove.pop();
-            }
-            console.log("what???");
-            let circle = new Zauberbild.Element();
-            Zauberbild.kreisArray.push(circle);
-            // kreisArray[0].update();
-        }
-        // kreisArray.push(circle);
-        let radio2 = document.getElementById("move2");
-        if (radio2.checked == true) {
-            for (let i = 0; i < Zauberbild.kreisArray.length; i++) {
-                //kreisArraymove.pop();
-                Zauberbild.kreisArray.pop();
-            }
-            let circlegroese = new Zauberbild.Groese();
-            Zauberbild.kreisArray.push(circlegroese);
-            console.log("Ich wachse");
-            //}
-        }
+        let circle = new Zauberbild.Element();
+        Zauberbild.kreisArray.push(circle);
+    }
+    function zeichneWachstum2() {
+        let wachstum2 = new Zauberbild.Wachstum2();
+        Zauberbild.kreisArray.push(wachstum2);
+    }
+    function zeichneWachstum() {
+        let circlegroese = new Zauberbild.Groese();
+        Zauberbild.kreisArray.push(circlegroese);
+    }
+    function zeichneDreieck() {
+        let dreieck = new Zauberbild.Test();
+        Zauberbild.kreisArray.push(dreieck);
     }
     function auswahlKreis(_event) {
+        auswahl = false;
         for (let i = 0; i < Zauberbild.kreisArray.length; i++) {
             let x = _event.clientX; // Position, an der geklickt wurde
             let y = _event.clientY;
             //console.log("Auswahl");
-            if (Zauberbild.kreisArray[i].x < x + 20 && Zauberbild.kreisArray[i].x < x - 20 && Zauberbild.kreisArray[i].y < y + 20 && Zauberbild.kreisArray[i].y < y - 20 && x <= Zauberbild.canvas.width && y <= Zauberbild.canvas.height) {
-                Zauberbild.auswahlArray.push(Zauberbild.kreisArray[i]); // Klick mit Kreis vergleichen
+            if (Zauberbild.kreisArray[i].x < x + 10 && Zauberbild.kreisArray[i].x < x + 10 && Zauberbild.kreisArray[i].y < y + 10 && Zauberbild.kreisArray[i].y < y - 10 && x <= Zauberbild.canvas.width && y <= Zauberbild.canvas.height) {
+                // Klick mit Kreis vergleichen
                 // wenn Klick und Kreis übereinstimmen, kann dieser gelöscht, oder verschoben werden
-                //console.log("Auswahl");
+                if (Zauberbild.auswahlArray.length >= 1) {
+                    Zauberbild.kreisArray.push(Zauberbild.auswahlArray[0]);
+                    Zauberbild.auswahlArray.splice(0, 1);
+                }
+                Zauberbild.ausgewaehltesElement = i;
+                Zauberbild.auswahlArray.push(Zauberbild.kreisArray[i]);
+                Zauberbild.kreisArray.splice(i, 1);
                 let button = document.createElement("BUTTON"); // Create a <button> element
-                button.innerHTML = "Delete Kreis"; // Insert text
-                document.body.appendChild(button); //Button erscheint im HTML
-                //console.log("button");
+                button.innerHTML = "Delete"; // Insert text
+                let div = document.getElementById("buttons");
+                div.appendChild(button);
                 button.addEventListener("click", deleteButton);
                 let buttonposition = document.createElement("BUTTON"); // Create a <button> element
-                buttonposition.innerHTML = "Kreis Position verändern"; // Insert text
-                document.body.appendChild(buttonposition); //Button erscheint im HTML
+                buttonposition.innerHTML = "Position"; // Insert text
+                let divposition = document.getElementById("buttons");
+                divposition.appendChild(buttonposition);
                 //console.log("buttonposition");
                 buttonposition.addEventListener("click", positionButtonKreis);
+                let buttoncolor = document.createElement("BUTTON"); // Create a <button> element
+                buttoncolor.innerHTML = "Farbe ändern"; // Insert text
+                let divcolor = document.getElementById("buttons");
+                divcolor.appendChild(buttoncolor);
+                //console.log("buttonposition");
+                // buttoncolor.addEventListener("click", colorKreis);
             }
         }
     }
+    //function colorKreis(_event: MouseEvent): any {    // Rückgabe return statt void???????????????????????????????????????????????????????????
+    //  let elemente: string = "0123456789ABCDEF";
+    //let color: string = "#";
+    //for (let i: number = 0; i < 6; i++) {
+    //  color += elemente[Math.floor(Math.random() * 16)];
+    //  }
+    //console.log("farbe");
+    //document.getElementById("buttons").innerHTML = "";
+    //return color;
+    //}
     function positionButtonKreis(_event) {
-        for (let i = 0; i < Zauberbild.kreisArray.length; i++) {
-            Zauberbild.auswahlArray.splice(i, 1);
-            Zauberbild.kreisArray.splice(i, 1);
-            // console.log("weg mit dir");
+        auswahl = true;
+        document.addEventListener("keydown", steuerung);
+    }
+    function steuerung(_event) {
+        if (auswahl == true) {
+            if (Zauberbild.auswahlArray.length > 1) {
+                Zauberbild.kreisArray.push(Zauberbild.auswahlArray[0]);
+                Zauberbild.auswahlArray.splice(0, 1);
+            }
+            if (_event.keyCode == 38) { // hoch
+                Zauberbild.auswahlArray[0].update(0, -5);
+                console.group("oben");
+            }
+            if (_event.keyCode == 40) { //runter
+                Zauberbild.auswahlArray[0].update(0, 5);
+            }
+            if (_event.keyCode == 39) { //left
+                Zauberbild.auswahlArray[0].update(5, 0);
+            }
+            if (_event.keyCode == 37) { //right
+                Zauberbild.auswahlArray[0].update(-5, 0);
+            }
         }
-        let x = _event.clientX; // Problem, weil Button nicht in Canvas ist (wegen x,y) ??????????
-        let y = _event.clientY;
-        if (x < Zauberbild.canvas.width && y < Zauberbild.canvas.height) {
-            let newKreis = new Zauberbild.Element(x, y);
-            Zauberbild.kreisArray.push(newKreis);
-        }
-        //if (x < canvas.width && y < canvas.height) {
-        //  let circle: Element = new Element(x, y);
-        //kreisArray.push(circle);
-        //}
+        document.getElementById("buttons").innerHTML = "";
     }
     function deleteButton() {
-        for (let i = 0; i < Zauberbild.kreisArray.length; i++) {
-            Zauberbild.auswahlArray.splice(i, 1);
-            Zauberbild.kreisArray.splice(i, 1);
-            // console.log("weg mit dir");
-        }
+        Zauberbild.auswahlArray.splice(0, 1);
+        //kreisArray.splice(ausgewaehltesElement, 1);
+        //console.log("weg mit dir");
+        document.getElementById("buttons").innerHTML = "";
+    }
+    function saveName() {
+        let save = prompt("Name");
+        let background = bg;
+        Zauberbild.insert(save, background);
     }
     function Klein() {
         Zauberbild.canvas.height = 400;

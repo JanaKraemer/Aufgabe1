@@ -1,30 +1,49 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Http = require("http"); // Ein http Objekt wird im Code generiert//
-let address = "http://localhost:8100";
-function rueckgabe() {
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET", address);
+const Http = require("http");
+const Url = require("url");
+const Database = require("./database");
+//import { Player, AssocStringString } from "./PlayerData";
+console.log("Server starting");
+let port = Number(process.env.PORT);
+if (!port)
+    port = 8100;
+let server = Http.createServer();
+server.addListener("listening", handleListen);
+server.addListener("request", handleRequest);
+server.listen(port);
+function handleListen() {
+    console.log("Listening on port: " + port);
 }
-var Zauberbild;
-(function (Zauberbild) {
-    console.log("Starting server"); //Starting server wird in der Konsole ausgegeben.//
-    let port = Number(process.env.PORT); // Eine Variable wird deklariert, vom Typ number. Die Umgebungsvariable port sagt dem Server worauf er achten muss.//
-    if (!port) // Wenn Port nicht gefunden wird, dann wird dem Port eine Zahl zugewiesen.//
-        port = 8100; // Die Variable bekommt eine Zahl zugewiesen.//
-    let server = Http.createServer(); //Ein Server wird generiert//
-    server.addListener("request", handleRequest); // Der Server bekommt den Event-Listener "request"//
-    server.addListener("listening", handleListen); // Der Server bekommt den Event-Listener "listening"//
-    server.listen(port); // Der Server überwacht den Port//
-    function handleListen() {
-        console.log("Listening"); //Listening wird  auf der Konsole aufegegeben.//
+function handleRequest(_request, _response) {
+    console.log("Request received");
+    let query = Url.parse(_request.url, true).query;
+    let command = query["command"];
+    switch (command) {
+        case "insert":
+            let highscore = {
+                name: query["name"],
+                background: query["background"]
+            };
+            Database.insert(highscore);
+            respond(_response, "storing data");
+            break;
+        case "find":
+            Database.findAll(findCallback);
+            break;
+        default:
+            respond(_response, "unknown command: " + command);
+            break;
     }
-    function handleRequest(_request, _response) {
-        console.log("I hear voices!"); // I hear voices! wird auf der Konsole ausgegeben.//
-        _response.setHeader("content-type", "text/html; charset=utf-8"); // .setHeader liest einen Header aus, der sich in einer Warteschlange befindet und noch nicht an den Client gesendet wurde.//
-        _response.setHeader("Access-Control-Allow-Origin", "*"); // .setHeader liest einen Header aus, der sich in einer Warteschlange befindet und noch nicht an den Client gesendet wurde. Der Befehl gibt die Erlaubnis, alles auszulesen.//
-        _response.write(_request.url); // Infos werden an den Client übergeben und in die URL geschriben//
-        _response.end(); // Diese Methode signalisiert dem Server, dass alle Antworten gesendet wurden und die Nachricht vollständig ist.//
+    function findCallback(json) {
+        respond(_response, json);
     }
-})(Zauberbild || (Zauberbild = {}));
+}
+function respond(_response, _text) {
+    console.log("Preparing response: " + _text);
+    _response.setHeader("Access-Control-Allow-Origin", "*");
+    _response.setHeader("content-type", "text/html; charset=utf-8");
+    _response.write(_text);
+    _response.end();
+}
 //# sourceMappingURL=server.js.map

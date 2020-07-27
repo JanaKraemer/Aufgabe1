@@ -1,6 +1,6 @@
 var Zauberbild;
 (function (Zauberbild) {
-    class Groese extends Zauberbild.Element {
+    class Farbe extends Zauberbild.Element {
         constructor() {
             super();
             this.x = Math.random() * Zauberbild.canvas.width;
@@ -8,7 +8,7 @@ var Zauberbild;
             this.dx = Math.random() * 3;
             this.dy = Math.random() * 2;
             this.size = 10;
-            this.r = Math.random() * 10 + 10;
+            this.r = Math.random() * 30 + 10;
         }
         draw() {
             let circle = new Path2D();
@@ -18,20 +18,25 @@ var Zauberbild;
             Zauberbild.crc.stroke(circle);
             //console.log("rotation rot");
         }
-        update(x, y) {
-            this.move(x, y);
+        update() {
+            this.move();
             this.draw();
-            //console.log(this.x, this.y);
+            console.log(this.x, this.y);
         }
-        move(x, y) {
+        move() {
+            // this.x += this.dx;
             this.r += Math.random() * 2;
             if (this.r >= 40) {
                 this.r -= Math.random() * 2;
             }
-            this.y += y;
-            this.x += x;
+            //this.y += this.dy ;
+            //if (this.x > canvas.width || this.x < 0 || this.y > canvas.height || this.y < 0) {
+            //  this.x = 0;
+            // this.y = canvas.height * Math.random();
+            //}
+            // console.log(this.x, this.y);
         }
     }
-    Zauberbild.Groese = Groese;
+    Zauberbild.Farbe = Farbe;
 })(Zauberbild || (Zauberbild = {}));
-//# sourceMappingURL=groese.js.map
+//# sourceMappingURL=farbe.js.map

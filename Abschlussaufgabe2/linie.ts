@@ -5,6 +5,7 @@ namespace Zauberbild { //horizontal fish
         dx: number;
         dy: number;
         size: number;
+        r: number;
 
         constructor() {
             this.x = Math.random() * canvas.width;
@@ -19,7 +20,7 @@ namespace Zauberbild { //horizontal fish
             let circle: Path2D = new Path2D();
             circle.arc(this.x , this.y, 20, 0, 360);
         
-            crc.fillStyle = "red";
+            crc.fillStyle = "pink";
             crc.fill(circle);
             crc.stroke(circle);
 
@@ -28,14 +29,16 @@ namespace Zauberbild { //horizontal fish
 
 
         }
-        update(): void {
-            this.move();
+        update(x: number, y: number): void {
+            this.move(x, y);
             this.draw();
            // console.log(this.x, this.y);
         }
 
-        move(): void {
+        move(x: number, y: number): void {
             this.x += this.dx;
+            this.y += y;
+            this.x += x;
             //this.y += this.dy ;
             if (this.x > canvas.width || this.x < 0 || this.y > canvas.height || this.y < 0) {
 

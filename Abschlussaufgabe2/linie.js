@@ -10,18 +10,20 @@ var Zauberbild;
         draw() {
             let circle = new Path2D();
             circle.arc(this.x, this.y, 20, 0, 360);
-            Zauberbild.crc.fillStyle = "red";
+            Zauberbild.crc.fillStyle = "pink";
             Zauberbild.crc.fill(circle);
             Zauberbild.crc.stroke(circle);
             //console.log("rotation rot");
         }
-        update() {
-            this.move();
+        update(x, y) {
+            this.move(x, y);
             this.draw();
             // console.log(this.x, this.y);
         }
-        move() {
+        move(x, y) {
             this.x += this.dx;
+            this.y += y;
+            this.x += x;
             //this.y += this.dy ;
             if (this.x > Zauberbild.canvas.width || this.x < 0 || this.y > Zauberbild.canvas.height || this.y < 0) {
                 this.x = 0;

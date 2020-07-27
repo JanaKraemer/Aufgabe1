@@ -1,6 +1,6 @@
 namespace Zauberbild {
 
-    export class Groese extends Element {
+    export class Wachstum2 extends Element {
 
         constructor() {
             super();
@@ -11,34 +11,25 @@ namespace Zauberbild {
             this.size = 10;
             this.r = Math.random() * 10 + 10;
         }
-
         draw(): void {
-           
-
-            let circle: Path2D = new Path2D();
-            circle.arc(this.x , this.y, this.r, 0, 360);
-        
-            crc.fillStyle = "lightgreen";
-            crc.fill(circle);
-            crc.stroke(circle);
-
-            //console.log("rotation rot");
-            
-
-
+            let flosse1: Path2D = new Path2D();
+            flosse1.moveTo(this.x + 10, this.y - 400);
+            flosse1.lineTo(this.x + 50, this.y - 370);
+            flosse1.lineTo(this.x + 50, this.y - 430);
+            crc.fillStyle = "orange";
+            crc.fill(flosse1);
+            crc.stroke(flosse1);
         }
         update(x: number, y: number): void {
             this.move(x, y);
             this.draw();
-            //console.log(this.x, this.y);
+            console.log(this.x, this.y);
         }
 
         move(x: number, y: number): void {
-           
 
-
-            this.r += Math.random() * 2;
-            if (this.r >= 40) {
+            this.r += Math.random() * 5;
+            if (this.r >= 50) {
                 this.r -= Math.random() * 2;
             }
 

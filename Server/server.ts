@@ -1,36 +1,57 @@
-import * as Http from "http"; // Ein http Objekt wird im Code generiert//
-import * as URL from "url"
-let address: string = "http://localhost:8100";
- 
-function rueckgabe(){
-	let xhr: XMLHttpRequest = new XMLHttpRequest();
-	xhr.open("GET", address);
+import * as Http from "http";
+import * as Url from "url";
+import * as Database from "./database";
+//import { Player, AssocStringString } from "./PlayerData";
+
+console.log("Server starting");
+
+let port: number = Number(process.env.PORT);
+if (!port)
+    port = 8100;
+
+let server: Http.Server = Http.createServer();
+server.addListener("listening", handleListen);
+server.addListener("request", handleRequest);
+server.listen(port);
+
+
+
+function handleListen(): void {
+    console.log("Listening on port: " + port);
 }
 
-namespace L05_Server {  //Die Namen sind nur im Namespace bekannt//
-	console.log("Starting server");  //Starting server wird in der Konsole ausgegeben.//
-	let port: number = Number(process.env.PORT); // Eine Variable wird deklariert, vom Typ number. Die Umgebungsvariable port sagt dem Server worauf er achten muss.//
-	if (!port) // Wenn Port nicht gefunden wird, dann wird dem Port eine Zahl zugewiesen.//
-		port = 8100; // Die Variable bekommt eine Zahl zugewiesen.//
+function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+    console.log("Request received");
 
-	let server: Http.Server = Http.createServer();  //Ein Server wird generiert//
-	server.addListener("request", handleRequest); // Der Server bekommt den Event-Listener "request"//
-	server.addListener("listening", handleListen); // Der Server bekommt den Event-Listener "listening"//
-	server.listen(port); // Der Server überwacht den Port//
+    let query: AssocStringString = <AssocStringString> Url.parse(_request.url, true).query;
+    let command: string = query["command"];
 
-	function handleListen(): void { // Die Funktion handleListen wird aufgerufen, sie besitzt einen Event-Listener//
-		console.log("Listening"); //Listening wird  auf der Konsole aufegegeben.//
-	}
+    switch (command) {
+        case "insert":
+            let highscore: Element = {
+                name: query["name"]
+            };
+            Database.insert(highscore);
+            respond(_response, "storing data");
+            break;
+        case "find":
+            Database.findAll(findCallback);
+            break;
+        default:
+            respond(_response, "unknown command: " + command);
+            break;
+    }
 
-	function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void { // Die Funktion bekommt 2 Übergabeparameter. Der erste Übergabeparameter fordert eine Info an und der Zweite kann darauf antworten.//
-		
-		console.log("I hear voices!"); // I hear voices! wird auf der Konsole ausgegeben.//
+    
+    function findCallback(json: string): void {
+        respond(_response, json);
+    }
+}
 
-		_response.setHeader("content-type", "text/html; charset=utf-8"); // .setHeader liest einen Header aus, der sich in einer Warteschlange befindet und noch nicht an den Client gesendet wurde.//
-		_response.setHeader("Access-Control-Allow-Origin", "*"); // .setHeader liest einen Header aus, der sich in einer Warteschlange befindet und noch nicht an den Client gesendet wurde. Der Befehl gibt die Erlaubnis, alles auszulesen.//
-
-		_response.write(_request.url); // Infos werden an den Client übergeben und in die URL geschriben//
-
-		_response.end(); // Diese Methode signalisiert dem Server, dass alle Antworten gesendet wurden und die Nachricht vollständig ist.//
-	}
+function respond(_response: Http.ServerResponse, _text: string): void {
+    console.log("Preparing response: " + _text);
+    _response.setHeader("Access-Control-Allow-Origin", "*");
+    _response.setHeader("content-type", "text/html; charset=utf-8");
+    _response.write(_text);
+    _response.end();
 }
