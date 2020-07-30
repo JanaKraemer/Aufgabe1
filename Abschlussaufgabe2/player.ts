@@ -2,8 +2,17 @@ interface AssocStringString {
     [key: string]: string;
 }
 
-interface Player {
-    name: string;
-    background: string;
-    
+
+interface Symbole {
+    type: string;
+    x: string;
+    y: string;
+}
+
+interface CanvasElement {
+    type: string;
+    x: string;
+    y: string;
+    backgroundC: string;
+    size: string;
 }

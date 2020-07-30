@@ -9,12 +9,13 @@ var Zauberbild;
             this.dy = Math.random() * 2;
             this.size = 10;
             this.r = Math.random() * 10 + 10;
+            this.type = "Test";
         }
         draw() {
             let flosse1 = new Path2D();
-            flosse1.moveTo(this.x + 10, this.y - 400);
-            flosse1.lineTo(this.x + 50, this.y - 370);
-            flosse1.lineTo(this.x + 50, this.y - 430);
+            flosse1.moveTo(this.x, this.y);
+            flosse1.lineTo(this.x + 40, this.y);
+            flosse1.lineTo(this.x + 20, this.y + 40);
             Zauberbild.crc.fillStyle = "orange";
             Zauberbild.crc.fill(flosse1);
             Zauberbild.crc.stroke(flosse1);
@@ -25,12 +26,15 @@ var Zauberbild;
             console.log(this.x, this.y);
         }
         move(x, y) {
-            this.r += Math.random() * 5;
-            if (this.r >= 50) {
-                this.r -= Math.random() * 2;
-            }
+            this.x += this.dx;
             this.y += y;
             this.x += x;
+            // this.y += this.dy ;
+            console.log("drawtest");
+            if (this.x > Zauberbild.canvas.width || this.x < 0 || this.y > Zauberbild.canvas.height || this.y < 0) {
+                this.x = 0;
+                this.y = Zauberbild.canvas.height * Math.random();
+            }
         }
     }
     Zauberbild.Test = Test;

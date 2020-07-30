@@ -11,7 +11,7 @@ var Zauberbild;
     let fps = 30;
     //let imageData: ImageData;
     //export let kreisArraymove: Move[] = [];
-    let bg = "white";
+    Zauberbild.bg = "white";
     let auswahl = false;
     Zauberbild.input = document.getElementsByTagName("input");
     let einkreis = false;
@@ -50,7 +50,7 @@ var Zauberbild;
         Zauberbild.crc.clearRect(0, 0, Zauberbild.canvas.width, Zauberbild.canvas.height);
         // crc.putImageData(imageData, 0, 0);
         Zauberbild.crc.rect(0, 0, Zauberbild.canvas.width, Zauberbild.canvas.height);
-        Zauberbild.crc.fillStyle = bg;
+        Zauberbild.crc.fillStyle = Zauberbild.bg;
         Zauberbild.crc.fill();
         for (let i = 0; i < Zauberbild.kreisArray.length; i++) {
             Zauberbild.kreisArray[i].update(0, 0);
@@ -157,8 +157,8 @@ var Zauberbild;
     }
     function saveName() {
         let save = prompt("Name");
-        let background = bg;
-        Zauberbild.insert(save, background);
+        let background = Zauberbild.bg;
+        Zauberbild.insert(save);
     }
     function Klein() {
         Zauberbild.canvas.height = 400;
@@ -173,13 +173,13 @@ var Zauberbild;
         Zauberbild.canvas.width = 600;
     }
     function Grau() {
-        bg = "yellow";
+        Zauberbild.bg = "yellow";
     }
     function Weiß() {
-        bg = "purple";
+        Zauberbild.bg = "purple";
     }
     function Schwarz() {
-        bg = "lightblue";
+        Zauberbild.bg = "lightblue";
     }
 })(Zauberbild || (Zauberbild = {}));
 //# sourceMappingURL=main.js.map

@@ -1,11 +1,24 @@
 var Zauberbild;
 (function (Zauberbild) {
+    let plusStyle = 0;
     //let serverAddress: string = "http://localhost:8100/";
     let serverAddress = "https://kraemerj.herokuapp.com/";
-    function insert(_name, _bg) {
+    function insert(_name) {
         //let inputs: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
         let query = "command=insert";
-        query += "&name=" + _name + "&bg=" + _bg;
+        //query += "&name=" + _name,
+        query += "&bg=" + Zauberbild.bg;
+        query += "&canvaswidth=" + Zauberbild.canvas.width;
+        for (let i = 0; i < Zauberbild.kreisArray.length; i++) {
+            let symbol = {
+                type: Zauberbild.kreisArray[i].type,
+                x: Zauberbild.kreisArray[i].x.toString(),
+                y: Zauberbild.kreisArray[i].y.toString()
+            };
+            query += "&type=" + symbol.type + "&x=" + symbol.x + "&y=" + symbol.y;
+            //plusStyle += 1;
+            // query += "&symbol=" + symbol.type +  "&sy"
+        }
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }

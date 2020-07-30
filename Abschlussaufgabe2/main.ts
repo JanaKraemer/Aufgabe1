@@ -23,7 +23,7 @@ namespace Zauberbild {
     //let imageData: ImageData;
     //export let kreisArraymove: Move[] = [];
 
-    let bg: string = "white";
+    export let bg: string = "white";
     let auswahl: Boolean = false;
     export let input: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
 
@@ -240,7 +240,7 @@ namespace Zauberbild {
     function saveName(): void {
         let save: string = prompt("Name");
         let background: string = bg;
-        insert(save, background);
+        insert(save);
     }
 
     function Klein(): void {

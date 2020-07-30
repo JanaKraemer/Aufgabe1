@@ -1,15 +1,37 @@
 namespace Zauberbild {
 
+    interface Symbole {
+        type: string;
+        x: string;
+        y: string;
+    }
+
+    let plusStyle: number = 0;
+
     //let serverAddress: string = "http://localhost:8100/";
     let serverAddress: string = "https://kraemerj.herokuapp.com/";
 
 
-    export function insert(_name: string, _bg: string): void {
+    export function insert(_name: string): void {
         //let inputs: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
         let query: string = "command=insert";
-        query += "&name=" + _name + "&bg=" + _bg;
-        
-        
+        //query += "&name=" + _name,
+        query += "&bg=" + bg;
+        query += "&canvaswidth=" + canvas.width;
+
+        for (let i: number = 0; i < kreisArray.length; i++) {
+            let symbol: Symbole = {
+                type: kreisArray[i].type,
+                x: kreisArray[i].x.toString(),
+                y: kreisArray[i].y.toString()
+            };
+            query += "&type=" + symbol.type + "&x=" + symbol.x + "&y=" + symbol.y;
+
+            //plusStyle += 1;
+            // query += "&symbol=" + symbol.type +  "&sy"
+        }
+
+
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
@@ -28,7 +50,7 @@ namespace Zauberbild {
         if (xhr.readyState == XMLHttpRequest.DONE) {
             //console.log(xhr.response);
             alert(xhr.response);
-            
+
         }
     }
 

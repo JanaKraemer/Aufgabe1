@@ -5,6 +5,7 @@ var Zauberbild;
             this.x = Math.random() * Zauberbild.canvas.width;
             this.y = Math.random() * Zauberbild.canvas.height;
             this.dx = 2;
+            this.type = "Element";
             //this.dy = 0;
         }
         draw() {

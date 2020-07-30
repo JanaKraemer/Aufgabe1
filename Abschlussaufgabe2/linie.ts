@@ -6,11 +6,14 @@ namespace Zauberbild { //horizontal fish
         dy: number;
         size: number;
         r: number;
+        color: string;
+        type: string;
 
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
             this.dx = 2;
+            this.type = "Element";
             //this.dy = 0;
         }
 
