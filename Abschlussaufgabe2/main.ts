@@ -31,11 +31,12 @@ namespace Zauberbild {
     export function ladebild(_event: MouseEvent): void {
         for ( let i: number = 0; i < kreisArray.length; i++) {
             kreisArray.pop();
+            auswahlArray.pop();
         }
         let id: number = this.id;
         let xbild: string = globalArray[id].x;
         let ybild: string = globalArray[id].y;
-        let type: string = globalArray[id].type;
+        let typebild: string = globalArray[id].type;
         let backgroundC: string = globalArray[id].backgroundC;
         let size: string = globalArray[id].size;
 
@@ -51,11 +52,11 @@ namespace Zauberbild {
         }
         bg = backgroundC;
 
-        for (let i: number = 0; i < type.length; i++) {
+        for (let i: number = 0; i < typebild.length; i++) {
             let element: Symbole = {
                 x: xbild[i],
                 y: ybild[i],
-                type: type[i]
+                type: typebild[i]
             };
 
             if (element.type == "Wachstum2") {

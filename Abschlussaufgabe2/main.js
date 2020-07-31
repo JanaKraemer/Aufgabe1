@@ -17,11 +17,12 @@ var Zauberbild;
     function ladebild(_event) {
         for (let i = 0; i < Zauberbild.kreisArray.length; i++) {
             Zauberbild.kreisArray.pop();
+            Zauberbild.auswahlArray.pop();
         }
         let id = this.id;
         let xbild = Zauberbild.globalArray[id].x;
         let ybild = Zauberbild.globalArray[id].y;
-        let type = Zauberbild.globalArray[id].type;
+        let typebild = Zauberbild.globalArray[id].type;
         let backgroundC = Zauberbild.globalArray[id].backgroundC;
         let size = Zauberbild.globalArray[id].size;
         if (size == "400") {
@@ -34,11 +35,11 @@ var Zauberbild;
             Gross();
         }
         Zauberbild.bg = backgroundC;
-        for (let i = 0; i < type.length; i++) {
+        for (let i = 0; i < typebild.length; i++) {
             let element = {
                 x: xbild[i],
                 y: ybild[i],
-                type: type[i]
+                type: typebild[i]
             };
             if (element.type == "Wachstum2") {
                 let dreieck = new Zauberbild.Wachstum2();
