@@ -40,25 +40,25 @@ var Zauberbild;
                 y: ybild[i],
                 type: type[i]
             };
-            if (type == "Wachstum2") {
+            if (element.type == "Wachstum2") {
                 let dreieck = new Zauberbild.Wachstum2();
                 dreieck.x = parseInt(element.x);
                 dreieck.y = parseInt(element.y);
                 Zauberbild.kreisArray.push(dreieck);
             }
-            if (type == "Groese") {
+            if (element.type == "Groese") {
                 let kreis = new Zauberbild.Groese();
                 kreis.x = parseInt(element.x);
                 kreis.y = parseInt(element.y);
                 Zauberbild.kreisArray.push(kreis);
             }
-            if (type == "Test") {
+            if (element.type == "Test") {
                 let dreieck2 = new Zauberbild.Test();
                 dreieck2.x = parseInt(element.x);
                 dreieck2.y = parseInt(element.y);
                 Zauberbild.kreisArray.push(dreieck2);
             }
-            if (type == "Element") {
+            if (element.type == "Element") {
                 let kreis2 = new Zauberbild.Element();
                 kreis2.x = parseInt(element.x);
                 kreis2.y = parseInt(element.y);

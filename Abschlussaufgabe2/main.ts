@@ -58,27 +58,27 @@ namespace Zauberbild {
                 type: type[i]
             };
 
-            if (type == "Wachstum2") {
+            if (element.type == "Wachstum2") {
                 let dreieck: Wachstum2 = new Wachstum2();
                 dreieck.x = parseInt(element.x);
                 dreieck.y = parseInt(element.y);
                 kreisArray.push(dreieck);
             }
 
-            if (type == "Groese") {
+            if (element.type == "Groese") {
                 let kreis: Groese = new Groese();
                 kreis.x = parseInt(element.x);
                 kreis.y = parseInt(element.y);
                 kreisArray.push(kreis);
             }
 
-            if (type == "Test") {
+            if (element.type == "Test") {
                 let dreieck2: Test = new Test();
                 dreieck2.x = parseInt(element.x);
                 dreieck2.y = parseInt(element.y);
                 kreisArray.push(dreieck2);
             }
-            if (type == "Element") {
+            if (element.type == "Element") {
                 let kreis2: Element = new Element();
                 kreis2.x = parseInt(element.x);
                 kreis2.y = parseInt(element.y);
