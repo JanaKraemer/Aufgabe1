@@ -15,6 +15,9 @@ var Zauberbild;
     let auswahl = false;
     Zauberbild.input = document.getElementsByTagName("input");
     function ladebild(_event) {
+        for (let i = 0; i < Zauberbild.kreisArray.length; i++) {
+            Zauberbild.kreisArray.pop();
+        }
         let id = this.id;
         let xbild = Zauberbild.globalArray[id].x;
         let ybild = Zauberbild.globalArray[id].y;

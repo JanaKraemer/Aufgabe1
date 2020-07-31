@@ -29,6 +29,9 @@ namespace Zauberbild {
 
 
     export function ladebild(_event: MouseEvent): void {
+        for ( let i: number = 0; i < kreisArray.length; i++) {
+            kreisArray.pop();
+        }
         let id: number = this.id;
         let xbild: string = globalArray[id].x;
         let ybild: string = globalArray[id].y;
