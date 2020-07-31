@@ -5,14 +5,21 @@ namespace Zauberbild {
         x: string;
         y: string;
     }
+    interface CanvasElement {
+        type: string;
+        x: string;
+        y: string;
+        backgroundC: string;
+        size: string;
+    }
 
-    let plusStyle: number = 0;
+    
 
     //let serverAddress: string = "http://localhost:8100/";
     let serverAddress: string = "https://kraemerj.herokuapp.com/";
+    export let globalArray: CanvasElement[];
 
-
-    export function insert(_name: string): void {
+    export function insert(): void {
         //let inputs: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
         let query: string = "command=insert";
         //query += "&name=" + _name,
@@ -62,6 +69,20 @@ namespace Zauberbild {
     function handleFindResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
+            globalArray = JSON.parse(xhr.response);
+            for (let i: number = 0; i < globalArray.length; i++) {
+                let button: HTMLButtonElement = <HTMLButtonElement>document.createElement("BUTTON");
+                button.innerText = "Bild" + (i + 1);
+                button.addEventListener("click", ladebild);
+                button.setAttribute("id", i.toString());
+                document.getElementById("fertigebilder").appendChild(button);
+            }
+
+
+
+
+
+
             // let playerList: Circle[] = JSON.parse(xhr.response);
             // for (let i: number = 0; i <= playerList.length; i++) {
             //     let nickname: string = playerList[i].name;

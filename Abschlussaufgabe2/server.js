@@ -29,7 +29,7 @@ function handleRequest(_request, _response) {
                 size: query["canvaswidth"]
             };
             Database.insert(highscore);
-            respond(_response, "storing data");
+            respond(_response, "Dein Zauberbild wurde gespeichert");
             break;
         case "find":
             Database.findAll(findCallback);

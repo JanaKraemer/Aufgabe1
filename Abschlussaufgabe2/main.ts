@@ -28,7 +28,63 @@ namespace Zauberbild {
     export let input: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
 
 
+    export function ladebild(_event: MouseEvent): void {
+        let id: number = this.id;
+        let xbild: string = globalArray[id].x;
+        let ybild: string = globalArray[id].y;
+        let type: string = globalArray[id].type;
+        let backgroundC: string = globalArray[id].backgroundC;
+        let size: string = globalArray[id].size;
 
+
+        if (size == "400") {
+            Klein();
+        }
+        if (size == "500") {
+            Mittel();
+        }
+        if (size == "600") {
+            Gross();
+        }
+        bg = backgroundC;
+
+        for (let i: number = 0; i < type.length; i++) {
+            let element: Symbole = {
+                x: xbild[i],
+                y: ybild[i],
+                type: type[i]
+            };
+
+            if (type == "Wachstum2") {
+                let dreieck: Wachstum2 = new Wachstum2();
+                dreieck.x = parseInt(element.x);
+                dreieck.y = parseInt(element.y);
+                kreisArray.push(dreieck);
+            }
+
+            if (type == "Groese") {
+                let kreis: Groese = new Groese();
+                kreis.x = parseInt(element.x);
+                kreis.y = parseInt(element.y);
+                kreisArray.push(kreis);
+            }
+
+            if (type == "Test") {
+                let dreieck2: Test = new Test();
+                dreieck2.x = parseInt(element.x);
+                dreieck2.y = parseInt(element.y);
+                kreisArray.push(dreieck2);
+            }
+            if (type == "Element") {
+                let kreis2: Element = new Element();
+                kreis2.x = parseInt(element.x);
+                kreis2.y = parseInt(element.y);
+                kreisArray.push(kreis2);
+            }
+        }
+
+
+    }
     let einkreis: Boolean = false;
 
     function init(): void {
@@ -69,8 +125,15 @@ namespace Zauberbild {
         let save: HTMLButtonElement = <HTMLButtonElement>document.getElementById("save");
         save.addEventListener("click", saveName);
 
+        let load: HTMLButtonElement = <HTMLButtonElement>document.getElementById("load");
+        load.addEventListener("click", loadpicture);
+
         update();
 
+    }
+
+    function loadpicture(): void {
+        find();
     }
 
 
@@ -238,9 +301,8 @@ namespace Zauberbild {
     }
 
     function saveName(): void {
-        let save: string = prompt("Name");
         let background: string = bg;
-        insert(save);
+        insert();
     }
 
     function Klein(): void {

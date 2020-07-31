@@ -36,7 +36,7 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
                 size: query["canvaswidth"]
             };
             Database.insert(highscore);
-            respond(_response, "storing data");
+            respond(_response, "Dein Zauberbild wurde gespeichert");
             break;
         case "find":
             Database.findAll(findCallback);

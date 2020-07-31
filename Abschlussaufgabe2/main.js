@@ -14,6 +14,56 @@ var Zauberbild;
     Zauberbild.bg = "white";
     let auswahl = false;
     Zauberbild.input = document.getElementsByTagName("input");
+    function ladebild(_event) {
+        let id = this.id;
+        let xbild = Zauberbild.globalArray[id].x;
+        let ybild = Zauberbild.globalArray[id].y;
+        let type = Zauberbild.globalArray[id].type;
+        let backgroundC = Zauberbild.globalArray[id].backgroundC;
+        let size = Zauberbild.globalArray[id].size;
+        if (size == "400") {
+            Klein();
+        }
+        if (size == "500") {
+            Mittel();
+        }
+        if (size == "600") {
+            Gross();
+        }
+        Zauberbild.bg = backgroundC;
+        for (let i = 0; i < type.length; i++) {
+            let element = {
+                x: xbild[i],
+                y: ybild[i],
+                type: type[i]
+            };
+            if (type == "Wachstum2") {
+                let dreieck = new Zauberbild.Wachstum2();
+                dreieck.x = parseInt(element.x);
+                dreieck.y = parseInt(element.y);
+                Zauberbild.kreisArray.push(dreieck);
+            }
+            if (type == "Groese") {
+                let kreis = new Zauberbild.Groese();
+                kreis.x = parseInt(element.x);
+                kreis.y = parseInt(element.y);
+                Zauberbild.kreisArray.push(kreis);
+            }
+            if (type == "Test") {
+                let dreieck2 = new Zauberbild.Test();
+                dreieck2.x = parseInt(element.x);
+                dreieck2.y = parseInt(element.y);
+                Zauberbild.kreisArray.push(dreieck2);
+            }
+            if (type == "Element") {
+                let kreis2 = new Zauberbild.Element();
+                kreis2.x = parseInt(element.x);
+                kreis2.y = parseInt(element.y);
+                Zauberbild.kreisArray.push(kreis2);
+            }
+        }
+    }
+    Zauberbild.ladebild = ladebild;
     let einkreis = false;
     function init() {
         Zauberbild.canvas = document.getElementsByTagName("canvas")[0];
@@ -43,7 +93,12 @@ var Zauberbild;
         wachstum2.addEventListener("click", zeichneWachstum2);
         let save = document.getElementById("save");
         save.addEventListener("click", saveName);
+        let load = document.getElementById("load");
+        load.addEventListener("click", loadpicture);
         update();
+    }
+    function loadpicture() {
+        Zauberbild.find();
     }
     function update() {
         window.setTimeout(update, 1000 / fps);
@@ -156,9 +211,8 @@ var Zauberbild;
         document.getElementById("buttons").innerHTML = "";
     }
     function saveName() {
-        let save = prompt("Name");
         let background = Zauberbild.bg;
-        Zauberbild.insert(save);
+        Zauberbild.insert();
     }
     function Klein() {
         Zauberbild.canvas.height = 400;

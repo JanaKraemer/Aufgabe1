@@ -1,9 +1,8 @@
 var Zauberbild;
 (function (Zauberbild) {
-    let plusStyle = 0;
     //let serverAddress: string = "http://localhost:8100/";
     let serverAddress = "https://kraemerj.herokuapp.com/";
-    function insert(_name) {
+    function insert() {
         //let inputs: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
         let query = "command=insert";
         //query += "&name=" + _name,
@@ -44,6 +43,14 @@ var Zauberbild;
     function handleFindResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
+            Zauberbild.globalArray = JSON.parse(xhr.response);
+            for (let i = 0; i < Zauberbild.globalArray.length; i++) {
+                let button = document.createElement("BUTTON");
+                button.innerText = "Bild" + (i + 1);
+                button.addEventListener("click", Zauberbild.ladebild);
+                button.setAttribute("id", i.toString());
+                document.getElementById("fertigebilder").appendChild(button);
+            }
             // let playerList: Circle[] = JSON.parse(xhr.response);
             // for (let i: number = 0; i <= playerList.length; i++) {
             //     let nickname: string = playerList[i].name;
