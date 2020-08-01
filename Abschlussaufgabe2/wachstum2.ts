@@ -10,7 +10,7 @@ namespace Zauberbild {
             this.dy = Math.random() * 2;
             this.size = 10;
             this.type = "Wachstum2";
-            this.r = Math.random() * 10 + 10;
+            //this.r = Math.random() * 10 + 10;
         }
         draw(): void {
             let flosse1: Path2D = new Path2D();

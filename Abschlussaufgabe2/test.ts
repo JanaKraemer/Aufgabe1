@@ -9,7 +9,7 @@ namespace Zauberbild {
             this.dx = Math.random() * 3;
             this.dy = Math.random() * 2;
             this.size = 10;
-            this.r = Math.random() * 10 + 10;
+            //this.r = Math.random() * 10 + 10;
             this.type = "Test";
         }
         draw(): void {
