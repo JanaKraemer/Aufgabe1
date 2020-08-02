@@ -80,7 +80,7 @@ var Zauberbild;
             let x = _event.clientX; // Die x-Position, an der geklickt wird, wird in x gespeichert
             let y = _event.clientY;
             //console.log("Auswahl");
-            if (Zauberbild.kreisArray[i].x < x + 10 && Zauberbild.kreisArray[i].x < x + 10 && Zauberbild.kreisArray[i].y < y + 10 && Zauberbild.kreisArray[i].y < y - 10 && x <= Zauberbild.canvas.width && y <= Zauberbild.canvas.height) {
+            if (Zauberbild.kreisArray[i].x < x + 5 && Zauberbild.kreisArray[i].x < x + 5 && Zauberbild.kreisArray[i].y < y + 5 && Zauberbild.kreisArray[i].y < y - 5 && x <= Zauberbild.canvas.width && y <= Zauberbild.canvas.height) {
                 // Klick mit Kreis vergleichen
                 // wenn Klick und Kreis übereinstimmen, kann dieser gelöscht, oder verschoben werden
                 //auswahlarray komplett löschen:
@@ -88,7 +88,7 @@ var Zauberbild;
                     Zauberbild.kreisArray.push(Zauberbild.auswahlArray[0]);
                     Zauberbild.auswahlArray.splice(0, 1);
                 }
-                Zauberbild.ausgewaehltesElement = i; //Das Element, auf das geklickt wurde, wird in I abgespeichert
+                Zauberbild.ausgewaehltesElement = i; //Das Element, auf das geklickt wurde, wird in I abgespeichert       ????????????????????????????????????? welches i wird genommen ???????????????????????????????????????
                 Zauberbild.auswahlArray.push(Zauberbild.kreisArray[i]); // I ist das augewählte Element
                 Zauberbild.kreisArray.splice(i, 1); // Das ausgewählte Element wird ins Auswahlarray gepushed und aus dem Kreisarray gespliced
                 // Sobald das Mouseevent ausgeführt wird und ein Element ausgewählt wurde, werden 2 Buttons erstellt
@@ -107,6 +107,10 @@ var Zauberbild;
         }
     }
     function deleteButton() {
+        if (Zauberbild.auswahlArray.length > 1) {
+            Zauberbild.kreisArray.push(Zauberbild.auswahlArray[0]);
+            Zauberbild.auswahlArray.splice(0, 1);
+        }
         Zauberbild.auswahlArray.splice(0, 1);
         //kreisArray.splice(ausgewaehltesElement, 1);
         //console.log("weg mit dir");
@@ -201,6 +205,7 @@ var Zauberbild;
                 Zauberbild.kreisArray.push(kreis2);
             }
         }
+        document.getElementById("buttons").innerHTML = "";
     }
     Zauberbild.ladebild = ladebild;
     function saveBg() {

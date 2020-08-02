@@ -126,14 +126,15 @@ namespace Zauberbild {
     function auswahlKreis(_event: MouseEvent): void { // Beim Klick auf den Canvas wird die Funktion aufgerufen
 
         auswahl = false;
-
+        
+        
         for (let i: number = 0; i < kreisArray.length; i++) { // Das Array wird durchlaufen
 
             let x: number = _event.clientX;  // Die x-Position, an der geklickt wird, wird in x gespeichert
             let y: number = _event.clientY;
             //console.log("Auswahl");
 
-            if (kreisArray[i].x < x + 10 && kreisArray[i].x < x + 10 && kreisArray[i].y < y + 10 && kreisArray[i].y < y - 10 && x <= canvas.width && y <= canvas.height) {
+            if (kreisArray[i].x < x + 5 && kreisArray[i].x < x + 5 && kreisArray[i].y < y + 5 && kreisArray[i].y < y - 5 && x <= canvas.width && y <= canvas.height) {
                 // Klick mit Kreis vergleichen
                 // wenn Klick und Kreis übereinstimmen, kann dieser gelöscht, oder verschoben werden
 
@@ -143,12 +144,13 @@ namespace Zauberbild {
                     kreisArray.push(auswahlArray[0]);
                     auswahlArray.splice(0, 1);
                 }
-                ausgewaehltesElement = i; //Das Element, auf das geklickt wurde, wird in I abgespeichert
+                ausgewaehltesElement = i; //Das Element, auf das geklickt wurde, wird in I abgespeichert       ????????????????????????????????????? welches i wird genommen ???????????????????????????????????????
                 auswahlArray.push(kreisArray[i]); // I ist das augewählte Element
                 kreisArray.splice(i, 1); // Das ausgewählte Element wird ins Auswahlarray gepushed und aus dem Kreisarray gespliced
 
                 // Sobald das Mouseevent ausgeführt wird und ein Element ausgewählt wurde, werden 2 Buttons erstellt
 
+                
                 let button: HTMLButtonElement = <HTMLButtonElement>document.createElement("BUTTON");   // Create a <button> element
                 button.innerHTML = "Delete";   // Insert text
                 let div: HTMLDivElement = <HTMLDivElement>document.getElementById("buttons");
@@ -168,6 +170,10 @@ namespace Zauberbild {
         }
     }
     function deleteButton(): void { // Bei Klick auf "Delete" wird die Funktion aufgerufen
+        if (auswahlArray.length > 1) {
+            kreisArray.push(auswahlArray[0]);
+            auswahlArray.splice(0, 1);
+        }
 
         auswahlArray.splice(0, 1);
         //kreisArray.splice(ausgewaehltesElement, 1);
@@ -295,6 +301,7 @@ namespace Zauberbild {
                 kreisArray.push(kreis2);
             }
         }
+        document.getElementById("buttons").innerHTML = "";
 
 
     }
