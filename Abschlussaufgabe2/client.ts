@@ -20,9 +20,9 @@ namespace Zauberbild {
     export let globalArray: CanvasElement[];
 
     export function insert(): void {
-        //let inputs: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
+        
         let query: string = "command=insert";
-        //query += "&name=" + _name,
+        
         query += "&bg=" + bg;
         query += "&canvaswidth=" + canvas.width;
 
@@ -34,8 +34,6 @@ namespace Zauberbild {
             };
             query += "&type=" + symbol.type + "&x=" + symbol.x + "&y=" + symbol.y;
 
-            //plusStyle += 1;
-            // query += "&symbol=" + symbol.type +  "&sy"
         }
 
 

@@ -268,7 +268,7 @@ namespace Zauberbild {
         //Wiederherstellung der einzelnden Elemente:
 
         for (let i: number = 0; i < typebild.length; i++) {
-            let element: Symbole = { // Neue Elemente werden "angelegt" -> bzw wieder hergestellt, die x und y Position wurden in der Datenbank abgespeichert 
+            let element: Symbole = { // Neue Elemente werden "angelegt" -> bzw wieder hergestellt, die x und y Position & der Type wurden in der Datenbank abgespeichert 
                 x: xbild[i],  // ????????????????????????????????????????????????????????????????????????
                 y: ybild[i],
                 type: typebild[i]
@@ -308,7 +308,7 @@ namespace Zauberbild {
 
 
     function saveBg(): void {
-        let background: string = bg;
+        //let background: string = bg;
         insert();
     }
 
