@@ -28,7 +28,7 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
 
     switch (command) {
         case "insert":
-            let highscore: CanvasElement = {
+            let highscore: CanvasElement = { 
                 type: query["type"],
                 x: query["x"],
                 y: query["y"],

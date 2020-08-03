@@ -4,7 +4,7 @@ var Zauberbild;
     let serverAddress = "https://kraemerj.herokuapp.com/";
     function insert() {
         let query = "command=insert";
-        query += "&bg=" + Zauberbild.bg;
+        query += "&bg=" + Zauberbild.bg; // farbe und Größe werden nur einmal angelegt und nicht mit jedem Element
         query += "&canvaswidth=" + Zauberbild.canvas.width;
         for (let i = 0; i < Zauberbild.kreisArray.length; i++) {
             let symbol = {
@@ -39,13 +39,13 @@ var Zauberbild;
     function handleFindResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            Zauberbild.globalArray = JSON.parse(xhr.response); // Infos aus "CanvasElement" werden aus String in global Array eingefügt
+            Zauberbild.globalArray = JSON.parse(xhr.response); // Infos aus "CanvasElement" werden aus String in globalArray eingefügt
             if (Zauberbild.ladebilder == true) {
                 return;
             } // Wenn bereits Buttons existieren, dh. der Boolean nicht wieder auf false gesetzt wurde, bricht die funktion an der Stelle ab und es werden keine neuen Buttons erstellt
-            for (let i = 0; i < Zauberbild.globalArray.length; i++) {
+            for (let i = 0; i < Zauberbild.globalArray.length; i++) { // es werden so viele Buttons erstellt, wie sich "CanvasElemente" im globalArray befinden"
                 let button = document.createElement("BUTTON");
-                button.innerText = "Bild" + (i + 1);
+                button.innerText = "Bild" + (i + 1); // Bild 1 // Bild 2...
                 button.addEventListener("click", Zauberbild.ladebild);
                 button.setAttribute("id", i.toString());
                 document.getElementById("fertigebilder").appendChild(button);

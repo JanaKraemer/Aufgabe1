@@ -23,11 +23,11 @@ namespace Zauberbild {
         
         let query: string = "command=insert";
         
-        query += "&bg=" + bg;
+        query += "&bg=" + bg; // farbe und Größe werden nur einmal angelegt und nicht mit jedem Element
         query += "&canvaswidth=" + canvas.width;
 
         for (let i: number = 0; i < kreisArray.length; i++) {
-            let symbol: Symbole = {
+            let symbol: Symbole = { // für jedes Element wird ein symbol angelegt: type, x, y gespeichert
                 type: kreisArray[i].type,
                 x: kreisArray[i].x.toString(),
                 y: kreisArray[i].y.toString()
@@ -67,11 +67,11 @@ namespace Zauberbild {
     function handleFindResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            globalArray = JSON.parse(xhr.response); // Infos aus "CanvasElement" werden aus String in global Array eingefügt
+            globalArray = JSON.parse(xhr.response); // Infos aus "CanvasElement" werden aus String in globalArray eingefügt
             if (ladebilder == true) { return; } // Wenn bereits Buttons existieren, dh. der Boolean nicht wieder auf false gesetzt wurde, bricht die funktion an der Stelle ab und es werden keine neuen Buttons erstellt
-            for (let i: number = 0; i < globalArray.length; i++) {
+            for (let i: number = 0; i < globalArray.length; i++) { // es werden so viele Buttons erstellt, wie sich "CanvasElemente" im globalArray befinden"
                 let button: HTMLButtonElement = <HTMLButtonElement>document.createElement("BUTTON");
-                button.innerText = "Bild" + (i + 1);
+                button.innerText = "Bild" + (i + 1); // Bild 1 // Bild 2...
                 button.addEventListener("click", ladebild);
                 button.setAttribute("id", i.toString());
                 document.getElementById("fertigebilder").appendChild(button);
