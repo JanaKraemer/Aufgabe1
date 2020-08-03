@@ -27,7 +27,7 @@ var Zauberbild;
         move(x, y) {
             this.r += Math.random() * 2;
             if (this.r >= 40) {
-                this.r -= Math.random() * 2;
+                this.r -= Math.random() * 10;
             }
             this.y += y;
             this.x += x;

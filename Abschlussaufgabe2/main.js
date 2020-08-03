@@ -7,8 +7,10 @@ var Zauberbild;
     Zauberbild.kreisArray = [];
     Zauberbild.auswahlArray = [];
     let fps = 30;
+    let buttons2 = false;
+    Zauberbild.ladebilder = false;
     Zauberbild.bg = "white";
-    let auswahl = false; // Boolean ist am Anfang auf false, später wird es geändert ????????????????????????????????????????
+    let auswahl = false; // Boolean ist am Anfang auf false, später wird es geändert 
     //export let input: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
     //let einkreis: Boolean = false;
     function init() {
@@ -92,6 +94,9 @@ var Zauberbild;
                 Zauberbild.auswahlArray.push(Zauberbild.kreisArray[i]); // I ist das augewählte Element
                 Zauberbild.kreisArray.splice(i, 1); // Das ausgewählte Element wird ins Auswahlarray gepushed und aus dem Kreisarray gespliced
                 // Sobald das Mouseevent ausgeführt wird und ein Element ausgewählt wurde, werden 2 Buttons erstellt
+                if (buttons2 == true) {
+                    return;
+                }
                 let button = document.createElement("BUTTON"); // Create a <button> element
                 button.innerHTML = "Delete"; // Insert text
                 let div = document.getElementById("buttons");
@@ -103,6 +108,7 @@ var Zauberbild;
                 divposition.appendChild(buttonposition);
                 //console.log("buttonposition");
                 buttonposition.addEventListener("click", positionButtonKreis);
+                buttons2 = true;
             }
         }
     }
@@ -115,13 +121,14 @@ var Zauberbild;
         //kreisArray.splice(ausgewaehltesElement, 1);
         //console.log("weg mit dir");
         document.getElementById("buttons").innerHTML = ""; // Alle Buttons verschwinden wieder, sobald ein Element gelöscht wurde
+        buttons2 = false;
     }
     function positionButtonKreis() {
         auswahl = true;
         document.addEventListener("keydown", steuerung); // Auf dem Document lieft ein Keydown-Event und es wird die Funktion Steuerung aufgerufen
     }
     function steuerung(_event) {
-        if (auswahl == true) { //??????????????????????????????????????????
+        if (auswahl == true) {
             // Das Auswahlarray wird zu Beginn komplett geleert
             // Steuerung durch Pfeiltasten
             if (Zauberbild.auswahlArray.length > 1) {
@@ -143,6 +150,7 @@ var Zauberbild;
             }
         }
         document.getElementById("buttons").innerHTML = ""; // Alle Buttons verschwinden wieder, sobald die Position verändert wurde
+        buttons2 = false;
     }
     function loadpicture() {
         Zauberbild.find(); // Find wird im Client aufgerufen und ausgeführt
@@ -150,8 +158,8 @@ var Zauberbild;
     function ladebild() {
         //console.log(globalArray);
         for (let i = 0; i < Zauberbild.kreisArray.length; i++) {
-            Zauberbild.kreisArray.pop();
-            Zauberbild.auswahlArray.pop();
+            Zauberbild.kreisArray.splice(0, Zauberbild.kreisArray.length);
+            Zauberbild.auswahlArray.splice(0, Zauberbild.auswahlArray.length);
         }
         // Bilder, die in der Datenbank gespeichert wurden, können wieder hergestellt werden. Die Parameter werden zuvor an die Datenbank übergeben und jetzt können die Eigenschaften der einzelnen Zauberbilder identifiziert werden
         // Zuweisung von Werten:
@@ -205,11 +213,12 @@ var Zauberbild;
                 Zauberbild.kreisArray.push(kreis2);
             }
         }
-        document.getElementById("buttons").innerHTML = ""; // ?????????????????????????????????? buttons werden nicht gelöscht????????????????????????????????????
+        document.getElementById("fertigebilder").innerHTML = "";
+        Zauberbild.ladebilder = false;
     }
     Zauberbild.ladebild = ladebild;
     function saveBg() {
-        let background = Zauberbild.bg;
+        //let background: string = bg;
         Zauberbild.insert();
     }
     // Die Buttons besitzen einen Event-Listener und rufen die Funktionen auf:

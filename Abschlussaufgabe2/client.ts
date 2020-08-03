@@ -67,16 +67,17 @@ namespace Zauberbild {
     function handleFindResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            globalArray = JSON.parse(xhr.response);
+            globalArray = JSON.parse(xhr.response); // Infos aus "CanvasElement" werden aus String in global Array eingefügt
+            if (ladebilder == true) { return; } // Wenn bereits Buttons existieren, dh. der Boolean nicht wieder auf false gesetzt wurde, bricht die funktion an der Stelle ab und es werden keine neuen Buttons erstellt
             for (let i: number = 0; i < globalArray.length; i++) {
                 let button: HTMLButtonElement = <HTMLButtonElement>document.createElement("BUTTON");
                 button.innerText = "Bild" + (i + 1);
                 button.addEventListener("click", ladebild);
                 button.setAttribute("id", i.toString());
                 document.getElementById("fertigebilder").appendChild(button);
+
+                ladebilder = true;
             }
-
-
         }
     }
 }

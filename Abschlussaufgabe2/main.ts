@@ -17,9 +17,11 @@ namespace Zauberbild {
     export let kreisArray: Element[] = [];
     export let auswahlArray: Element[] = [];
     let fps: number = 30;
+    let buttons2: Boolean = false;
+    export let ladebilder: Boolean = false;
 
     export let bg: string = "white";
-    let auswahl: Boolean = false; // Boolean ist am Anfang auf false, später wird es geändert ????????????????????????????????????????
+    let auswahl: Boolean = false; // Boolean ist am Anfang auf false, später wird es geändert 
     //export let input: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
 
 
@@ -126,8 +128,9 @@ namespace Zauberbild {
     function auswahlKreis(_event: MouseEvent): void { // Beim Klick auf den Canvas wird die Funktion aufgerufen
 
         auswahl = false;
-        
-        
+
+
+
         for (let i: number = 0; i < kreisArray.length; i++) { // Das Array wird durchlaufen
 
             let x: number = _event.clientX;  // Die x-Position, an der geklickt wird, wird in x gespeichert
@@ -150,7 +153,7 @@ namespace Zauberbild {
 
                 // Sobald das Mouseevent ausgeführt wird und ein Element ausgewählt wurde, werden 2 Buttons erstellt
 
-                
+                if (buttons2 == true) { return; }
                 let button: HTMLButtonElement = <HTMLButtonElement>document.createElement("BUTTON");   // Create a <button> element
                 button.innerHTML = "Delete";   // Insert text
                 let div: HTMLDivElement = <HTMLDivElement>document.getElementById("buttons");
@@ -163,6 +166,9 @@ namespace Zauberbild {
                 divposition.appendChild(buttonposition);
                 //console.log("buttonposition");
                 buttonposition.addEventListener("click", positionButtonKreis);
+
+                buttons2 = true;
+
 
 
             }
@@ -180,6 +186,7 @@ namespace Zauberbild {
         //console.log("weg mit dir");
 
         document.getElementById("buttons").innerHTML = ""; // Alle Buttons verschwinden wieder, sobald ein Element gelöscht wurde
+        buttons2 = false;
     }
 
 
@@ -193,7 +200,7 @@ namespace Zauberbild {
 
     function steuerung(_event: KeyboardEvent): void {
 
-        if (auswahl == true) { //??????????????????????????????????????????
+        if (auswahl == true) {
             // Das Auswahlarray wird zu Beginn komplett geleert
 
             // Steuerung durch Pfeiltasten
@@ -224,6 +231,7 @@ namespace Zauberbild {
         }
 
         document.getElementById("buttons").innerHTML = ""; // Alle Buttons verschwinden wieder, sobald die Position verändert wurde
+        buttons2 = false;
 
     }
 
@@ -237,8 +245,8 @@ namespace Zauberbild {
     export function ladebild(): void {
         //console.log(globalArray);
         for (let i: number = 0; i < kreisArray.length; i++) {
-            kreisArray.pop();
-            auswahlArray.pop();
+            kreisArray.splice(0, kreisArray.length);
+            auswahlArray.splice(0, auswahlArray.length);
         }
 
         // Bilder, die in der Datenbank gespeichert wurden, können wieder hergestellt werden. Die Parameter werden zuvor an die Datenbank übergeben und jetzt können die Eigenschaften der einzelnen Zauberbilder identifiziert werden
@@ -301,7 +309,9 @@ namespace Zauberbild {
                 kreisArray.push(kreis2);
             }
         }
-        document.getElementById("buttons").innerHTML = ""; // ?????????????????????????????????? buttons werden nicht gelöscht????????????????????????????????????
+
+        document.getElementById("fertigebilder").innerHTML = ""; 
+        ladebilder = false;
 
 
     }
