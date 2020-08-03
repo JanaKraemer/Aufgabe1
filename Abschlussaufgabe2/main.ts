@@ -309,7 +309,6 @@ namespace Zauberbild {
 
 
     function saveBg(): void {
-        
         insert();
     }
 
